@@ -1,7 +1,14 @@
 Posts on Qiita
 
-created 2022-03-21
+created 2022-04-12
 
+- [Blenderで花火を打ち上げるアドオン](https://qiita.com/SaitoTsutomu/items/9c7aae103bf13d72dd5c)
+- [BlenderでVOICEVOXの音声をPythonで追加](https://qiita.com/SaitoTsutomu/items/b2ff4b45ffe578ec23a4)
+- [Blenderでジグソーパズル風のパズルのアドオン](https://qiita.com/SaitoTsutomu/items/f71b9dfb4c68a71f848a)
+- [Blenderで別の画像を重ね合わせる方法](https://qiita.com/SaitoTsutomu/items/5464233bc9dfebd93307)
+- [Blenderのカスタムプロパティの使い方](https://qiita.com/SaitoTsutomu/items/b6cfd5aeb760d49ea657)
+- [Blenderのドライバーの使い方](https://qiita.com/SaitoTsutomu/items/cbcbd43272698c07ebf0)
+- [Blenderで可能な限り三角面を四角面に変換する（数理最適化）](https://qiita.com/SaitoTsutomu/items/b608c80d70a54718ec78)
 - [Blenderで日本地図（四色問題）](https://qiita.com/SaitoTsutomu/items/2425a51139b79c6d87fa)
 - [Blenderでミラーボールを作ろう](https://qiita.com/SaitoTsutomu/items/2fd6d9d7afa6b5cdda94)
 - [Blenderのジオメトリーノードでハニカム配置](https://qiita.com/SaitoTsutomu/items/0f961f806d6ceeecea80)

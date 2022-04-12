@@ -2,7 +2,7 @@ title: Blenderで日本地図（四色問題）
 tags: Python 3DCG Blender 地図 四色問題
 url: https://qiita.com/SaitoTsutomu/items/2425a51139b79c6d87fa
 created_at: 2022-03-20 19:16:48+09:00
-updated_at: 2022-03-20 21:32:03+09:00
+updated_at: 2022-03-21 10:54:13+09:00
 body:
 
 ## これなに
@@ -21,18 +21,20 @@ Blenderで日本地図の県ごとにオブジェクトを作り、4色に塗っ
 県ごとの色は、数理最適化を用いて四色問題を解いて求めます。
 数理最適化については、「[組合せ最適化を使おう](https://qiita.com/SaitoTsutomu/items/bfbf4c185ed7004b5721)」を参考にしてください。
 
-最初、BlenderのPythonで実行したのですが、異常終了してしまったため、色の割り当て（`assign`）は下記のコードで別途求めました。
+最初、BlenderのPythonで実行したのですが、異常終了してしまったため、色の割り当て（変数`assign`の値）は下記のコードで別途求めました。
 
 ```py
 from mip import Model
-from japanmap import adjacent
+from japanmap import adjacent, get_data
 
+qpqo = get_data()
 m = Model()  # 数理モデル
 v = m.add_var_tensor((47, 4), "v", var_type="I")
 m += v.sum(axis=1) == 1
 for ipr in range(47):
-    for ad in adjacent(ipr + 1):
-        m += v[ipr] + v[ad - 1] <= 1
+    for ad in adjacent(ipr + 1, qpqo):
+        if ad > ipr:
+            m += v[ipr] + v[ad - 1] <= 1
 m.optimize()
 assign = (v.astype(float) * range(4)).sum(axis=1).astype(int).tolist()
 ```
@@ -44,7 +46,7 @@ Python-MIPの使い方については下記を参考にしてください。
 
 - [Python-MIPによるモデル作成方法 - PyQドキュメント](https://docs.pyq.jp/python/math_opt/python_mip.html)
 
-ちなみに、「[Blenderで隣り合う面に異なる色を割当（四色問題）](https://qiita.com/SaitoTsutomu/items/8def3fb4b99f8520b6ed)」の貪欲法で色を求めると長野県のあたりで5色目を使ってたので、数理最適化を使っています。
+ちなみに、「[Blenderで隣り合う面に異なる色を割当（四色問題）](https://qiita.com/SaitoTsutomu/items/8def3fb4b99f8520b6ed)」の貪欲法で色を求めると長野県のあたりで5色目を使ってたので、定式化して解くことにしました。
 
 ## やってみる
 
