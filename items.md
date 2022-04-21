@@ -1,7 +1,10 @@
 Posts on Qiita
 
-created 2022-04-12
+created 2022-04-21
 
+- [Blenderでアニメーションのオブジェクトをステップごとに可視化する](https://qiita.com/SaitoTsutomu/items/ec03097bc67e8978f8fe)
+- [Blenderで凹んだもののベベルの比較](https://qiita.com/SaitoTsutomu/items/a8ab2d4f327f9b5893f7)
+- [Blenderで平面を本のページのように動かす](https://qiita.com/SaitoTsutomu/items/150d553f6b2154d3b611)
 - [Blenderで花火を打ち上げるアドオン](https://qiita.com/SaitoTsutomu/items/9c7aae103bf13d72dd5c)
 - [BlenderでVOICEVOXの音声をPythonで追加](https://qiita.com/SaitoTsutomu/items/b2ff4b45ffe578ec23a4)
 - [Blenderでジグソーパズル風のパズルのアドオン](https://qiita.com/SaitoTsutomu/items/f71b9dfb4c68a71f848a)
