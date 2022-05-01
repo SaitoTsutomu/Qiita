@@ -1,7 +1,12 @@
 Posts on Qiita
 
-created 2022-04-21
+created 2022-05-01
 
+- [Blenderで数理最適化による分割の復元](https://qiita.com/SaitoTsutomu/items/417c3abfd9be07c25da4)
+- [Blenderで四角面を維持して減数](https://qiita.com/SaitoTsutomu/items/c9f9b9b216bbb255ebc4)
+- [Blenderでシェーダーのノード位置の調整](https://qiita.com/SaitoTsutomu/items/ae71dd62aa3fa0067c94)
+- [BlenderでアニメーションをWebpで保存する](https://qiita.com/SaitoTsutomu/items/499c7307bdcdfb2f1662)
+- [Blenderで虹を作る](https://qiita.com/SaitoTsutomu/items/4ff1e6c1bb9a34a8128b)
 - [Blenderでアニメーションのオブジェクトをステップごとに可視化する](https://qiita.com/SaitoTsutomu/items/ec03097bc67e8978f8fe)
 - [Blenderで凹んだもののベベルの比較](https://qiita.com/SaitoTsutomu/items/a8ab2d4f327f9b5893f7)
 - [Blenderで平面を本のページのように動かす](https://qiita.com/SaitoTsutomu/items/150d553f6b2154d3b611)
