@@ -2,7 +2,7 @@ title: Blenderで球面上の頂点から凸包を作り色を割り当てよう
 tags: Python 3DCG Blender 数学 モデリング
 url: https://qiita.com/SaitoTsutomu/items/7bd7aba2eaffd4bca440
 created_at: 2022-01-10 14:12:41+09:00
-updated_at: 2022-01-10 16:15:04+09:00
+updated_at: 2022-05-06 20:37:38+09:00
 body:
 
 ## やること
@@ -105,6 +105,8 @@ if __name__ == "__main__":
     obj = add_vertex_on_sphere(30)
     set_five_color(obj)
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 以上
 

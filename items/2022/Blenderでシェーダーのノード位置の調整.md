@@ -2,7 +2,7 @@ title: Blenderでシェーダーのノード位置の調整
 tags: Python 3DCG Blender networkx
 url: https://qiita.com/SaitoTsutomu/items/ae71dd62aa3fa0067c94
 created_at: 2022-04-26 19:37:50+09:00
-updated_at: 2022-04-26 19:37:50+09:00
+updated_at: 2022-05-06 20:30:06+09:00
 body:
 
 ## 概要
@@ -44,6 +44,8 @@ for nd in m.node_tree.nodes:
 ```
 
 ノードの幅と高さの属性が（有効な値として）使えなかったので固定値にしています。
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 以上
 

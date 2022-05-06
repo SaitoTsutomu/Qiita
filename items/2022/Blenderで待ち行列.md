@@ -2,7 +2,7 @@ title: Blenderで待ち行列
 tags: Python 3DCG Blender 待ち行列 SimPy
 url: https://qiita.com/SaitoTsutomu/items/1e5c95736876bb97df29
 created_at: 2022-03-03 19:46:38+09:00
-updated_at: 2022-03-03 19:46:38+09:00
+updated_at: 2022-05-06 20:34:03+09:00
 body:
 
 Blenderで待ち行列を可視化すると面白いんじゃないかと思ってやってみたことの紹介です。
@@ -107,6 +107,8 @@ for customers in customers:
         cns.offset = 0 if pos < 0 else -100 + pos * stp
         cns.keyframe_insert(data_path='offset', frame=tm * 30)
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 アニメーションでは、コンストレイントのオフセットを変えています。
 オフセットが０だと開始位置、-100で終了位置になっています。

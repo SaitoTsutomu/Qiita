@@ -2,7 +2,7 @@ title: Blenderでアニメーションのオブジェクトをステップごと
 tags: Python 3DCG animation Blender
 url: https://qiita.com/SaitoTsutomu/items/ec03097bc67e8978f8fe
 created_at: 2022-04-17 16:50:22+09:00
-updated_at: 2022-04-17 16:50:22+09:00
+updated_at: 2022-05-06 20:30:49+09:00
 body:
 
 ## 概要
@@ -50,6 +50,8 @@ for t in range(0, 100, 20):
     bpy.context.object.select_set(False)
 bpy.context.scene.frame_current = 100
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 以上
 

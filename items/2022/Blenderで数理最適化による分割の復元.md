@@ -2,7 +2,7 @@ title: Blenderで数理最適化による分割の復元
 tags: Python 3DCG Blender 最適化 数理最適化
 url: https://qiita.com/SaitoTsutomu/items/417c3abfd9be07c25da4
 created_at: 2022-05-01 22:13:29+09:00
-updated_at: 2022-05-01 22:24:45+09:00
+updated_at: 2022-05-06 20:29:45+09:00
 body:
 
 ## 概要
@@ -70,6 +70,8 @@ else:
 bm.free()
 del bm
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 ## グリッドの例
 

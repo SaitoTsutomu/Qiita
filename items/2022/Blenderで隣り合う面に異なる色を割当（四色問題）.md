@@ -2,7 +2,7 @@ title: Blenderで隣り合う面に異なる色を割当（四色問題）
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/8def3fb4b99f8520b6ed
 created_at: 2022-01-06 07:50:44+09:00
-updated_at: 2022-01-09 19:46:29+09:00
+updated_at: 2022-05-06 20:38:21+09:00
 body:
 
 ## 隣り合う面に異なる色を割当
@@ -87,6 +87,8 @@ bm.free()
 # オブジェクトモード
 bpy.ops.object.mode_set(mode="OBJECT")
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 以上
 

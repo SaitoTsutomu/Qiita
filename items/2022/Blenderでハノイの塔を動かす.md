@@ -2,7 +2,7 @@ title: Blenderでハノイの塔を動かす
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/33b376c82a96434672d3
 created_at: 2022-01-01 18:01:25+09:00
-updated_at: 2022-01-04 09:50:11+09:00
+updated_at: 2022-05-06 20:39:20+09:00
 body:
 
 ## Blenderでハノイの塔を動かす
@@ -142,7 +142,7 @@ if __name__ == "__main__":
 blender -P Pythonのファイル -- ディスク数 塔の数
 ```
 
-Blenderをコマンドラインから使う方法については、「[Blenderのコマンドサンプル](https://qiita.com/SaitoTsutomu/items/6b70367455f843a979b1)」も参考にしてください。
+Blenderをコマンドラインから使う方法については、「[Blenderのコマンドサンプル](https://qiita.com/SaitoTsutomu/items/6b70367455f843a979b1)」や「[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)」も参考にしてください。
 
 - [ディスク数4、塔の数4の例 - Sketchfab](https://skfb.ly/o88Lr)
 

@@ -2,7 +2,7 @@ title: BlenderでVOICEVOXの音声をPythonで追加
 tags: Python Blender VOICEVOX
 url: https://qiita.com/SaitoTsutomu/items/b2ff4b45ffe578ec23a4
 created_at: 2022-04-01 23:22:21+09:00
-updated_at: 2022-04-02 15:21:25+09:00
+updated_at: 2022-05-06 20:32:09+09:00
 body:
 
 ## 概要
@@ -97,6 +97,8 @@ with open(csvfile) as fp:
         ss.text = text
         time.sleep(0.1)
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 上記のPythonコードを実行すると、CSVを読み込んで音声ファイルを作成して取り込みます。
 スペースキーを押すと再生します。

@@ -2,7 +2,7 @@ title: BlenderでカメラからISBNを読みとり書影画像を作成する
 tags: Python 3DCG Blender ISBN
 url: https://qiita.com/SaitoTsutomu/items/7a5cfeb2b4abde80e159
 created_at: 2022-03-01 20:52:05+09:00
-updated_at: 2022-03-04 14:05:49+09:00
+updated_at: 2022-05-06 20:35:16+09:00
 body:
 
 ## カメラからISBNを読みとり書影画像を作成
@@ -61,7 +61,10 @@ blender -b -y load_book.blend --python-expr '__import__("bpy").ops.object.captur
 
 ※ `blender`コマンドの引数の順番通りに処理されます。
 
-参考：[BlenderでISBNから書影の自動作成](https://qiita.com/SaitoTsutomu/items/d9debb55020bd4a765d1)
+## 参考
+
+- [BlenderでISBNから書影の自動作成](https://qiita.com/SaitoTsutomu/items/d9debb55020bd4a765d1)
+- [BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 以上
 

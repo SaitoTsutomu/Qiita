@@ -2,7 +2,7 @@ title: Blenderで、Pythonを使って頂点カラーに色を塗る
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/05b2481e5d1d98652043
 created_at: 2022-01-29 08:47:06+09:00
-updated_at: 2022-01-29 13:31:37+09:00
+updated_at: 2022-05-06 20:36:15+09:00
 body:
 
 ## やること
@@ -49,6 +49,8 @@ for polygon in obj.data.polygons:
         h = 0.7 - (zz[v] - b) / a
         vc[i].color = colorsys.hsv_to_rgb(h, 1, 1) + (1,)
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 Layoutワークスペースに戻ってください。
 このままでは、頂点カラーは見えません。マテリアルを設定することで頂点カラーを確認できます。

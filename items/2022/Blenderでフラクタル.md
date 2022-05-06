@@ -2,7 +2,7 @@ title: Blenderでフラクタル
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/4fb8d255a5e7f528651e
 created_at: 2022-01-17 22:46:26+09:00
-updated_at: 2022-01-19 11:02:36+09:00
+updated_at: 2022-05-06 20:37:22+09:00
 body:
 
 ## シェルピンスキーのギャスケット
@@ -36,6 +36,8 @@ def sier(pos, size):
 
 sier(np.zeros(3), 1)
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 `0.2`を小さくすると、三角錐が増えていきます。
 

@@ -2,7 +2,7 @@ title: Blenderで凸包を作ろう
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/fae863598c5110a5c8d4
 created_at: 2022-01-10 11:42:10+09:00
-updated_at: 2022-01-10 13:04:31+09:00
+updated_at: 2022-05-06 20:37:59+09:00
 body:
 
 ## Blenderで凸包を作ろう
@@ -64,6 +64,8 @@ if __name__ == "__main__":
     points = np.random.random((30, 3))
     add_convex_hull(points)
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 #### 実行例
 

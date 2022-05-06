@@ -2,7 +2,7 @@ title: Blenderで日本地図（四色問題）
 tags: Python 3DCG Blender 地図 四色問題
 url: https://qiita.com/SaitoTsutomu/items/2425a51139b79c6d87fa
 created_at: 2022-03-20 19:16:48+09:00
-updated_at: 2022-03-21 10:54:13+09:00
+updated_at: 2022-05-06 20:33:01+09:00
 body:
 
 ## これなに
@@ -91,6 +91,8 @@ for ipr in range(47):
     bpy.ops.transform.resize(value=(0.96, 0.96, 0.96))
     bpy.ops.object.mode_set(mode='OBJECT')
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 以上
 

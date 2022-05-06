@@ -2,7 +2,7 @@ title: Pythonで木から森を作ろう
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/6a6c45f3bf52d15d5bd0
 created_at: 2021-11-06 07:23:11+09:00
-updated_at: 2021-12-02 07:01:06+09:00
+updated_at: 2022-05-06 20:28:37+09:00
 body:
 
 この記事は、Blender Advent Calendar 2021の2日目の記事です。「[ささらBch ローポリの森](https://youtu.be/du2dyCzM65M)」を参考にして作成しました。
@@ -121,6 +121,8 @@ for _ in range(n):
 ```
 
 - `テキストメニュー`の`スクリプト実行`を押して完成です。
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 ### コードの解説
 
