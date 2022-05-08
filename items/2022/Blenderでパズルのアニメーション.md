@@ -1,8 +1,8 @@
 title: Blenderでパズルのアニメーション
-tags: Python 3DCG アニメーション Blender パズル
+tags: Python 3DCG animation addon Blender
 url: https://qiita.com/SaitoTsutomu/items/f334bbbc176a99309871
 created_at: 2022-03-17 00:00:41+09:00
-updated_at: 2022-03-17 18:35:05+09:00
+updated_at: 2022-05-08 17:59:36+09:00
 body:
 
 ## Blenderでパズルのアニメーション

@@ -2,7 +2,7 @@ title: Blenderでハノイの塔を動かす
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/33b376c82a96434672d3
 created_at: 2022-01-01 18:01:25+09:00
-updated_at: 2022-05-06 20:39:20+09:00
+updated_at: 2022-05-08 17:52:41+09:00
 body:
 
 ## Blenderでハノイの塔を動かす
@@ -135,6 +135,8 @@ if __name__ == "__main__":
     n = int(sys.argv[2]) if len(sys.argv) > 2 else 3
     make_hanoi(m, n)
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 ちなみに、上記Pythonプログラムをファイルに保存し、下記のように実行することもできます。
 

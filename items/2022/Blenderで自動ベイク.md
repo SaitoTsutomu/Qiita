@@ -1,5 +1,5 @@
 title: Blenderで自動ベイク
-tags: Python 3DCG Blender Sketchfab ベイク
+tags: Python 3DCG addon Blender Sketchfab
 url: https://qiita.com/SaitoTsutomu/items/f95fcc7b58f22b872bcf
 created_at: 2022-03-12 22:51:27+09:00
 updated_at: 2022-03-18 20:59:06+09:00

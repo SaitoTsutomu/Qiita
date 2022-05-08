@@ -1,8 +1,8 @@
 title: Blenderで移動できる窓を作る
-tags: Python 3DCG Blender Archimesh
+tags: Python 3DCG addon Blender
 url: https://qiita.com/SaitoTsutomu/items/78469e2c226cae442f30
 created_at: 2022-02-23 14:18:41+09:00
-updated_at: 2022-02-26 14:41:16+09:00
+updated_at: 2022-05-08 17:58:42+09:00
 body:
 
 ## Blenderで移動できる窓を作る
@@ -161,6 +161,8 @@ def unregister():
 if __name__ == "__main__":
     register()
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 ## 試してみる
 

@@ -2,7 +2,7 @@ title: Blenderで虹を作る
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/4ff1e6c1bb9a34a8128b
 created_at: 2022-04-24 14:57:14+09:00
-updated_at: 2022-04-24 21:08:30+09:00
+updated_at: 2022-05-08 17:43:48+09:00
 body:
 
 ## 概要
@@ -72,6 +72,8 @@ mat.node_tree.links.new(ndvr.outputs[0], ndpb.inputs[19])
 mat.node_tree.links.new(ndvr.outputs[1], ndmv.inputs[0])
 mat.node_tree.links.new(ndmv.outputs[0], ndpb.inputs[21])
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 円のオブジェクトの上半分だけ表示しています。
 

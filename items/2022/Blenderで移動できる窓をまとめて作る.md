@@ -2,7 +2,7 @@ title: Blenderで移動できる窓をまとめて作る
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/22d20d88495fbd604529
 created_at: 2022-02-26 15:00:51+09:00
-updated_at: 2022-02-26 15:02:18+09:00
+updated_at: 2022-05-08 17:47:58+09:00
 body:
 
 ## Blenderで移動できる窓をまとめて作る
@@ -25,6 +25,8 @@ bpy.ops.object.set_frame_operator(
     doset=True
 )
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 複数の窓の設定は、CSVファイルに書いてあるとしましょう。
 行ごとに各窓のパラメータを読み込み、上記を実行すればOKです。

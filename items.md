@@ -1,7 +1,8 @@
 Posts on Qiita
 
-created 2022-05-06
+created 2022-05-08
 
+- [Blenderのちょっとした自作アドオンの紹介](https://qiita.com/SaitoTsutomu/items/5db2c9fbdf5126315aef)
 - [BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 - [BlenderからMixamo用のファイルを出力](https://qiita.com/SaitoTsutomu/items/205d614d9840da6485ab)
 - [Blenderで数理最適化による分割の復元](https://qiita.com/SaitoTsutomu/items/417c3abfd9be07c25da4)

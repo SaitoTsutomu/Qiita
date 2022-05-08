@@ -1,8 +1,8 @@
 title: Blenderでジグソーパズル風のパズルのアドオン
-tags: Python 3DCG Blender パズル
+tags: Python 3DCG addon Blender パズル
 url: https://qiita.com/SaitoTsutomu/items/f71b9dfb4c68a71f848a
 created_at: 2022-03-28 07:35:19+09:00
-updated_at: 2022-03-28 09:25:51+09:00
+updated_at: 2022-05-08 18:01:27+09:00
 body:
 
 ## Blenderでジグソーパズル風のパズル

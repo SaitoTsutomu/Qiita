@@ -1,8 +1,8 @@
 title: Blenderで特定のタグのアセットを全て取り込む（Python）
-tags: Python 3DCG Blender
+tags: Python 3DCG addon Blender
 url: https://qiita.com/SaitoTsutomu/items/3b6a5ad3258c7cb88cad
 created_at: 2022-01-22 16:01:36+09:00
-updated_at: 2022-01-22 20:37:01+09:00
+updated_at: 2022-05-08 17:58:05+09:00
 body:
 
 ## やりたいこと
@@ -157,6 +157,8 @@ def unregister():
 if __name__ == "__main__":
     register()
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 ## 使い方
 

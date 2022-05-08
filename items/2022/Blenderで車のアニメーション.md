@@ -2,7 +2,7 @@ title: Blenderで車のアニメーション
 tags: Python 3DCG アニメーション Blender
 url: https://qiita.com/SaitoTsutomu/items/33a8aacc9f7097c76371
 created_at: 2022-01-20 17:56:01+09:00
-updated_at: 2022-01-20 17:56:01+09:00
+updated_at: 2022-05-08 17:50:44+09:00
 body:
 
 ## やること
@@ -76,6 +76,8 @@ for stp in range(nstp):
     car.keyframe_insert(data_path='rotation_euler', frame=stp * tmstp - tmstp + 3)
     car.keyframe_insert(data_path='rotation_euler', frame=stp * tmstp + 1)
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 頂点の座標から接続する頂点の座標のリストをあらかじめ作成します。
 そして、ネットワークの頂点についたら、接続する頂点をランダムに選び、`location`を変更して移動します。

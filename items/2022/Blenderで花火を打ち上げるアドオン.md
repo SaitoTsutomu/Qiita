@@ -1,8 +1,8 @@
 title: Blenderで花火を打ち上げるアドオン
-tags: Python 3DCG Blender
+tags: Python 3DCG addon Blender
 url: https://qiita.com/SaitoTsutomu/items/9c7aae103bf13d72dd5c
 created_at: 2022-04-11 07:10:13+09:00
-updated_at: 2022-04-13 23:15:06+09:00
+updated_at: 2022-05-08 18:01:42+09:00
 body:
 
 ## Blenderで花火を打ち上げるアドオン

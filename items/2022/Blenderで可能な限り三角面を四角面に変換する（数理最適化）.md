@@ -1,8 +1,8 @@
 title: Blenderで可能な限り三角面を四角面に変換する（数理最適化）
-tags: Python 3DCG Blender 最適化 数理最適化
+tags: Python 3DCG addon Blender 最適化
 url: https://qiita.com/SaitoTsutomu/items/b608c80d70a54718ec78
 created_at: 2022-03-21 17:05:44+09:00
-updated_at: 2022-05-06 20:32:31+09:00
+updated_at: 2022-05-08 18:01:04+09:00
 body:
 
 ## メッシュの四角面化

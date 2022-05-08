@@ -2,7 +2,7 @@ title: Blenderで六面図の自動作成
 tags: Python Blender
 url: https://qiita.com/SaitoTsutomu/items/c2ce94e711751217f760
 created_at: 2021-10-20 12:11:31+09:00
-updated_at: 2021-10-20 12:11:31+09:00
+updated_at: 2022-05-08 17:55:12+09:00
 body:
 
 # 目的
@@ -103,6 +103,8 @@ if __name__ == "__main__":
     sys.argv = sys.argv[:1] + sys.argv[(sys.argv + ["--"]).index("--") + 1 :]
     fire.Fire(make_image)
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 ## 準備
 

@@ -1,5 +1,5 @@
 title: BlenderでアニメーションをWebpで保存する
-tags: Python 3DCG Blender WebP
+tags: Python 3DCG addon Blender WebP
 url: https://qiita.com/SaitoTsutomu/items/499c7307bdcdfb2f1662
 created_at: 2022-04-25 20:27:25+09:00
 updated_at: 2022-04-25 20:32:19+09:00

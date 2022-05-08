@@ -2,7 +2,7 @@ title: BlenderでISBNから書影の自動作成
 tags: Python Blender
 url: https://qiita.com/SaitoTsutomu/items/d9debb55020bd4a765d1
 created_at: 2021-10-20 17:48:55+09:00
-updated_at: 2021-10-20 23:23:33+09:00
+updated_at: 2022-05-08 17:54:37+09:00
 body:
 
 # 目的
@@ -58,6 +58,8 @@ if __name__ == "__main__":
     sys.argv = sys.argv[:1] + sys.argv[(sys.argv + ["--"]).index("--") + 1 :]
     fire.Fire(book_image)
 ```
+
+参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 - テキストメニューの`登録`をチェックします。登録すると起動時に実行できるようになります。
 - Layoutウィンドウにし、カメラとライトなどを調整し、レンダリングしたときに好みの書影になるようにします。
