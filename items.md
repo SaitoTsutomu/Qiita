@@ -1,7 +1,14 @@
 Posts on Qiita
 
-created 2022-05-08
+created 2022-07-23
 
+- [Pythonの標準ライブラリ一覧](https://qiita.com/SaitoTsutomu/items/f7105fbff464abb18486)
+- [確率の問題（白いボールの箱）](https://qiita.com/SaitoTsutomu/items/e8e5ac51543951d2d369)
+- [Python-MIPのLinExprTensorastype()をDataFrameの列に追加したときの考察](https://qiita.com/SaitoTsutomu/items/4f409507b04ddda4fb7c)
+- [最適化におけるPython（Python-MIP版）](https://qiita.com/SaitoTsutomu/items/c7b43c2e02710749d117)
+- [JupyterからBlender操作メモ](https://qiita.com/SaitoTsutomu/items/854c826bfc65ecae31f9)
+- [Blenderのアドオン作成のメモ](https://qiita.com/SaitoTsutomu/items/6b8e6e734c99be6eeb5e)
+- [Blenderで2つのオブジェクトの頂点の差分を調べる](https://qiita.com/SaitoTsutomu/items/8b40d349511e63f64081)
 - [Blenderのちょっとした自作アドオンの紹介](https://qiita.com/SaitoTsutomu/items/5db2c9fbdf5126315aef)
 - [BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 - [BlenderからMixamo用のファイルを出力](https://qiita.com/SaitoTsutomu/items/205d614d9840da6485ab)
@@ -175,7 +182,7 @@ created 2022-05-08
 - [AnacondaのJupyter notebookでnbextensionsを使う](https://qiita.com/SaitoTsutomu/items/1326e05eb992a8aa849d)
 - [組合せ最適化ソルバーの威力](https://qiita.com/SaitoTsutomu/items/82831e01adc3f84c36f5)
 - [県別データの可視化](https://qiita.com/SaitoTsutomu/items/6d17889ba47357e44131)
-- [最適化におけるPython](https://qiita.com/SaitoTsutomu/items/070ca9cb37c6b2b492f0)
+- [最適化におけるPython（PuLP版）](https://qiita.com/SaitoTsutomu/items/070ca9cb37c6b2b492f0)
 - [Pythonで物流の可視化](https://qiita.com/SaitoTsutomu/items/e93b008640062d143143)
 - [正規分布の検証](https://qiita.com/SaitoTsutomu/items/e092b742a34354bdb9fd)
 - [組合せ最適化でグループ分け](https://qiita.com/SaitoTsutomu/items/9218e39a6604b2e0be14)

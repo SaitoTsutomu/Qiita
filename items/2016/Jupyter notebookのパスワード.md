@@ -1,5 +1,5 @@
 title: Jupyter notebookのパスワード
-tags: Python セキュリティ Jupyter
+tags: Python Security Jupyter
 url: https://qiita.com/SaitoTsutomu/items/aee41edf1a990cad5be6
 created_at: 2016-12-15 11:06:42+09:00
 updated_at: 2016-12-15 11:06:42+09:00

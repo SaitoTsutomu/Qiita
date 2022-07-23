@@ -2,7 +2,7 @@ title: Blenderのジオメトリーノードでハニカム配置
 tags: 3DCG Blender ジオメトリーノード
 url: https://qiita.com/SaitoTsutomu/items/0f961f806d6ceeecea80
 created_at: 2022-03-20 11:07:55+09:00
-updated_at: 2022-03-20 13:21:25+09:00
+updated_at: 2022-05-27 18:10:11+09:00
 body:
 
 ## やりたいこと
@@ -132,6 +132,13 @@ Y方向は、2個組で1段なので、`NumY`を2にすると4段になってい
 <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/13955/1b8f35c3-5122-6f3d-8636-b6c47562292a.png" width=400">
 
 なお、今回作成したジオメトリーノードモディファイアーは、アセットとして登録できるようです。
+
+## 追記（もっとシンプルな別の方法）
+
+上記では、配列モディファイアーのように並べるために、カーブに変換していました。
+しかし、メッシュラインを使うと、下記のようにカーブを使わずに並べることができます。こっちの方が簡単ですね。
+
+![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/13955/cab4551e-ae12-2acc-6b87-c7bde155f4c6.png)
 
 以上
 

@@ -2,7 +2,7 @@ title: Blenderのコマンドサンプル
 tags: Python Blender Fire
 url: https://qiita.com/SaitoTsutomu/items/6b70367455f843a979b1
 created_at: 2021-10-14 22:25:00+09:00
-updated_at: 2022-05-08 17:55:49+09:00
+updated_at: 2022-05-25 11:29:56+09:00
 body:
 
 # 目的
@@ -106,6 +106,26 @@ blender -b -P background_job.py -- 'Hello Blender!' img
 また、コマンドの最後にファイル名を指定すると、Blenderファイルとして保存できます。
 
 参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
+
+# 補足
+
+## 1つのblenderのファイルの内容をPythonで扱いたい場合
+
+下記のようにすると、blenderのファイルを開いた状態でPythonを実行できます。
+
+```
+blender blenderのファイル -P Pythonファイル
+```
+
+オプションの順番通りに処理するので、注意が必要です。たとえば、`blender -P Pythonファイル blenderのファイル`とすると、ファイルを開く前にPythonを実行します。
+
+## 複数のblenderのファイルの内容をPythonで扱いたい場合
+
+Pythonのコードで、下記のようにすれば、blenderのファイルを開いて扱えます。
+
+```py
+bpy.ops.wm.open_mainfile(filepath=ファイル名)
+```
 
 以上
 
