@@ -2,6 +2,7 @@ Posts on Qiita
 
 created 2022-08-21
 
+- [Blenderで最大マッチング問題を解いてミラーリングする](https://qiita.com/SaitoTsutomu/items/00f55d85655777972f47)
 - [Blenderで月を作ろう](https://qiita.com/SaitoTsutomu/items/01034a271e7814718937)
 - [Pythonの標準ライブラリ一覧](https://qiita.com/SaitoTsutomu/items/f7105fbff464abb18486)
 - [確率の問題（白いボールの箱）](https://qiita.com/SaitoTsutomu/items/e8e5ac51543951d2d369)
