@@ -2,7 +2,7 @@ title: BlenderでVOICEVOXの音声をPythonで追加
 tags: Python Blender VOICEVOX
 url: https://qiita.com/SaitoTsutomu/items/b2ff4b45ffe578ec23a4
 created_at: 2022-04-01 23:22:21+09:00
-updated_at: 2022-05-06 20:32:09+09:00
+updated_at: 2022-08-06 22:46:30+09:00
 body:
 
 ## 概要
@@ -61,7 +61,7 @@ header = "Content-Type: application/json"
 fps = bpy.context.scene.render.fps
 
 tmp = Path("/tmp")
-pth = tmp /" wav"
+pth = tmp /"wav"
 pth.mkdir(exist_ok=True)
 
 # delete all sequence

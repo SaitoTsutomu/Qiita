@@ -1,7 +1,8 @@
 Posts on Qiita
 
-created 2022-07-23
+created 2022-08-21
 
+- [Blenderで月を作ろう](https://qiita.com/SaitoTsutomu/items/01034a271e7814718937)
 - [Pythonの標準ライブラリ一覧](https://qiita.com/SaitoTsutomu/items/f7105fbff464abb18486)
 - [確率の問題（白いボールの箱）](https://qiita.com/SaitoTsutomu/items/e8e5ac51543951d2d369)
 - [Python-MIPのLinExprTensorastype()をDataFrameの列に追加したときの考察](https://qiita.com/SaitoTsutomu/items/4f409507b04ddda4fb7c)

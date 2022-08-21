@@ -2,7 +2,7 @@ title: Jupyter notebookのパスワード
 tags: Python Security Jupyter
 url: https://qiita.com/SaitoTsutomu/items/aee41edf1a990cad5be6
 created_at: 2016-12-15 11:06:42+09:00
-updated_at: 2016-12-15 11:06:42+09:00
+updated_at: 2022-08-02 23:37:37+09:00
 body:
 
 # Jupyter notebook最新版のセキュリティ
@@ -51,6 +51,10 @@ sha1:152704c5513c:0e0781437e7d013892eb7662f5ee5a67b235ec1a
 > c.NotebookApp.password = 'sha1:152704c5513c:0e0781437e7d013892eb7662f5ee5a67b235ec1a'
 
 この場合、login画面で指定したパスワードで入力できます。URLのオプションは使えないようです。
+
+## 2022/08/02追記
+
+JupyterLabの場合の説明ページ：https://jupyter-server.readthedocs.io/en/latest/operators/public-server.html
 
 以上
 
