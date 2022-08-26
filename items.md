@@ -1,7 +1,8 @@
 Posts on Qiita
 
-created 2022-08-21
+created 2022-08-26
 
+- [panderaメモ](https://qiita.com/SaitoTsutomu/items/ce632ac852f8b72b56db)
 - [Blenderで最大マッチング問題を解いてミラーリングする](https://qiita.com/SaitoTsutomu/items/00f55d85655777972f47)
 - [Blenderで月を作ろう](https://qiita.com/SaitoTsutomu/items/01034a271e7814718937)
 - [Pythonの標準ライブラリ一覧](https://qiita.com/SaitoTsutomu/items/f7105fbff464abb18486)
