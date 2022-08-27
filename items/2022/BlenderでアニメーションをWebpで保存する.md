@@ -2,7 +2,7 @@ title: BlenderでアニメーションをWebpで保存する
 tags: Python 3DCG addon Blender WebP
 url: https://qiita.com/SaitoTsutomu/items/499c7307bdcdfb2f1662
 created_at: 2022-04-25 20:27:25+09:00
-updated_at: 2022-04-25 20:32:19+09:00
+updated_at: 2022-08-27 14:57:27+09:00
 body:
 
 ## 概要
@@ -30,6 +30,8 @@ Blender3.1で、アニメーションを[Webp](https://ja.wikipedia.org/wiki/Web
 ```
 "C:\Program Files\Blender Foundation\Blender 3.1\3.1\python\bin\python" -m pip install Pillow
 ```
+
+※ Windowsで、インストールできるのに`import`で**エラーになる場合**は、一旦アンインストールしてから、**管理者権限のコマンドプロンプトでインストール**し直すとうまくいくかもしれません。
 
 ### 作成
 

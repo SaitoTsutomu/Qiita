@@ -2,7 +2,7 @@ title: Blenderで最大マッチング問題を解いてミラーリングする
 tags: Python 3DCG addon Blender 最適化
 url: https://qiita.com/SaitoTsutomu/items/00f55d85655777972f47
 created_at: 2022-08-21 16:42:37+09:00
-updated_at: 2022-08-21 16:49:25+09:00
+updated_at: 2022-08-27 14:55:31+09:00
 body:
 
 ## メッシュのミラーリング
@@ -52,6 +52,8 @@ Blenderには、メッシュを対称にする機能があります（編集モ�
 ```
 "C:\Program Files\Blender Foundation\Blender 3.2\3.2\python\bin\python" -m pip install pulp
 ```
+
+※ Windowsで、インストールできるのに`import`で**エラーになる場合**は、一旦アンインストールしてから、**管理者権限のコマンドプロンプトでインストール**し直すとうまくいくかもしれません。
 
 ※ 実は、[Python-MIP](https://www.python-mip.com/)ライブラリーを[使いたかった](https://qiita.com/SaitoTsutomu/items/c7b43c2e02710749d117)のですが、Blender3.2では動かないためPuLPを用いています。
 
