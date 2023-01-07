@@ -2,7 +2,7 @@ title: Blenderのコマンドサンプル
 tags: Python Blender Fire
 url: https://qiita.com/SaitoTsutomu/items/6b70367455f843a979b1
 created_at: 2021-10-14 22:25:00+09:00
-updated_at: 2022-08-27 14:53:30+09:00
+updated_at: 2022-12-15 06:42:31+09:00
 body:
 
 # 目的
@@ -125,6 +125,29 @@ Pythonのコードで、下記のようにすれば、blenderのファイルを�
 
 ```py
 bpy.ops.wm.open_mainfile(filepath=ファイル名)
+```
+
+## 仮想環境で実行
+
+2022/12/15追記
+
+Blender 3.4、Python3.10では、通常のPythonにbpyをインストールして使えるようです。
+macOSで下記のようにして実行できました。
+
+```bash
+python -m venv venv
+. venv/bin/activate
+pip install bpy fire
+python background_job.py -- 'Hello Blender!' img
+```
+
+なお、dockerでは次のようなエラーが出て動きませんでした。
+
+```
+Traceback (most recent call last):
+  File "background_job.py", line 2, in <module>
+    import bpy
+ImportError: libXxf86vm.so.1: cannot open shared object file: No such file or directory
 ```
 
 以上

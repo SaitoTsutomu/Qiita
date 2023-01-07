@@ -2,7 +2,7 @@ title: Jupyter notebookのパスワード
 tags: Python Security Jupyter
 url: https://qiita.com/SaitoTsutomu/items/aee41edf1a990cad5be6
 created_at: 2016-12-15 11:06:42+09:00
-updated_at: 2022-08-02 23:37:37+09:00
+updated_at: 2022-10-24 13:20:59+09:00
 body:
 
 # Jupyter notebook最新版のセキュリティ
@@ -23,7 +23,7 @@ jupyter notebook --generate-config
 ## (2) 設定ファイルを編集する。
 編集方法は、2種類あります。
 
- |方法|説明
+ |方法|設定内容|説明
 :--|:--|:--
 A|tokenを設定|平文で文字を指定
 B|passwordを設定|暗号化して設定
