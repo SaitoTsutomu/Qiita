@@ -1,7 +1,11 @@
 Posts on Qiita
 
-created 2023-01-07
+created 2023-01-23
 
+- [Blenderのジオメトリーノード全種類名の名前とクラス](https://qiita.com/SaitoTsutomu/items/1bf451085f55bde21224)
+- [Blenderのジオメトリーノードメモ](https://qiita.com/SaitoTsutomu/items/39eb1f022218c647c323)
+- [Blenderで重複マテリアルの削除](https://qiita.com/SaitoTsutomu/items/606ea0a7d3f6b77b41a6)
+- [Blenderで重複面の削除](https://qiita.com/SaitoTsutomu/items/ebb30f7e38ec889dbeb6)
 - [Blenderチャレンジ：りんごのうさぎ](https://qiita.com/SaitoTsutomu/items/cfee1dccece3605ce822)
 - [Blenderチャレンジ：フレームキューブ](https://qiita.com/SaitoTsutomu/items/b4fa5ed4cdf2f59a372d)
 - [Blenderのマテリアルノードメモ](https://qiita.com/SaitoTsutomu/items/f509adeaabd0b8302608)

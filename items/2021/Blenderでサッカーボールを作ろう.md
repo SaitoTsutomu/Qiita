@@ -2,14 +2,14 @@ title: Blenderでサッカーボールを作ろう
 tags: 3DCG 初心者 Blender モデリング Blenderで作ろう
 url: https://qiita.com/SaitoTsutomu/items/e7e5114a5916843dd068
 created_at: 2021-12-10 20:45:58+09:00
-updated_at: 2021-12-22 19:26:42+09:00
+updated_at: 2023-01-15 17:46:42+09:00
 body:
 
 ## サッカーボールを作ろう
 
 「Blenderに興味があるけど、しきいが高そう」という方向けに、なるべくわかりやすくサッカーボールの作り方を紹介します。
 
-Blenderが初めての方は、「[Blender Debut! ステップ１:Blenderをはじめよう](https://vook.vc/n/3779)」が参考になります。
+Blenderが初めての方は、「[Blender Debut! ステップ１:Blenderをはじめよう](https://vook.vc/n/3779)」や「[初心者向け！Blender超入門講座 - 夏森轄（なつもり かつ）YouTube](https://youtu.be/OoM0ikOi1v4)」が参考になります。
 
 ## 対象読者
 
