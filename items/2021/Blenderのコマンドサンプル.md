@@ -2,7 +2,7 @@ title: Blenderのコマンドサンプル
 tags: Python Blender Fire
 url: https://qiita.com/SaitoTsutomu/items/6b70367455f843a979b1
 created_at: 2021-10-14 22:25:00+09:00
-updated_at: 2022-12-15 06:42:31+09:00
+updated_at: 2023-01-24 12:45:50+09:00
 body:
 
 # 目的
@@ -85,7 +85,7 @@ alias blender_pip="/Applications/Blender.app/Contents/Resources/2.93/python/bin/
 blender_pip install -U fire
 ```
 
-※ Windowsで、`blender_pip`でインストールできるのに`import`で**エラーになる場合**は、一旦アンインストールしてから、**管理者権限のコマンドプロンプトでインストール**し直すとうまくいくかもしれません。
+※ Windowsで、`blender_pip`でインストールできるのに`import`で**エラーになる場合**は、一旦アンインストールしてから、**Blenderのインストール先の中にあるpythonディレクトリにユーザのフルコントロールを与える**とうまくいくかもしれません。
 
 # 実行
 

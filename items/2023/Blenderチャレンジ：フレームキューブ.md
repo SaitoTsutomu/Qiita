@@ -2,7 +2,7 @@ title: Blenderチャレンジ：フレームキューブ
 tags: 3DCG Blender クイズ Blenderチャレンジ
 url: https://qiita.com/SaitoTsutomu/items/b4fa5ed4cdf2f59a372d
 created_at: 2023-01-01 11:48:15+09:00
-updated_at: 2023-01-03 10:00:52+09:00
+updated_at: 2023-02-02 23:30:14+09:00
 body:
 
 3DCGソフトウェアのBlenderを使って、お題のモデルを作成してみましょう。
@@ -75,6 +75,12 @@ OK？
 - 点モードにし、XYZのいずれかが0の48頂点を選択。
 - `Ctrl + B`、`.75S1`、`[Enter]`
 - オブジェクトモードで、サブディビジョンサーフェスモディファイアーを追加し、ビューポートのレベル数を2に。
+
+## ジオメトリーノードの例
+
+![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/13955/bd33cd95-a478-3ae8-e7d9-c9baa0731814.png)
+
+角が`UV Sphere`なので、ちょっと違います。
 
 以上
 

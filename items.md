@@ -1,7 +1,10 @@
 Posts on Qiita
 
-created 2023-01-23
+created 2023-02-11
 
+- [Blenderで星空を作る](https://qiita.com/SaitoTsutomu/items/1161fce06ade74be4d5d)
+- [Blenderでライフゲームのアニメーション](https://qiita.com/SaitoTsutomu/items/711989ba3e5ebcb78730)
+- [BlenderのジオメトリーノードのYAML化](https://qiita.com/SaitoTsutomu/items/7213552baf9b65de3df6)
 - [Blenderのジオメトリーノード全種類名の名前とクラス](https://qiita.com/SaitoTsutomu/items/1bf451085f55bde21224)
 - [Blenderのジオメトリーノードメモ](https://qiita.com/SaitoTsutomu/items/39eb1f022218c647c323)
 - [Blenderで重複マテリアルの削除](https://qiita.com/SaitoTsutomu/items/606ea0a7d3f6b77b41a6)
