@@ -2,7 +2,7 @@ title: Blenderのアドオン作成のメモ
 tags: Python 3DCG addon Blender
 url: https://qiita.com/SaitoTsutomu/items/6b8e6e734c99be6eeb5e
 created_at: 2022-05-28 18:04:26+09:00
-updated_at: 2022-08-21 12:24:23+09:00
+updated_at: 2023-02-18 17:10:08+09:00
 body:
 
 ## 概要
@@ -12,6 +12,7 @@ Blenderのアドオンを作るときのメモです。
 **関連リンク**
 - [Qiitaに書いたBlenderタグの記事](https://qiita.com/search?sort=&q=user%3ASaitoTsutomu+tag%3Ablender)
 - [GitHubで公開しているBlenderのアドオン](https://github.com/SaitoTsutomu?tab=repositories&q=topic%3Ablender-addon)
+- [BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)
 
 
 ### 前提

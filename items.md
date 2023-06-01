@@ -1,7 +1,13 @@
 Posts on Qiita
 
-created 2023-02-11
+created 2023-06-01
 
+- [Blender 35で、addonにTestingを復活させる方法](https://qiita.com/SaitoTsutomu/items/5872c5e0358394360697)
+- [三角形の種類の判定](https://qiita.com/SaitoTsutomu/items/f4f30c71aa9975fe58f4)
+- [【Python datetime】naiveとawareの変換](https://qiita.com/SaitoTsutomu/items/ad66a614b92a76316f0e)
+- [Blender35でJupyterLab](https://qiita.com/SaitoTsutomu/items/481f3dc6b0d4bf98b9d9)
+- [Blenderでおみくじ](https://qiita.com/SaitoTsutomu/items/883bc3cda561355093f6)
+- [Blenderのジオメトリーノードによる複数人のアニメーション](https://qiita.com/SaitoTsutomu/items/bc894ea0260b28ee3839)
 - [Blenderで星空を作る](https://qiita.com/SaitoTsutomu/items/1161fce06ade74be4d5d)
 - [Blenderでライフゲームのアニメーション](https://qiita.com/SaitoTsutomu/items/711989ba3e5ebcb78730)
 - [BlenderのジオメトリーノードのYAML化](https://qiita.com/SaitoTsutomu/items/7213552baf9b65de3df6)

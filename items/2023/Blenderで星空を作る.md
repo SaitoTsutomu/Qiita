@@ -2,7 +2,7 @@ title: Blenderで星空を作る
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/1161fce06ade74be4d5d
 created_at: 2023-02-11 17:29:42+09:00
-updated_at: 2023-02-11 17:29:42+09:00
+updated_at: 2023-02-14 18:37:45+09:00
 body:
 
 # Blenderで星空を作る
@@ -35,7 +35,7 @@ http://astro.starfree.jp/commons/hip/
 - データ：サイトからCSVをダウンロードし、星と星座の2つの表を作成します。
 - マテリアル：星と星座の線の2種類のマテリアルを作成します。
 - ジオメトリーノード：星と星座の線のジオメトリーを作成します。
-- オブジェクト。星を頂点として、星座の線を辺として作成します。
+- オブジェクト：星を頂点として、星座の線を辺として作成します。
 
 ### データ
 
@@ -93,7 +93,7 @@ import pandas as pd
 def make_dataframe():
     tmp = Path("/tmp")
     if not tmp.is_dir():
-        tmp = Path(".")
+        tmp = Path("/temp")
     hip_lite_major = tmp / "hip_lite_major.csv"
     if not hip_lite_major.exists():
         url = "http://astro.starfree.jp/commons/hip/hip_lite_major.csv"
