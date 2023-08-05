@@ -2,7 +2,7 @@ title: Blenderで可能な限り三角面を四角面に変換する（数理最
 tags: Python 3DCG addon Blender 最適化
 url: https://qiita.com/SaitoTsutomu/items/b608c80d70a54718ec78
 created_at: 2022-03-21 17:05:44+09:00
-updated_at: 2022-08-27 14:56:54+09:00
+updated_at: 2023-07-07 07:42:23+09:00
 body:
 
 ## メッシュの四角面化
@@ -46,6 +46,8 @@ Blenderには、三角面を四角面にする機能があります。これは�
 - Windowsの場合
 ```
 "C:\Program Files\Blender Foundation\Blender 3.1\3.1\python\bin\python" -m pip install pulp
+または
+"C:\Program Files\Blender Foundation\Blender 3.1\3.1\python\Scripts\pip" install pulp
 ```
 
 ※ Windowsで、インストールできるのに`import`で**エラーになる場合**は、一旦アンインストールしてから、**管理者権限のコマンドプロンプトでインストール**し直すとうまくいくかもしれません。

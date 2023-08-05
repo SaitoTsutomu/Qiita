@@ -2,7 +2,7 @@ title: 最適化におけるPython（PuLP版）
 tags: Python 最適化 組合せ最適化
 url: https://qiita.com/SaitoTsutomu/items/070ca9cb37c6b2b492f0
 created_at: 2016-08-18 17:17:48+09:00
-updated_at: 2022-06-12 14:35:44+09:00
+updated_at: 2023-06-15 16:12:08+09:00
 body:
 
 # はじめに
@@ -319,7 +319,7 @@ a[a.Val > 0]
     - [「Python言語によるビジネスアナリティクス」](http://logopt.com/python_analytics/)
     - [「モデリングの諸相 (シリーズ:最適化モデリング)」](https://www.amazon.co.jp/dp/4764905191/)
 - ソルバー関連
-    - [PuLPドキュメント](http://pythonhosted.org/PuLP/)
+    - [PuLPドキュメント](https://coin-or.github.io/pulp/)
     - [整数計画法メモ(宮代先生)](http://web.tuat.ac.jp/~miya/ipmemo.html)
     - [整数計画法による定式化入門](http://web.tuat.ac.jp/~miya/fujie_ORSJ.pdf)
     - [整数計画ソルバー入門](http://web.tuat.ac.jp/~miya/miyashiro_ORSJ.pdf)

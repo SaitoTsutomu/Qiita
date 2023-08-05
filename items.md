@@ -1,8 +1,12 @@
 Posts on Qiita
 
-created 2023-06-01
+created 2023-08-05
 
-- [Blender 35で、addonにTestingを復活させる方法](https://qiita.com/SaitoTsutomu/items/5872c5e0358394360697)
+- [Blenderで円が回って見えるアニメーション](https://qiita.com/SaitoTsutomu/items/d582e312c5d29bd420e1)
+- [うるう年計算の疑問](https://qiita.com/SaitoTsutomu/items/34fc7ba7556e9db4844f)
+- [2つの封筒問題（封筒のパラドックス）](https://qiita.com/SaitoTsutomu/items/3079a88163153abf2ac2)
+- [Blenderのシミュレーションノード](https://qiita.com/SaitoTsutomu/items/5c145ce7f01d1f393d41)
+- [Blender 3536で、addonにTestingを復活させる方法](https://qiita.com/SaitoTsutomu/items/5872c5e0358394360697)
 - [三角形の種類の判定](https://qiita.com/SaitoTsutomu/items/f4f30c71aa9975fe58f4)
 - [【Python datetime】naiveとawareの変換](https://qiita.com/SaitoTsutomu/items/ad66a614b92a76316f0e)
 - [Blender35でJupyterLab](https://qiita.com/SaitoTsutomu/items/481f3dc6b0d4bf98b9d9)
