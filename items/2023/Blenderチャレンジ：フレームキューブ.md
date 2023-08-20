@@ -2,7 +2,7 @@ title: Blenderチャレンジ：フレームキューブ
 tags: 3DCG Blender クイズ Blenderチャレンジ
 url: https://qiita.com/SaitoTsutomu/items/b4fa5ed4cdf2f59a372d
 created_at: 2023-01-01 11:48:15+09:00
-updated_at: 2023-02-02 23:30:14+09:00
+updated_at: 2023-08-12 23:31:18+09:00
 body:
 
 3DCGソフトウェアのBlenderを使って、お題のモデルを作成してみましょう。
@@ -81,6 +81,10 @@ OK？
 ![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/13955/bd33cd95-a478-3ae8-e7d9-c9baa0731814.png)
 
 角が`UV Sphere`なので、ちょっと違います。
+
+## 参考
+
+https://www.youtube.com/watch?v=rYUGd6UQwkY
 
 以上
 
