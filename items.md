@@ -1,7 +1,8 @@
 Posts on Qiita
 
-created 2023-09-11
+created 2023-11-24
 
+- [Blenderの新機能：Node Toolsとは？](https://qiita.com/SaitoTsutomu/items/8c39e65fa2fc443d87b7)
 - [macOSのBlenderでシステムコンソールを出す方法](https://qiita.com/SaitoTsutomu/items/38ac3077713cf10ce385)
 - [Blenderで円が回って見えるアニメーション](https://qiita.com/SaitoTsutomu/items/d582e312c5d29bd420e1)
 - [うるう年計算の疑問](https://qiita.com/SaitoTsutomu/items/34fc7ba7556e9db4844f)
