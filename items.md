@@ -1,8 +1,10 @@
 Posts on Qiita
 
-created 2023-11-24
+created 2023-12-02
 
 - [Blenderの新機能：Node Toolsとは？](https://qiita.com/SaitoTsutomu/items/8c39e65fa2fc443d87b7)
+- [M1M2 macでPython−MIPを動かすには？](https://qiita.com/SaitoTsutomu/items/fbc33299e1906a238f53)
+- [FastAPIのシンプルなサンプルコードの紹介](https://qiita.com/SaitoTsutomu/items/6fd5cd835a4b904a5a3e)
 - [macOSのBlenderでシステムコンソールを出す方法](https://qiita.com/SaitoTsutomu/items/38ac3077713cf10ce385)
 - [Blenderで円が回って見えるアニメーション](https://qiita.com/SaitoTsutomu/items/d582e312c5d29bd420e1)
 - [うるう年計算の疑問](https://qiita.com/SaitoTsutomu/items/34fc7ba7556e9db4844f)
