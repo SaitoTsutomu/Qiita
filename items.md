@@ -1,7 +1,8 @@
 Posts on Qiita
 
-created 2023-12-02
+created 2023-12-20
 
+- [M1M2 macのarm64シェルでPython−MIPを動かすには？](https://qiita.com/SaitoTsutomu/items/aabb94db3f20cce3dc82)
 - [Blenderの新機能：Node Toolsとは？](https://qiita.com/SaitoTsutomu/items/8c39e65fa2fc443d87b7)
 - [M1M2 macでPython−MIPを動かすには？](https://qiita.com/SaitoTsutomu/items/fbc33299e1906a238f53)
 - [FastAPIのシンプルなサンプルコードの紹介](https://qiita.com/SaitoTsutomu/items/6fd5cd835a4b904a5a3e)

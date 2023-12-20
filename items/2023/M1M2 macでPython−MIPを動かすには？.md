@@ -2,13 +2,13 @@ title: M1/M2 macでPython−MIPを動かすには？
 tags: Python Mac 最適化 M1 python-mip
 url: https://qiita.com/SaitoTsutomu/items/fbc33299e1906a238f53
 created_at: 2023-11-15 21:13:55+09:00
-updated_at: 2023-12-02 07:01:40+09:00
+updated_at: 2023-12-12 20:14:14+09:00
 body:
 
 ## M1/M2でPython−MIPは動かない？
 
 普通に実行すると、M1/M2 macでは数理最適化のライブラリである[Python−MIP](https://www.python-mip.com/)が動きません。
-Python 3.12ではPython−MIPをインストールできないので、Python 3.11で動かないことを確かめてみます。
+Python 3.12ではPython−MIPの最新版をインストールできないので、Python 3.11を使います。最初に、Python−MIPが動かないことを確かめます。
 
 ```sh
 % python3.11 -V
@@ -85,6 +85,12 @@ M1/M2 macでPython−MIPを動かすには、次の作業が必要でした。
 - Rosetta2を有効にします。
 - x86_64でzshを起動します。
 - 仮想環境で作業します。
+
+## 補足
+
+PoetryでPython−MIPを動かしたい場合は、下記を参照してください。
+
+https://qiita.com/SaitoTsutomu/items/aabb94db3f20cce3dc82
 
 ## 余談
 
