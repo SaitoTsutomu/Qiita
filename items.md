@@ -1,7 +1,8 @@
 Posts on Qiita
 
-created 2023-12-20
+created 2023-12-29
 
+- [シフトスケジューリング問題を解いてみた](https://qiita.com/SaitoTsutomu/items/4278871ab4ce2be17752)
 - [M1M2 macのarm64シェルでPython−MIPを動かすには？](https://qiita.com/SaitoTsutomu/items/aabb94db3f20cce3dc82)
 - [Blenderの新機能：Node Toolsとは？](https://qiita.com/SaitoTsutomu/items/8c39e65fa2fc443d87b7)
 - [M1M2 macでPython−MIPを動かすには？](https://qiita.com/SaitoTsutomu/items/fbc33299e1906a238f53)

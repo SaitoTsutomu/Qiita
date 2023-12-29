@@ -2,7 +2,7 @@ title: Blenderで日本地図（四色問題）
 tags: Python 3DCG Blender 地図 四色問題
 url: https://qiita.com/SaitoTsutomu/items/2425a51139b79c6d87fa
 created_at: 2022-03-20 19:16:48+09:00
-updated_at: 2022-05-06 20:33:01+09:00
+updated_at: 2023-12-29 21:25:03+09:00
 body:
 
 ## これなに
@@ -84,7 +84,7 @@ for ipr in range(47):
     mesh.from_pydata(verts, [], np.arange(len(verts))[None, :])
     obj = bpy.data.objects.new(mesh.name, mesh)
     obj.active_material = bpy.data.materials.get(f"M{assign[ipr]}")
-    bpy.context.layer_collection.collection.objects.link(obj)
+    bpy.context.scene.collection.objects.link(obj)
     bpy.context.view_layer.objects.active = obj
     bpy.ops.object.mode_set(mode='EDIT')
     bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(0, 0, 0.2)})

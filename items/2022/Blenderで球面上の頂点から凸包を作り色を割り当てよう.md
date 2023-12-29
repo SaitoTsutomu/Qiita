@@ -2,7 +2,7 @@ title: Blenderで球面上の頂点から凸包を作り色を割り当てよう
 tags: Python 3DCG Blender 数学 モデリング
 url: https://qiita.com/SaitoTsutomu/items/7bd7aba2eaffd4bca440
 created_at: 2022-01-10 14:12:41+09:00
-updated_at: 2022-05-06 20:37:38+09:00
+updated_at: 2023-12-29 21:32:25+09:00
 body:
 
 ## やること
@@ -46,7 +46,7 @@ def add_vertex_on_sphere(n: int, radius: float = 1, name: str = ""):
     mesh = bpy.data.meshes.new(name=name or "Sphere")
     mesh.from_pydata([Vector(pt) for pt in pts], [], [])
     obj = bpy.data.objects.new(mesh.name, mesh)
-    bpy.context.layer_collection.collection.objects.link(obj)
+    bpy.context.scene.collection.objects.link(obj)
     bpy.context.view_layer.objects.active = obj
     bpy.ops.object.mode_set(mode="EDIT")
     bpy.ops.mesh.convex_hull()

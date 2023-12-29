@@ -2,7 +2,7 @@ title: Blenderのジオメトリーノードによる複数人のアニメーシ
 tags: Python 3DCG animation Blender
 url: https://qiita.com/SaitoTsutomu/items/bc894ea0260b28ee3839
 created_at: 2023-02-12 16:01:32+09:00
-updated_at: 2023-02-12 19:40:35+09:00
+updated_at: 2023-12-29 21:36:36+09:00
 body:
 
 ## これなに
@@ -93,7 +93,7 @@ def make_object(npeople, nframe, tick):
     mesh = bpy.data.meshes.new(name="sim")
     mesh.from_pydata([[0, 0, 0]] * npeople, [], [])
     obj = bpy.data.objects.new(mesh.name, mesh)
-    bpy.context.layer_collection.collection.objects.link(obj)
+    bpy.context.scene.collection.objects.link(obj)
 
     rnd = np.random.default_rng(1)
     for vtx in obj.data.vertices:  # 頂点のアニメーション

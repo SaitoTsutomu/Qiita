@@ -2,7 +2,7 @@ title: Blenderで凸包を作ろう
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/fae863598c5110a5c8d4
 created_at: 2022-01-10 11:42:10+09:00
-updated_at: 2023-11-24 07:40:50+09:00
+updated_at: 2023-12-29 21:26:55+09:00
 body:
 
 ## Blenderで凸包を作ろう
@@ -57,7 +57,7 @@ def add_convex_hull(points: Iterable[Any], name: str = "") -> None:
     mesh = bpy.data.meshes.new(name=name or "ConvexHull")
     mesh.from_pydata(verts, edges, faces)
     obj = bpy.data.objects.new(mesh.name, mesh)
-    bpy.context.layer_collection.collection.objects.link(obj)
+    bpy.context.scene.collection.objects.link(obj)
 
 
 if __name__ == "__main__":

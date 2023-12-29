@@ -2,7 +2,7 @@ title: Blenderでフラクタル
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/4fb8d255a5e7f528651e
 created_at: 2022-01-17 22:46:26+09:00
-updated_at: 2022-05-06 20:37:22+09:00
+updated_at: 2023-12-29 21:35:03+09:00
 body:
 
 ## シェルピンスキーのギャスケット
@@ -93,7 +93,7 @@ def add_poly8(pos, s: float):
     mesh = bpy.data.meshes.new(name="Poly8")
     mesh.from_pydata(verts, edges, faces)
     obj = bpy.data.objects.new(mesh.name, mesh)
-    bpy.context.layer_collection.collection.objects.link(obj)
+    bpy.context.scene.collection.objects.link(obj)
 
 
 def frac(pos, size):
@@ -134,7 +134,7 @@ def add_tri(pos, s: float, z):
     mesh = bpy.data.meshes.new(name="Tri")
     mesh.from_pydata(verts, edges, faces)
     obj = bpy.data.objects.new(mesh.name, mesh)
-    bpy.context.layer_collection.collection.objects.link(obj)
+    bpy.context.scene.collection.objects.link(obj)
 
 
 def frac(pos, size, z):

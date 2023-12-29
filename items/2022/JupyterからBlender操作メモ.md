@@ -2,7 +2,7 @@ title: JupyterからBlender操作メモ
 tags: Python 3DCG Blender Jupyter
 url: https://qiita.com/SaitoTsutomu/items/854c826bfc65ecae31f9
 created_at: 2022-06-04 16:39:58+09:00
-updated_at: 2022-06-04 17:00:58+09:00
+updated_at: 2023-12-29 21:33:52+09:00
 body:
 
 ## 概要
@@ -48,7 +48,7 @@ faces = [[0, 1, 3, 2], [4, 5, 7, 6], [0, 1, 5, 4], [2, 3, 7, 6], [0, 2, 6, 4], [
 mesh = bpy.data.meshes.new(name="Cube")
 mesh.from_pydata(verts, [], faces)
 obj = bpy.data.objects.new(mesh.name, mesh)
-bpy.context.layer_collection.collection.objects.link(obj)
+bpy.context.scene.collection.objects.link(obj)
 >>>
 58.7 µs ± 7.88 µs per loop (mean ± std. dev. of 5 runs, 5 loops each)
 ```
