@@ -2,7 +2,7 @@ title: 最適化におけるPython（Python-MIP版）
 tags: Python 最適化 組合せ最適化 python-mip
 url: https://qiita.com/SaitoTsutomu/items/c7b43c2e02710749d117
 created_at: 2022-06-12 14:30:27+09:00
-updated_at: 2022-07-10 07:49:43+09:00
+updated_at: 2024-01-31 10:08:33+09:00
 body:
 
 # はじめに
@@ -331,6 +331,12 @@ df[df.Val > 0]
     - [整数計画法による定式化入門](http://web.tuat.ac.jp/~miya/fujie_ORSJ.pdf)
     - [整数計画ソルバー入門](http://web.tuat.ac.jp/~miya/miyashiro_ORSJ.pdf)
     - [Gurobi Optimizer](https://www.octobersky.jp/products/gurobi)
+
+---
+
+数理最適化に関するコンサルティングや開発をしています。詳しくは、下記を参照してください。
+
+https://www.beproud.jp/business/mathematical_optimization/
 
 以上
 

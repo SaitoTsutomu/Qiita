@@ -1,7 +1,13 @@
 Posts on Qiita
 
-created 2024-01-14
+created 2024-06-28
 
+- [panderaなどから仕様の自動生成](https://qiita.com/SaitoTsutomu/items/9ca3e283f711834fa4b4)
+- [Blender 42のアドオン事情](https://qiita.com/SaitoTsutomu/items/20ce443d0b0675716705)
+- [CSVのデータをDjangoのORMでさくっと扱う方法](https://qiita.com/SaitoTsutomu/items/33ceb5f096098f02240e)
+- [数理最適化で、つぼを積んでみよう](https://qiita.com/SaitoTsutomu/items/1a4e173e60a687ac5fbc)
+- [SQLModelのシンプルなサンプルコードの紹介](https://qiita.com/SaitoTsutomu/items/cf11f7b0b8b227d399d1)
+- [Litestarのシンプルなサンプルコードの紹介](https://qiita.com/SaitoTsutomu/items/db7605ff0869d82e828b)
 - [Blenderで鉄板を作成](https://qiita.com/SaitoTsutomu/items/7c96f67cfb88cc39d9f3)
 - [BlenderのPythonにおけるアクティブオブジェクトについて](https://qiita.com/SaitoTsutomu/items/eb859dc41b7f585252cd)
 - [Blenderで卵を作成](https://qiita.com/SaitoTsutomu/items/72734602fcf3f993f8e3)

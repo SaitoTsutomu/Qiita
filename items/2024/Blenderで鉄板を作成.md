@@ -2,7 +2,7 @@ title: Blenderで鉄板を作成
 tags: Python 3DCG addon Blender
 url: https://qiita.com/SaitoTsutomu/items/7c96f67cfb88cc39d9f3
 created_at: 2024-01-13 13:32:25+09:00
-updated_at: 2024-01-13 14:15:34+09:00
+updated_at: 2024-01-14 10:36:33+09:00
 body:
 
 ## はじめに
@@ -37,7 +37,6 @@ https://www.youtube.com/watch?v=ZUijTYYXD-Y
 ```py
 import bpy
 
-
 def new(nodes, bl_idname, inputs=None, **kwargs):
     """ノード作成関数"""
     nd = nodes.new(bl_idname)
@@ -46,15 +45,10 @@ def new(nodes, bl_idname, inputs=None, **kwargs):
     for name, value in (inputs or {}).items():
         nd.inputs[name].default_value = value
 
-
 # オブジェクト作成
 bpy.ops.mesh.primitive_plane_add()
 modifier = bpy.context.active_object.modifiers.new("GeometryNodes", "NODES")
-
-# 全ジオメトリーノード削除
 node_groups = bpy.data.node_groups
-for node_tree in list(node_groups):
-    node_groups.remove(node_tree)
 
 # DupIns作成
 node_tree = node_groups.new("DupIns", "GeometryNodeTree")
@@ -87,10 +81,10 @@ node_tree.interface.new_socket("Geometry", in_out="INPUT", socket_type="NodeSock
 node_tree.interface.new_socket("CountX", in_out="INPUT", socket_type="NodeSocketInt")
 node_tree.interface.new_socket("CountY", in_out="INPUT", socket_type="NodeSocketInt")
 node_tree.interface.new_socket("Material", in_out="INPUT", socket_type="NodeSocketMaterial")
-new(nodes, "NodeFrame", name="Frame", label="slim sphere", width=539)
-new(nodes, "NodeFrame", name="Frame2", width=520)
-new(nodes, "NodeFrame", name="Frame3", width=533)
-new(nodes, "NodeFrame", name="Frame1", label="plate", width=517)
+new(nodes, "NodeFrame", name="Frame", label="slim sphere")
+new(nodes, "NodeFrame", name="Frame2")
+new(nodes, "NodeFrame", name="Frame3")
+new(nodes, "NodeFrame", name="Frame1", label="plate")
 new(nodes, "GeometryNodeJoinGeometry", name="Join Geometry", location=[764, -3])
 new(nodes, "GeometryNodeSetMaterial", {1: True}, name="Set Material", location=[1292, 2])
 new(nodes, "NodeGroupOutput", name="Group Output", location=[1468, 10])

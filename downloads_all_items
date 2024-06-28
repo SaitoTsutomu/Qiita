@@ -1,1 +1,1 @@
-python src/downloads_all_items.py
+poetry -C ~/venv/venv312 run python src/downloads_all_items.py

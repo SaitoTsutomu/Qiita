@@ -2,7 +2,7 @@ title: 最適化におけるPython（PuLP版）
 tags: Python 最適化 組合せ最適化
 url: https://qiita.com/SaitoTsutomu/items/070ca9cb37c6b2b492f0
 created_at: 2016-08-18 17:17:48+09:00
-updated_at: 2023-06-15 16:12:08+09:00
+updated_at: 2024-01-31 10:08:38+09:00
 body:
 
 # はじめに
@@ -325,6 +325,12 @@ a[a.Val > 0]
     - [整数計画ソルバー入門](http://web.tuat.ac.jp/~miya/miyashiro_ORSJ.pdf)
     - [ZIMPL言語とSCIPによる数理最適化](http://ir.acc.senshu-u.ac.jp/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=9818&item_no=1&page_id=13&block_id=52)
     - [Gurobi Optimizer](https://www.octobersky.jp/products/gurobi/gurobi.html)
+
+---
+
+数理最適化に関するコンサルティングや開発をしています。詳しくは、下記を参照してください。
+
+https://www.beproud.jp/business/mathematical_optimization/
 
 以上
 
