@@ -1,6 +1,6 @@
 Posts on Qiita
 
-created 2024-06-28
+created 2024-07-10
 
 - [panderaなどから仕様の自動生成](https://qiita.com/SaitoTsutomu/items/9ca3e283f711834fa4b4)
 - [Blender 42のアドオン事情](https://qiita.com/SaitoTsutomu/items/20ce443d0b0675716705)

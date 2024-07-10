@@ -2,7 +2,7 @@ title: Blenderで卵を作成
 tags: Python 3DCG addon Blender
 url: https://qiita.com/SaitoTsutomu/items/72734602fcf3f993f8e3
 created_at: 2023-12-31 14:47:39+09:00
-updated_at: 2024-01-02 11:39:43+09:00
+updated_at: 2024-07-10 19:55:53+09:00
 body:
 
 ## はじめに
@@ -64,6 +64,7 @@ obj = bpy.context.object
 node_group = bpy.data.node_groups.new("Geometry Nodes", "GeometryNodeTree")
 mod = obj.modifiers.new("GeometryNodes", "NODES")
 mod.node_group = node_group
+node_group.is_modifier = True
 nodes = node_group.nodes
 node_group.interface.new_socket("Geometry", in_out="OUTPUT", socket_type="NodeSocketGeometry")
 node_group.interface.new_socket("Geometry", in_out="INPUT", socket_type="NodeSocketGeometry")

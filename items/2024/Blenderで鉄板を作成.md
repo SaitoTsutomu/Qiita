@@ -2,7 +2,7 @@ title: Blenderで鉄板を作成
 tags: Python 3DCG addon Blender
 url: https://qiita.com/SaitoTsutomu/items/7c96f67cfb88cc39d9f3
 created_at: 2024-01-13 13:32:25+09:00
-updated_at: 2024-01-14 10:36:33+09:00
+updated_at: 2024-07-08 20:54:30+09:00
 body:
 
 ## はじめに
@@ -178,6 +178,7 @@ node_tree.interface.items_tree["CountX"].default_value = 10
 node_tree.interface.items_tree["CountY"].default_value = 10
 node_tree.interface.items_tree["Material"].default_value = mat
 modifier.node_group = node_tree
+modifier.node_group.is_modifier = True
 ```
 
 BlenderでPythonを実行するには、下記を参考にしてください。

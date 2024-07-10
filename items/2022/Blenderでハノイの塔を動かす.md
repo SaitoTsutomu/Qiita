@@ -2,7 +2,7 @@ title: Blenderでハノイの塔を動かす
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/33b376c82a96434672d3
 created_at: 2022-01-01 18:01:25+09:00
-updated_at: 2022-05-08 17:52:41+09:00
+updated_at: 2024-07-07 22:05:40+09:00
 body:
 
 ## Blenderでハノイの塔を動かす
@@ -69,7 +69,6 @@ def set_mat(material, color) -> None:
 
     obj = bpy.context.selected_objects[0]
     bpy.ops.object.shade_smooth()
-    obj.data.use_auto_smooth = True
     mat = bpy.data.materials.get(material) or bpy.data.materials.new(name=material)
     mat.use_nodes = True
     mat.node_tree.nodes["Principled BSDF"].inputs["Base Color"].default_value = color

@@ -2,7 +2,7 @@ title: Blenderで星空を作る
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/1161fce06ade74be4d5d
 created_at: 2023-02-11 17:29:42+09:00
-updated_at: 2023-12-29 22:59:37+09:00
+updated_at: 2024-07-08 20:34:41+09:00
 body:
 
 # Blenderで星空を作る
@@ -235,9 +235,9 @@ Layoutワークスペースで、３Dビューのシェーディングをレン�
 
 ![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/13955/739349c0-0712-8f1a-6390-9e68b8569995.png)
 
-## 追記
+## Blender 4用の追記
 
-Blender 4.0用のコードです。
+Blender 4用のコードです。
 
 ```py
 """
@@ -336,6 +336,7 @@ def make_geometry_node(obj):
     modifier = obj.modifiers.new("GeometryNodes", "NODES")
     node_group = bpy.data.node_groups.new("Geometry Nodes", "GeometryNodeTree")
     modifier.node_group = node_group
+    node_group.is_modifier = True
     node_group.interface.new_socket('Geometry', in_out="OUTPUT", socket_type='NodeSocketGeometry')
     node_group.interface.new_socket('Geometry', in_out="INPUT", socket_type='NodeSocketGeometry')
     ndgi = node_group.nodes.new("NodeGroupInput")
@@ -392,6 +393,45 @@ def make_object():
 
 
 make_object()
+```
+
+### Blender 4.2のブルームについて
+
+Blender 4.2では、Eeveeにブルームの設定がなくなりました。
+ブルームを有効にするには、下記のようにコンポジターを設定する必要があります。
+
+* コンポジターの画面で「ノードを使用」をチェックする
+* グレアノードを追加し、レンダーレイヤーノードとコンポジットノードの間に接続する
+  * グレアタイプをブルームにする
+  * （明るすぎる場合は）品質を低にする
+
+<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/13955/f5cd9e87-b066-d353-1f1a-91989b88d47e.png" width="600">
+
+また、コンポジターの設定を3Dビューポートで確認するには、ビューポートシェーディングをレンダーにして、コンポジターを常時にします。
+
+![](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/13955/67483743-b8a3-d9b9-e565-bbdc7c38144c.png)
+
+下記を実行すると、Pythonでこれらのブルームの設定ができます。
+
+```python
+import bpy
+
+scene = bpy.data.scenes["Scene"]
+scene.use_nodes = True
+nodes = scene.node_tree.nodes
+glare = nodes.new(type="CompositorNodeGlare")
+glare.glare_type = "BLOOM"
+glare.quality = "LOW"
+glare.location = 50, 200
+node1 = scene.node_tree.nodes["Render Layers"]
+node2 = scene.node_tree.nodes["Composite"]
+scene.node_tree.links.new(node1.outputs[0], glare.inputs[0])
+scene.node_tree.links.new(glare.outputs[0], node2.inputs[0])
+
+for area in bpy.data.screens["Layout"].areas:
+    if area.ui_type == "VIEW_3D":
+        area.spaces[0].shading.type = "RENDERED"
+        area.spaces[0].shading.use_compositor = "ALWAYS"
 ```
 
 以上
