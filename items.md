@@ -1,7 +1,9 @@
 Posts on Qiita
 
-created 2024-07-10
+created 2024-07-17
 
+- [Blender 42で星空を作ろう](https://qiita.com/SaitoTsutomu/items/19792b3a66a49ab33bbc)
+- [Blenderで、3Dのハート（関数版）を作る](https://qiita.com/SaitoTsutomu/items/ea976764e13e408420e8)
 - [panderaなどから仕様の自動生成](https://qiita.com/SaitoTsutomu/items/9ca3e283f711834fa4b4)
 - [Blender 42のアドオン事情](https://qiita.com/SaitoTsutomu/items/20ce443d0b0675716705)
 - [CSVのデータをDjangoのORMでさくっと扱う方法](https://qiita.com/SaitoTsutomu/items/33ceb5f096098f02240e)
