@@ -2,7 +2,7 @@ title: FastAPIのシンプルなサンプルコードの紹介
 tags: Python SQLite3 sqlalchemy REST-API FastAPI
 url: https://qiita.com/SaitoTsutomu/items/6fd5cd835a4b904a5a3e
 created_at: 2023-11-05 22:27:14+09:00
-updated_at: 2023-12-01 07:01:05+09:00
+updated_at: 2024-07-28 11:42:42+09:00
 body:
 
 ## 概要
@@ -25,47 +25,39 @@ https://github.com/SaitoTsutomu/fastapi-book-sample
 | 著者（`Author`） | ID（`id`）、名前（`name`）、書籍（`books`）                         |
 | 書籍（`Book`）   | ID（`id`）、名前（`name`）、著者ID（`author_id`）、著者（`author`） |
 
-- `Book.author_id`は、`Author.id`の外部キーです。
-- `Author.books`と`Book.author`は、リレーション用です。
+- `Book.author_id`は、`Author.id`の外部キー
+- `Author.books`と`Book.author`は、リレーション用
 
 ## 機能
 
-2つの表を操作する11の機能があります。
+2つの表を操作する12の機能があります。
 
-| method | パスとパラメーター            | 関数              | 説明           |
-| :----- | :---------------------------- | :---------------- | :------------- |
-| POST   | `/authors?name=*`             | `add_author()`    | 著者の追加     |
-| GET    | `/authors`                    | `get_authors()`   | 全著者の取得   |
-| GET    | `/authors/<author_id>`        | `get_author()`    | 指定著者の取得 |
-| PUT    | `/authors?author_id=*&name=*` | `update_author()` | 指定著者の更新 |
-| DELETE | `/authors?author_id=*`        | `delete_author()` | 指定著者の削除 |
-| POST   | `/books?name=*`               | `add_book()`      | 書籍の追加     |
-| GET    | `/books`                      | `get_books()`     | 全書籍の取得   |
-| GET    | `/books/<book_id>`            | `get_books()`     | 指定書籍の取得 |
-| GET    | `/books/<book_id>/details`    | `book_details()`  | 指定書籍の情報 |
-| PUT    | `/books?book_id=*&name=*`     | `update_book()`   | 指定書籍の更新 |
-| DELETE | `/books?book_id=*`            | `delete_book()`   | 指定書籍の削除 |
+| method | パスとパラメーター             | 関数               | 説明           |
+| :----- | :----------------------------- | :----------------- | :------------- |
+| POST   | `/authors?name=...`            | `add_author()`     | 著者の追加     |
+| GET    | `/authors`                     | `get_authors()`    | 全著者の取得   |
+| GET    | `/authors/<author_id>`         | `get_author()`     | 指定著者の取得 |
+| GET    | `/authors/<author_id>/details` | `author_details()` | 指定著者の詳細 |
+| PATCH  | `/authors?id=...`              | `update_author()`  | 指定著者の更新 |
+| DELETE | `/authors?author_id=...`       | `delete_author()`  | 指定著者の削除 |
+| POST   | `/books?book=...`              | `add_book()`       | 書籍の追加     |
+| GET    | `/books`                       | `get_books()`      | 全書籍の取得   |
+| GET    | `/books/<book_id>`             | `get_book()`       | 指定書籍の取得 |
+| GET    | `/books/<book_id>/details`     | `book_details()`   | 指定書籍の詳細 |
+| PATCH  | `/books?id=...`                | `update_book()`    | 指定書籍の更新 |
+| DELETE | `/books?book_id=...`           | `delete_book()`    | 指定書籍の削除 |
 
-- 著者と書籍が親子構造になっています
-- 書籍を追加するには、親となる著者が必要です
-- 指定著者を削除すると、子供である書籍も削除されます
+- 著者と書籍が親子構造になっている
+- 書籍を追加するには、親となる著者が必要
+- 指定著者を削除すると、子供である書籍も削除される
 
 ## 環境構築
 
-`Python 3.11`で動作します。[Poetry](https://python-poetry.org/)が必要です。
+`Python 3.12`で動作します。[Poetry](https://python-poetry.org/)が必要です。
 以下のようにしてFastAPIの仮想環境を作成します。
 
 ```shell
 poetry install
-```
-
-## データベース初期化
-
-以下のようにしてデータベースを初期化します。
-ダミーの著者と書籍を追加しています。
-
-```shell
-poetry run python create_table.py
 ```
 
 ## FastAPIの起動
@@ -75,6 +67,8 @@ poetry run python create_table.py
 ```shell
 poetry run uvicorn src.main:app --host 0.0.0.0 --reload
 ```
+
+著者が空の時にダミーの著者と書籍を追加しています。
 
 ## 対話的APIドキュメント
 
@@ -86,11 +80,11 @@ poetry run uvicorn src.main:app --host 0.0.0.0 --reload
 
 APIは`src`ディレクトリにあり、下記の5つのファイルからなります。
 
-- `main.py`：FastAPIのインスタンス（app）を作成しています。
-- `database.py`：[SQLAlchemy ORM](https://docs.sqlalchemy.org/en/20/orm/)のクラスとセッションを返す関数（get_db）を定義しています。
-- `functions.py`：データベースを操作する11機能を定義しています。
-- `schemas.py`：APIで扱うpydanticのクラスを定義しています。
-- `routers.py`：パスオペレーション関数を定義しています。
+- `main.py`：FastAPIのインスタンス（app）を作成
+- `database.py`：[SQLAlchemy ORM](https://docs.sqlalchemy.org/en/20/orm/)のクラスとセッションを返す関数（get_db）を定義
+- `functions.py`：データベースを操作する12機能を定義
+- `schemas.py`：APIで扱うpydanticのクラスを定義
+- `routers.py`：パスオペレーション関数を定義
 
 ### `main.py`（抜粋）
 
@@ -100,7 +94,7 @@ APIは`src`ディレクトリにあり、下記の5つのファイルからな�
 ```python:src/main.py
 from .routers import router
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 app.include_router(router)
 ```
 
@@ -111,10 +105,10 @@ app.include_router(router)
 `database.py`は、ORMのクラスを定義しています。SQLAlchemy2.0では、下記のように`DeclarativeBase`や`Mapped`、`mapped_column`を使います（[参考](https://docs.sqlalchemy.org/en/20/orm/mapping_styles.html)）。`MappedAsDataclass`からの派生は省略できますが、派生するとdataclassのように使えて便利です。
 
 ```python:src/database.py
-class Base(DeclarativeBase):
+class Base(sqlalchemy.orm.DeclarativeBase):
     pass
 
-class Author(MappedAsDataclass, Base):
+class Author(sqlalchemy.orm.MappedAsDataclass, Base):
     __tablename__ = "author"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
@@ -130,14 +124,13 @@ async def get_db() -> AsyncIterator[AsyncSession]:
         yield session
 ```
 
-
 ### `functions.py`（抜粋）
 
 `functions.py`は、データベースを操作する関数を定義しています。
 下記は、authorテーブルから主キーでレコードを取得する関数です。
 
 ```python:src/functions.py
-async def get_author(author_id: int, db: AsyncSession) -> Author | None:
+async def get_author(db: AsyncSession, *, author_id: int) -> Author | None:
     return await db.get(Author, author_id)
 ```
 
@@ -146,13 +139,36 @@ async def get_author(author_id: int, db: AsyncSession) -> Author | None:
 `schemas.py`は、パスオペレーション関数で扱う、pydanticのクラスを定義しています。
 
 ```python:src/schemas.py
-class Author(BaseModel):
-    id: int
+class BaseModel(BaseModel_):
+    model_config = ConfigDict(from_attributes=True)
+
+class AuthorBase(BaseModel):
     name: str
-    ...
+
+class Author(AuthorBase):
+    id: int | None = None
 ```
 
-`database.Author`のオブジェクトから`schemas.Author`のオブジェクトへの変換については、後述の「ORMクラスからpydanticクラスへの変換の補足」を参照してください。
+今回は、pydanticのクラスを下記のように定義しています。
+
+| クラス名           | 基底クラス | 目的             |
+| :----------------- | :--------- | :--------------- |
+| AuthorBase         | BaseModel  | id以外のデータ   |
+| Author             | AuthorBase | idを含むデータ   |
+| AuthorAdd          | AuthorBase | 追加時の引数用   |
+| AuthorGet          | AuthorAdd  | 取得時の戻り値用 |
+| AuthorGetWithBooks | AuthorGet  | 詳細時の戻り値用 |
+| AuthorUpdate       | BaseModel  | 更新時の引数用   |
+| BookBase           | BaseModel  | id以外のデータ   |
+| Book               | BookBase   | idを含むデータ   |
+| BookAdd            | BookBase   | 追加時の引数用   |
+| BookGet            | BookAdd    | 取得時の戻り値用 |
+| BookGetWithAuthor  | BookGet    | 詳細時の戻り値用 |
+| BookUpdate         | BaseModel  | 更新時の引数用   |
+
+このように目的に応じたクラスを作ることで、シンプルな記述で安全に動作するようになっています。
+
+`database.Author`のオブジェクトから`schemas.AuthorGet`のオブジェクトへの変換については、後述の「ORMクラスからpydanticクラスへの変換の補足」を参照してください。
 
 ### `routers.py`（抜粋）
 
@@ -160,14 +176,14 @@ class Author(BaseModel):
 
 ```python:src/routers.py
 @router.get("/authors/{author_id}", tags=["/authors"])
-async def get_author(author_id: int, db: AsyncSession = Depends(get_db)) -> Author:
-    author = await functions.get_author(author_id, db)
+async def get_author(author_id: int, db: AsyncSession = Depends(get_db)) -> AuthorGet:
+    author = await functions.get_author(db, author_id=author_id)
     ...
 ```
 
 ## pytestの実行
 
-下記のようにして、11の機能をテストします。
+下記のようにして、12の機能をテストします。
 
 ```shell
 poetry run pytest
@@ -176,11 +192,10 @@ poetry run pytest
 テストでは、別の`engine`を使うように、`get_db`を`get_test_db`で差し替えています。
 
 ```python:tests/conftest.py
-    engine = create_async_engine("sqlite+aiosqlite:///:memory:")
-    ...
+@pytest_asyncio.fixture(autouse=True)
+async def override_get_db(db):
     async def get_test_db():
-        async with AsyncSession(engine) as session:
-            yield session
+        yield db
 
     app.dependency_overrides[get_db] = get_test_db
 ```
@@ -190,7 +205,7 @@ poetry run pytest
 SQLAlchemy ORMの`Book`クラスは、親の`Author`のリレーション（`author`）を持っています。
 
 ```python:src/database.py
-class Book(MappedAsDataclass, Base):
+class Book(sqlalchemy.orm.MappedAsDataclass, Base):
     __tablename__ = "book"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
@@ -202,7 +217,7 @@ class Book(MappedAsDataclass, Base):
 `Book.author`の情報を取得するには、下記のように`options(selectinload(Book.author))`を使います。
 
 ```python:src/functions.py
-async def book_details(book_id: int, db: AsyncSession) -> Book | None:
+async def book_details(db: AsyncSession, *, book_id: int) -> Book | None:
     return await db.scalar(
         select(Book).where(Book.id == book_id).options(selectinload(Book.author))
     )
@@ -214,22 +229,23 @@ async def book_details(book_id: int, db: AsyncSession) -> Book | None:
 
 ```python:src/routers.py
 @router.get("/authors/{author_id}", tags=["/authors"])
-async def get_author(author_id: int, db: AsyncSession = Depends(get_db)) -> Author:
-    author = await functions.get_author(author_id, db)
+async def get_author(author_id: int, db: AsyncSession = Depends(get_db)) -> AuthorGet:
+    author = await functions.get_author(db, author_id=author_id)
     if author is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Unknown author_id")
-    return Author.model_validate(author)
+    return AuthorGet.model_validate(author)
 ```
 
-上記の`Author.model_validate(author)`では、ORMクラス（`database.Author`）から、下記のpydanticのクラス（`schemas.Author`）に変換しています。下記の`model_config = ConfigDict(from_attributes=True)`を書くことで、この変換ができるようになります。
+上記の`AuthorGet.model_validate(author)`では、ORMクラス（`database.Author`）から、下記のpydanticのクラス（`schemas.AuthorGet`）に変換しています。下記の`model_config = ConfigDict(from_attributes=True)`を書くことで、この変換ができるようになります。
 
 ```python:src/schemas.py
-class Author(BaseModel):
-    id: int
-    name: str
-
+class BaseModel(BaseModel_):
     model_config = ConfigDict(from_attributes=True)
 ```
+
+## Qiitaの記事
+
+https://qiita.com/SaitoTsutomu/items/6fd5cd835a4b904a5a3e
 
 以上
 

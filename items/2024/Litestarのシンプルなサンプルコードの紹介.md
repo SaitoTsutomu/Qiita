@@ -2,18 +2,18 @@ title: Litestarのシンプルなサンプルコードの紹介
 tags: Python SQLite3 sqlalchemy REST-API litestar
 url: https://qiita.com/SaitoTsutomu/items/db7605ff0869d82e828b
 created_at: 2024-01-27 20:02:28+09:00
-updated_at: 2024-01-27 20:02:28+09:00
+updated_at: 2024-07-28 16:02:59+09:00
 body:
 
 ## 概要
 
-Litestarの**シンプルなサンプルコード**を紹介します。
+LitestarのWebAPIの**シンプルなサンプルコード**を紹介します。
 
 https://litestar.dev/
 
-コード一式は、下記にあります。すべてを確認するためには、下記のZIPをダウンロードしてください。
+コード一式は、下記にあります。すべてを確認するためには、[Download ZIP](https://github.com/SaitoTsutomu/litestar-book-sample/archive/refs/heads/master.zip)からZIPをダウンロードしてください。
 
-https://github.com/SaitoTsutomu/litestar-book-sample/archive/refs/heads/master.zip
+https://github.com/SaitoTsutomu/litestar-book-sample
 
 最初に、テーブルと機能を説明し、続いて、環境構築や実行方法を説明します。
 最後に、ファイル構成と、抜粋したコードや補足の説明をします。
@@ -37,33 +37,33 @@ https://docs.litestar.dev/latest/tutorials/repository-tutorial/01-modeling-and-f
 | 著者（`Author`） | ID（`id`）、名前（`name`）、書籍（`books`）                         |
 | 書籍（`Book`）   | ID（`id`）、名前（`name`）、著者ID（`author_id`）、著者（`author`） |
 
-- `Book.author_id`は、`Author.id`の外部キーです。
-- `Author.books`と`Book.author`は、リレーション用です。
+- `Book.author_id`は、`Author.id`の外部キー
+- `Author.books`と`Book.author`は、リレーション用
 
 ## 機能
 
 2つの表を操作する10の機能があります。
 
-| method | パスとパラメーター            | 関数              | 説明           |
-| :----- | :---------------------------- | :---------------- | :------------- |
-| POST   | `/authors?name=*`             | `add_author()`    | 著者の追加     |
-| GET    | `/authors`                    | `get_authors()`   | 全著者の取得   |
-| GET    | `/authors/<author_id>`        | `get_author()`    | 指定著者の取得 |
-| PUT    | `/authors?author_id=*&name=*` | `update_author()` | 指定著者の更新 |
-| DELETE | `/authors?author_id=*`        | `delete_author()` | 指定著者の削除 |
-| POST   | `/books?title=*`              | `add_book()`      | 書籍の追加     |
-| GET    | `/books`                      | `get_books()`     | 全書籍の取得   |
-| GET    | `/books/<book_id>`            | `get_books()`     | 指定書籍の取得 |
-| PUT    | `/books?book_id=*&title=*`    | `update_book()`   | 指定書籍の更新 |
-| DELETE | `/books?book_id=*`            | `delete_book()`   | 指定書籍の削除 |
+| method | パスとパラメーター       | 関数              | 説明           |
+| :----- | :----------------------- | :---------------- | :------------- |
+| POST   | `/authors?name=...`      | `add_author()`    | 著者の追加     |
+| GET    | `/authors`               | `get_authors()`   | 全著者の取得   |
+| GET    | `/authors?author_id=...` | `get_author()`    | 指定著者の取得 |
+| PUT    | `/authors?author_id=...` | `update_author()` | 指定著者の更新 |
+| DELETE | `/authors?author_id=...` | `delete_author()` | 指定著者の削除 |
+| POST   | `/books?title=...`       | `add_book()`      | 書籍の追加     |
+| GET    | `/books`                 | `get_books()`     | 全書籍の取得   |
+| GET    | `/books?book_id=...`     | `get_book()`      | 指定書籍の取得 |
+| PUT    | `/books?book_id=...`     | `update_book()`   | 指定書籍の更新 |
+| DELETE | `/books?book_id=...`     | `delete_book()`   | 指定書籍の削除 |
 
-- 著者と書籍が親子構造になっています
-- 書籍を追加するには、親となる著者が必要です
-- 指定著者を削除すると、子供である書籍も削除されます
+- 著者と書籍が親子構造になっている
+- 書籍を追加するには、親となる著者が必要
+- 指定著者を削除すると、子供である書籍も削除される
 
 ## 環境構築
 
-`Python 3.11`で動作します。[Poetry](https://python-poetry.org/)が必要です。
+`Python 3.12`で動作します。[Poetry](https://python-poetry.org/)が必要です。
 以下のようにしてLitestarの仮想環境を作成します。
 
 ```shell
@@ -80,13 +80,13 @@ poetry run litestar run --reload
 
 ## 対話的APIドキュメント
 
-下記からSwagger UIが使えます。
+下記から[対話的APIドキュメント](https://fastapi.tiangolo.com/ja/tutorial/first-steps/#api)（Swagger UI）が使えます。
 
 - http://localhost:8000/schema/swagger/
 
 ## REST APIのファイル構成
 
-シンプルなので、ソースファイルを1ファイル（`app.py`）にまとめています。。
+シンプルなので、ソースファイルを1ファイル（`app.py`）にまとめています。
 
 ## `app.py`の解説
 
@@ -145,6 +145,10 @@ SQLAlchemyInitPluginを使っているので、パスオペレーション関数
 async def get_author(author_id: str, db_session: AsyncSession) -> Author | None:
     return await db_session.get(Author, author_id)
 ```
+
+## Qiitaの記事
+
+https://qiita.com/SaitoTsutomu/items/db7605ff0869d82e828b
 
 以上
 
