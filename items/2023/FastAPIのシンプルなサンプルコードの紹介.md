@@ -2,7 +2,7 @@ title: FastAPIのシンプルなサンプルコードの紹介
 tags: Python SQLite3 sqlalchemy REST-API FastAPI
 url: https://qiita.com/SaitoTsutomu/items/6fd5cd835a4b904a5a3e
 created_at: 2023-11-05 22:27:14+09:00
-updated_at: 2024-07-28 11:42:42+09:00
+updated_at: 2024-07-28 23:26:24+09:00
 body:
 
 ## 概要
@@ -168,17 +168,35 @@ class Author(AuthorBase):
 
 このように目的に応じたクラスを作ることで、シンプルな記述で安全に動作するようになっています。
 
-`database.Author`のオブジェクトから`schemas.AuthorGet`のオブジェクトへの変換については、後述の「ORMクラスからpydanticクラスへの変換の補足」を参照してください。
-
 ### `routers.py`（抜粋）
 
 `routers.py`では、パスオペレーション関数を定義しています。`Depends(get_db)`とすることで、`get_db`を差し替えられるようにしています。
+
+```python:src/routers.py
+@router.get("/authors/{author_id}", response_model=AuthorGet, tags=["/authors"])
+async def get_author(author_id: int, db: AsyncSession = Depends(get_db)):
+    author = await functions.get_author(db, author_id=author_id)
+    ...
+    return author
+```
+
+戻り値の型は、`response_model`で指定します。`AuthorGet`を指定することで、`database.Author`型の`author`が、`AuthorGet.model_validate()`で変換されて検証されます。
+
+下記の`model_config = ConfigDict(from_attributes=True)`を書くことで、この変換ができるようになります。
+
+```python:src/schemas.py
+class BaseModel(BaseModel_):
+    model_config = ConfigDict(from_attributes=True)
+```
+
+次のように書いても同じく変換されますが、mypyで型違いと判定されます。
 
 ```python:src/routers.py
 @router.get("/authors/{author_id}", tags=["/authors"])
 async def get_author(author_id: int, db: AsyncSession = Depends(get_db)) -> AuthorGet:
     author = await functions.get_author(db, author_id=author_id)
     ...
+    return author
 ```
 
 ## pytestの実行
@@ -221,26 +239,6 @@ async def book_details(db: AsyncSession, *, book_id: int) -> Book | None:
     return await db.scalar(
         select(Book).where(Book.id == book_id).options(selectinload(Book.author))
     )
-```
-
-## ORMクラスからpydanticクラスへの変換の補足
-
-下記は、指定した著者を取得するパスオペレーション関数です。
-
-```python:src/routers.py
-@router.get("/authors/{author_id}", tags=["/authors"])
-async def get_author(author_id: int, db: AsyncSession = Depends(get_db)) -> AuthorGet:
-    author = await functions.get_author(db, author_id=author_id)
-    if author is None:
-        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Unknown author_id")
-    return AuthorGet.model_validate(author)
-```
-
-上記の`AuthorGet.model_validate(author)`では、ORMクラス（`database.Author`）から、下記のpydanticのクラス（`schemas.AuthorGet`）に変換しています。下記の`model_config = ConfigDict(from_attributes=True)`を書くことで、この変換ができるようになります。
-
-```python:src/schemas.py
-class BaseModel(BaseModel_):
-    model_config = ConfigDict(from_attributes=True)
 ```
 
 ## Qiitaの記事

@@ -1,6 +1,6 @@
 Posts on Qiita
 
-created 2024-07-28
+created 2024-08-29
 
 - [Blenderファイルのサムネイルを取得するには](https://qiita.com/SaitoTsutomu/items/dda5b92ba636728bbb39)
 - [超難問！more-itertoolsクイズ](https://qiita.com/SaitoTsutomu/items/010da77938ec2d284ef3)

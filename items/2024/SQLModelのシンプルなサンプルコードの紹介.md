@@ -2,7 +2,7 @@ title: SQLModelのシンプルなサンプルコードの紹介
 tags: Python SQLite3 sqlalchemy FastAPI SQLModel
 url: https://qiita.com/SaitoTsutomu/items/cf11f7b0b8b227d399d1
 created_at: 2024-04-11 21:23:45+09:00
-updated_at: 2024-07-28 00:16:29+09:00
+updated_at: 2024-07-28 22:53:59+09:00
 body:
 
 ## 概要
@@ -93,9 +93,18 @@ APIは`src`ディレクトリにあり、下記の3つのファイルからな�
 `main.py`では、主にパスオペレーション関数を定義しています。`Depends(get_db)`とすることで、`get_db`を差し替えられるようにしています。
 
 ```python:src/main.py
+@app.get("/authors", response_model=list[AuthorGet], tags=["/authors"])
+async def get_authors(db: AsyncSession = Depends(get_db)):
+    return await db.scalars(select(Author))
+```
+
+戻り値の型は、`response_model`で指定します。`list[AuthorGet]`を指定することで、戻り値の各要素が`AuthorGet.model_validate()`で検証されます。
+次のように書いても同じく検証されますが、mypyで型違いと判定されます。
+
+```python:src/main.py
 @app.get("/authors", tags=["/authors"])
 async def get_authors(db: AsyncSession = Depends(get_db)) -> list[AuthorGet]:
-    return list(map(AuthorGet.model_validate, await db.scalars(select(Author))))
+    return await db.scalars(select(Author))
 ```
 
 ### `models.py`（抜粋）
@@ -162,15 +171,14 @@ class Book(BookBase, table=True):
 `Book.author`の情報を取得するには、下記のように`options(selectinload(Book.author))`を使います。
 
 ```python:src/main.py
-@app.get("/books/{book_id}/details", tags=["/books"])
-async def book_details(book_id: int, db: AsyncSession = Depends(get_db)) -> BookGetWithAuthor:
+@app.get("/books/{book_id}/details", response_model=BookGetWithAuthor, tags=["/books"])
+async def book_details(book_id: int, db: AsyncSession = Depends(get_db)):
     book = await db.scalar(
         select(Book).where(Book.id == book_id).options(selectinload(Book.author))
     )
     if not book:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Unknown book_id")
-    return BookGetWithAuthor.model_validate(book)
-
+    return book
 ```
 
 ## Qiitaの記事
