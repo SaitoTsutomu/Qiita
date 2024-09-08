@@ -1,7 +1,9 @@
 Posts on Qiita
 
-created 2024-08-29
+created 2024-09-08
 
+- [M1M2 macでPython−MIPを動かすには？（uv版）](https://qiita.com/SaitoTsutomu/items/9dab25767e0df7cbd8a0)
+- [数理最適化を使って、レーダーチャートで差をつけよう](https://qiita.com/SaitoTsutomu/items/079d98b66a1b51ceb2ac)
 - [Blenderファイルのサムネイルを取得するには](https://qiita.com/SaitoTsutomu/items/dda5b92ba636728bbb39)
 - [超難問！more-itertoolsクイズ](https://qiita.com/SaitoTsutomu/items/010da77938ec2d284ef3)
 - [Blender 42で星空を作ろう](https://qiita.com/SaitoTsutomu/items/19792b3a66a49ab33bbc)

@@ -2,7 +2,7 @@ title: itertools、more-itertoolsの紹介
 tags: Python itertools
 url: https://qiita.com/SaitoTsutomu/items/ddb5076ef62745f03b56
 created_at: 2015-12-25 20:34:25+09:00
-updated_at: 2024-07-22 00:11:23+09:00
+updated_at: 2024-08-31 15:22:04+09:00
 body:
 
 # itertools、more-itertools(10.3.0)の紹介 (2024年7月更新)
@@ -451,7 +451,7 @@ join_mappings(point=person_points, name=person_names)
 | :------------- | :-------------------------------------------------------- | :------------------- |
 | `all_equal()`  | iterable                                                  | 全要素が同じか       |
 | `all_unique()` | iterable, key=None                                        | すべて異なるかどうか |
-| `minmax()`     | iterable_or_value, *others,<br>key=None, default=<marker> | 最小値と最大値       |
+| `minmax()`     | iterable_or_value, *others,<br>key=None, default=＜marker＞ | 最小値と最大値       |
 | `first_true()` | iterable, default=None, pred=None                         | 最初に真になる値     |
 | `quantify()`   | iterable, pred=bool                                       | Trueの数を返す       |
 | `iequals()`    | *iterables                                                | すべて同順で同値か   |
@@ -783,7 +783,7 @@ except StopIteration:
 | :--------------- | :----------------------------------------------------- | :--------------------------------------------------- |
 | `SequenceView`   | target                                                 | read-only viewを作成する                             |
 | `time_limited()` | limit_seconds, iterable                                | 実行時間制限のある反復子                             |
-| `map_if()`       | iterable, pred, func,<br>func_else=<identity function> | predの評価でfunc<br>またはfunc_elseを実行            |
+| `map_if()`       | iterable, pred, func,<br>func_else=＜identity function＞ | predの評価でfunc<br>またはfunc_elseを実行            |
 | `iter_index()`   | iterable, value,<br>start=0, stop=None                 | 値と等しいインデックス                               |
 | `consume()`      | iterator, n=None                                       | 反復子をn進める。<br>nが未指定の場合、最後まで進める |
 

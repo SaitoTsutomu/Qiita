@@ -2,7 +2,7 @@ title: Litestarのシンプルなサンプルコードの紹介
 tags: Python SQLite3 sqlalchemy REST-API litestar
 url: https://qiita.com/SaitoTsutomu/items/db7605ff0869d82e828b
 created_at: 2024-01-27 20:02:28+09:00
-updated_at: 2024-07-28 16:02:59+09:00
+updated_at: 2024-09-07 10:19:45+09:00
 body:
 
 ## 概要
@@ -63,11 +63,11 @@ https://docs.litestar.dev/latest/tutorials/repository-tutorial/01-modeling-and-f
 
 ## 環境構築
 
-`Python 3.12`で動作します。[Poetry](https://python-poetry.org/)が必要です。
+`Python 3.12`で動作します。[uv](https://github.com/astral-sh/uv)が必要です。
 以下のようにしてLitestarの仮想環境を作成します。
 
 ```shell
-poetry install
+uv venv
 ```
 
 ## Litestarの起動
@@ -75,7 +75,7 @@ poetry install
 以下のようにしてLitestarを起動します。
 
 ```shell
-poetry run litestar run --reload
+uv run litestar run --reload
 ```
 
 ## 対話的APIドキュメント

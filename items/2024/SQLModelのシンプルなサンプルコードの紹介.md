@@ -2,7 +2,7 @@ title: SQLModelのシンプルなサンプルコードの紹介
 tags: Python SQLite3 sqlalchemy FastAPI SQLModel
 url: https://qiita.com/SaitoTsutomu/items/cf11f7b0b8b227d399d1
 created_at: 2024-04-11 21:23:45+09:00
-updated_at: 2024-07-28 22:53:59+09:00
+updated_at: 2024-09-07 14:52:52+09:00
 body:
 
 ## 概要
@@ -59,11 +59,11 @@ https://qiita.com/SaitoTsutomu/items/6fd5cd835a4b904a5a3e
 
 ## 環境構築
 
-`Python 3.12`で動作します。[Poetry](https://python-poetry.org/)が必要です。
+`Python 3.12`で動作します。[uv](https://github.com/astral-sh/uv)が必要です。
 以下のようにしてFastAPIの仮想環境を作成します。
 
 ```shell
-poetry install
+uv venv
 ```
 
 ## FastAPIの起動
@@ -71,7 +71,7 @@ poetry install
 以下のようにしてFastAPIを起動します。
 
 ```shell
-poetry run uvicorn src.main:app --host 0.0.0.0 --reload
+uv run uvicorn sqlmodel_book_sample.main:app --host 0.0.0.0 --reload
 ```
 
 ## 対話的APIドキュメント
@@ -82,7 +82,7 @@ poetry run uvicorn src.main:app --host 0.0.0.0 --reload
 
 ## REST APIのファイル構成
 
-APIは`src`ディレクトリにあり、下記の3つのファイルからなります。
+APIは`src/sqlmodel_book_sample`ディレクトリにあり、下記の3つのファイルからなります。
 
 - `__init__.py`：パッケージ化するための空のファイル
 - `main.py`：パスオペレーション関数を定義
@@ -144,7 +144,7 @@ SQLModelは、目的に応じたクラスを作ることで、シンプルな記
 下記のようにして、12の機能をテストします。
 
 ```shell
-poetry run pytest
+uv run pytest
 ```
 
 テストでは、別のDBを使うように、`get_db`を`get_test_db`で差し替えています。
