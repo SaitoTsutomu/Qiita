@@ -1,8 +1,8 @@
-title: Blenderで虹を作る
+title: Blender 4.2で虹を作る
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/4ff1e6c1bb9a34a8128b
 created_at: 2022-04-24 14:57:14+09:00
-updated_at: 2022-05-08 17:43:48+09:00
+updated_at: 2024-10-06 14:34:26+09:00
 body:
 
 ## 概要
@@ -23,9 +23,6 @@ Make Rainbow
 """
 import bpy
 
-# bpy.ops.object.select_all(action='SELECT')
-# bpy.ops.object.delete()
-# bpy.ops.outliner.orphans_purge(do_recursive=True)
 bpy.ops.mesh.primitive_circle_add(
     fill_type='NGON', rotation=(1.5708, -1.5708, 0))
 obj = bpy.context.object
@@ -59,18 +56,16 @@ ndmv.location = -250, -110
 ndmv.operation = "MULTIPLY"
 ndpb = mat.node_tree.nodes["Principled BSDF"]
 ndpb.inputs[0].default_value = 0, 0, 0, 1
-ndpb.inputs[7].default_value = 0
-ndpb.inputs[9].default_value = 1
-ndpb.inputs[17].default_value = 1
-ndpb.inputs[18].default_value = 1
+ndpb.inputs[2].default_value = 1
+ndpb.inputs[27].default_value = 1
 mat.node_tree.links.new(ndtc.outputs[0], ndmp.inputs[0])
 mat.node_tree.links.new(ndmp.outputs[0], ndtw.inputs[0])
 mat.node_tree.links.new(ndmp.outputs[0], ndgr.inputs[0])
 mat.node_tree.links.new(ndtw.outputs[1], ndvr.inputs[0])
 mat.node_tree.links.new(ndgr.outputs[1], ndmv.inputs[1])
-mat.node_tree.links.new(ndvr.outputs[0], ndpb.inputs[19])
+mat.node_tree.links.new(ndvr.outputs[0], ndpb.inputs[26])
 mat.node_tree.links.new(ndvr.outputs[1], ndmv.inputs[0])
-mat.node_tree.links.new(ndmv.outputs[0], ndpb.inputs[21])
+mat.node_tree.links.new(ndmv.outputs[0], ndpb.inputs[4])
 ```
 
 参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)

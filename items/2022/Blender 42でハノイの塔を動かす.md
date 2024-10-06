@@ -1,8 +1,8 @@
-title: Blenderでハノイの塔を動かす
+title: Blender 4.2でハノイの塔を動かす
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/33b376c82a96434672d3
 created_at: 2022-01-01 18:01:25+09:00
-updated_at: 2024-07-07 22:05:40+09:00
+updated_at: 2024-10-06 13:17:21+09:00
 body:
 
 ## Blenderでハノイの塔を動かす

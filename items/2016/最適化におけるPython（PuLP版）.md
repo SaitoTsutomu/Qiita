@@ -2,7 +2,7 @@ title: 最適化におけるPython（PuLP版）
 tags: Python 最適化 組合せ最適化
 url: https://qiita.com/SaitoTsutomu/items/070ca9cb37c6b2b492f0
 created_at: 2016-08-18 17:17:48+09:00
-updated_at: 2024-01-31 10:08:38+09:00
+updated_at: 2024-09-19 17:49:40+09:00
 body:
 
 # はじめに
@@ -88,22 +88,23 @@ XとYをどれだけ作成すればよいか求めよ。
 
 これをPuLPでモデル化して解いてみます。
 
-```py3:python3
-from pulp import *
-m = LpProblem(sense=LpMaximize) # 数理モデル
-x = LpVariable('x', lowBound=0) # 変数
-y = LpVariable('y', lowBound=0) # 変数
-m += 100 * x + 100 * y # 目的関数
-m += x + 2 * y <= 16 # 材料Aの上限の制約条件
-m += 3 * x + y <= 18 # 材料Bの上限の制約条件
-m.solve() # ソルバーの実行
-print(value(x), value(y)) # 4, 6
+```python
+from pulp import LpMaximize, LpProblem, LpVariable, value
+
+m = LpProblem(sense=LpMaximize)  # 数理モデル
+x = LpVariable("x", lowBound=0)  # 変数
+y = LpVariable("y", lowBound=0)  # 変数
+m += 100 * x + 100 * y  # 目的関数
+m += x + 2 * y <= 16  # 材料Aの上限の制約条件
+m += 3 * x + y <= 18  # 材料Bの上限の制約条件
+m.solve()  # ソルバーの実行
+print(value(x), value(y))  # 4.0 6.0
 ```
 
 以下、順番に簡単に説明します。
 
 ## パッケージのインポート
-    from pulp import *
+    from pulp import LpMaximize, LpProblem, LpVariable, value
 
 ## 数理モデルの作成
     最小化問題のとき: m = LpPrblem()
@@ -161,160 +162,113 @@ PuLPとpandasを組合せて、pandasの表(DataFrame)で変数(LpVariable)を�
 ## パラメータの設定
 必要なパラメータを設定します。(数字は前表と同じ)
 
-```py3:python3
-import numpy as np, pandas as pd
+```python
 from itertools import product
-from pulp import *
-np.random.seed(1)
-nw, nf = 3, 4
-pr = list(product(range(nw),range(nf)))
-供給 = np.random.randint(30, 50, nw)
-需要 = np.random.randint(20, 40, nf)
-輸送費 = np.random.randint(10, 20, (nw,nf))
+from pprint import pprint
+
+import numpy as np
+from pulp import PULP_CBC_CMD, LpProblem, LpVariable, lpDot, lpSum, value
+
+rng = np.random.default_rng(8)
+nw, nf = 3, 4  # 倉庫数、工場数
+倉庫x工場 = list(product(range(nw), range(nf)))
+供給 = rng.integers(30, 50, nw)
+需要 = rng.integers(20, 40, nf)
+輸送費 = rng.integers(10, 20, (nw, nf))
 ```
 
 ## pandasを使わない数理モデル
 変数は、添え字でアクセスします。
 
-```py3:python3
+```python
 m1 = LpProblem()
-v1 = {(i,j):LpVariable('v%d_%d'%(i,j), lowBound=0) for i,j in pr}
-m1 += lpSum(輸送費[i][j] * v1[i,j] for i,j in pr)
+v1 = {(i, j): LpVariable(f"v_{i}_{j}", lowBound=0) for i, j in 倉庫x工場}
+m1 += lpSum(輸送費[i][j] * v1[i, j] for i, j in 倉庫x工場)
 for i in range(nw):
-    m1 += lpSum(v1[i,j] for j in range(nf)) <= 供給[i]
+    m1 += lpSum(v1[i, j] for j in range(nf)) <= 供給[i]
 for j in range(nf):
-    m1 += lpSum(v1[i,j] for i in range(nw)) >= 需要[j]
-m1.solve()
-{k:value(x) for k,x in v1.items() if value(x) > 0}
+    m1 += lpSum(v1[i, j] for i in range(nw)) >= 需要[j]
+solver = PULP_CBC_CMD(msg=False)
+m1.solve(solver)
+pprint({k: value(x) for k, x in v1.items() if value(x) > 0}, width=20)
 >>>
-{(0, 0): 28.0,
- (0, 1): 7.0,
- (1, 2): 31.0,
- (1, 3): 5.0,
- (2, 1): 22.0,
- (2, 3): 20.0}
+{(0, 1): 18.0,
+ (0, 3): 32.0,
+ (1, 0): 39.0,
+ (2, 1): 5.0,
+ (2, 2): 29.0}
 ```
 
 ## pandasを使った数理モデル
 変数は、表の属性でアクセスできます。まず、表を作成しましょう。
 
-```py3:python3
-a = pd.DataFrame([(i,j) for i, j in pr], columns=['倉庫', '工場'])
-a['輸送費'] = 輸送費.flatten()
-a[:3]
+```python
+df = pd.DataFrame((ij for ij in 倉庫x工場), columns=["倉庫", "工場"])
+df["輸送費"] = 輸送費.flatten()
+df[:3]
 ```
 
-<table>
-<tr><th></th><th>倉庫</th><th>工場</th><th>輸送費</th></tr>
-<tr><th>0</th><td>0</td><td>0</td><td>10</td></tr>
-<tr><th>1</th><td>0</td><td>1</td><td>10</td></tr>
-<tr><th>2</th><td>0</td><td>2</td><td>11</td></tr>
-</table>
+|    |   倉庫 |   工場 |   輸送費 |
+|---:|-------:|-------:|---------:|
+|  0 |      0 |      0 |       17 |
+|  1 |      0 |      1 |       16 |
+|  2 |      0 |      2 |       18 |
 
 同様に数理モデルを作ってみましょう。
 
-```py3:python3
+```python
 m2 = LpProblem()
-a['Var'] = [LpVariable('v%d'%i, lowBound=0) for i in a.index]
-m2 += lpDot(a.輸送費, a.Var)
-for k, v in a.groupby('倉庫'):
+df["Var"] = [LpVariable(f"v_{i:02}", lowBound=0) for i in df.index]
+m2 += lpDot(df.輸送費, df.Var)
+for k, v in df.groupby("倉庫"):
     m2 += lpSum(v.Var) <= 供給[k]
-for k, v in a.groupby('工場'):
+for k, v in df.groupby("工場"):
     m2 += lpSum(v.Var) >= 需要[k]
-m2.solve()
-a['Val'] = a.Var.apply(value)
-a[a.Val > 0]
+solver = PULP_CBC_CMD(msg=False)
+m2.solve(solver)
+df["Val"] = df.Var.apply(value)
+df[df.Val > 0]
 ```
 
-<table>
-    <tr>
-      <th></th>
-      <th>倉庫</th>
-      <th>工場</th>
-      <th>輸送費</th>
-      <th>Var</th>
-      <th>Val</th>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>0</td>
-      <td>10</td>
-      <td>v0</td>
-      <td>28.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0</td>
-      <td>1</td>
-      <td>10</td>
-      <td>v1</td>
-      <td>7.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1</td>
-      <td>2</td>
-      <td>12</td>
-      <td>v6</td>
-      <td>31.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1</td>
-      <td>3</td>
-      <td>14</td>
-      <td>v7</td>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>2</td>
-      <td>1</td>
-      <td>12</td>
-      <td>v9</td>
-      <td>22.0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>2</td>
-      <td>3</td>
-      <td>12</td>
-      <td>v11</td>
-      <td>20.0</td>
-    </tr>
-</table>
+|    |   倉庫 |   工場 |   輸送費 | Var   |   Val |
+|---:|-------:|-------:|---------:|:------|------:|
+|  1 |      0 |      1 |       16 | v_01  |    18 |
+|  3 |      0 |      3 |       10 | v_03  |    32 |
+|  4 |      1 |      0 |       13 | v_04  |    39 |
+|  9 |      2 |      1 |       10 | v_09  |     5 |
+| 10 |      2 |      2 |       11 | v_10  |    29 |
 
 添え字を使った表現は、添え字が何を表しているか覚えていないといけませんでした。しかし、PuLPとpandasを組合せることによって、下記のように、数理モデルが理解しやすくなります。
 
-- 単なる"i"とかではなく、"倉庫"などの列名が使える。
-- pandasの条件式を使って、数式を組み立てられる。(参考 [組合せ最適化でN Queen問題を解く](http://qiita.com/Tsutomu-KKE@github/items/8ae87b08668307b58006))
-- pandasの便利な関数(groupbyなど)が使える。
-
+- 単なる`i`とかではなく、`倉庫`などの列名が使える
+- pandasの条件式を使って、数式を組み立てられる(参考 [組合せ最適化でN Queen問題を解く](http://qiita.com/Tsutomu-KKE@github/items/8ae87b08668307b58006))
+- pandasの便利な関数(`groupby`など)が使える
 
 # 参考サイト
 
-- Qiita 記事
-    - [組合せ最適化を使おう](http://qiita.com/Tsutomu-KKE@github/items/bfbf4c185ed7004b5721)
-    - [数理モデルにおける変数の和](http://qiita.com/Tsutomu-KKE@github/items/6701841122acc3130a29)
-    - [組合せ最適化ソルバーの威力](http://qiita.com/Tsutomu-KKE@github/items/82831e01adc3f84c36f5)
-    - [双対問題を調べる](http://qiita.com/Tsutomu-KKE@github/items/d1812ff9b5ccf0ecc716)
+- Qiitaの記事
+    - [組合せ最適化を使おう](http://qiita.com/SaitoTsutomu/items/bfbf4c185ed7004b5721)
+    - [数理モデルにおける変数の和](http://qiita.com/SaitoTsutomu/items/6701841122acc3130a29)
+    - [組合せ最適化ソルバーの威力](http://qiita.com/SaitoTsutomu/items/82831e01adc3f84c36f5)
+    - [双対問題を調べる](http://qiita.com/SaitoTsutomu/items/d1812ff9b5ccf0ecc716)
     - [Python+PuLPによるタダで仕事に使える数理最適化](http://qiita.com/samuelladoco/items/703bf78ea66e8369c455)
     - [数理最適化モデラー(PuLP)チートシート(Python)](https://qiita.com/SaitoTsutomu/items/c0bbf6cf8873ccd7edf3)
     - PuLPとpandasの組合せの例
-        - [県別データの可視化(4色問題)](http://qiita.com/Tsutomu-KKE@github/items/6d17889ba47357e44131#4%E8%89%B2%E5%95%8F%E9%A1%8C)
-        - [組合せ最適化でデートコースを決めよう](http://qiita.com/Tsutomu-KKE@github/items/364786bbcf57c5b922ad)
-        - [組合せ最適化でN Queen問題を解く](http://qiita.com/Tsutomu-KKE@github/items/8ae87b08668307b58006)
-        - [ハラハラするトーナメントの日程を求めよう](http://qiita.com/Tsutomu-KKE@github/items/402af3ea31c627f21750)
-        - [組合せ最適化で学会プログラムを作成する](http://qiita.com/Tsutomu-KKE@github/items/305c171e0c562cad96b8)
-        - [レストランの売上を組合せ最適化で最大化する](http://qiita.com/Tsutomu-KKE@github/items/41341ed5a58890c931d2)
-        - [最適化で道路設置](http://qiita.com/Tsutomu-KKE@github/items/4d5715f6281be39f51c6)
-        - [数独を組合せ最適で解く](http://qiita.com/Tsutomu-KKE@github/items/4f919f453aae95b3834b)
-        - [献立を組合せ最適化で考える](http://qiita.com/Tsutomu-KKE@github/items/f8be15f56cbacdbb7bd9)
-- Qiita 以外の記事
+        - [県別データの可視化(4色問題)](https://qiita.com/SaitoTsutomu/items/6d17889ba47357e44131#4%E8%89%B2%E5%95%8F%E9%A1%8C)
+        - [組合せ最適化でデートコースを決めよう](http://qiita.com/SaitoTsutomu/items/364786bbcf57c5b922ad)
+        - [組合せ最適化でN Queen問題を解く](http://qiita.com/SaitoTsutomu/items/8ae87b08668307b58006)
+        - [ハラハラするトーナメントの日程を求めよう](http://qiita.com/SaitoTsutomu/items/402af3ea31c627f21750)
+        - [組合せ最適化で学会プログラムを作成する](http://qiita.com/SaitoTsutomu/items/305c171e0c562cad96b8)
+        - [レストランの売上を組合せ最適化で最大化する](http://qiita.com/SaitoTsutomu/items/41341ed5a58890c931d2)
+        - [最適化で道路設置](http://qiita.com/SaitoTsutomu/items/4d5715f6281be39f51c6)
+        - [数独を組合せ最適で解く](http://qiita.com/SaitoTsutomu/items/4f919f453aae95b3834b)
+        - [献立を組合せ最適化で考える](http://qiita.com/SaitoTsutomu/items/f8be15f56cbacdbb7bd9)
+- Qiita以外の記事
     - [組合せ最適化(松井先生)](http://tomomi.my.coocan.jp/text/or92b.pdf)(PDF 2ページ)
-    - [⼤規模な組合せ最適化問題に対する発⾒的解法(梅谷先生)](http://coop-math.ism.ac.jp/files/4/umetani.pdf)(PDF 51ページ)
+    - [組合せ最適化による問題解決の実践的なアプローチ(梅谷先生)](https://orsj.org/wp-content/corsj/or66-6/or66_6_362.pdf)(PDF 5ページ)
 - 書籍
+    - [「Pythonで学ぶ数理最適化による問題解決入門」](https://www.shoeisha.co.jp/book/detail/9784798172699)
+    - [「データ分析ライブラリーを用いた最適化モデルの作り方」](https://www.kindaikagaku.co.jp/book_list/detail/9784764905801/)
     - [「今日から使える!組合せ最適化」](https://www.amazon.co.jp/dp/4061565443/)
     - [「Python言語によるビジネスアナリティクス」](http://logopt.com/python_analytics/)
     - [「モデリングの諸相 (シリーズ:最適化モデリング)」](https://www.amazon.co.jp/dp/4764905191/)
@@ -323,8 +277,7 @@ a[a.Val > 0]
     - [整数計画法メモ(宮代先生)](http://web.tuat.ac.jp/~miya/ipmemo.html)
     - [整数計画法による定式化入門](http://web.tuat.ac.jp/~miya/fujie_ORSJ.pdf)
     - [整数計画ソルバー入門](http://web.tuat.ac.jp/~miya/miyashiro_ORSJ.pdf)
-    - [ZIMPL言語とSCIPによる数理最適化](http://ir.acc.senshu-u.ac.jp/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=9818&item_no=1&page_id=13&block_id=52)
-    - [Gurobi Optimizer](https://www.octobersky.jp/products/gurobi/gurobi.html)
+    - [Gurobi Optimizer：ソルバーエンジン](https://www.gurobi.com/jp/products/gurobi/)
 
 ---
 

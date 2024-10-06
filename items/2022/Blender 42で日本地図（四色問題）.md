@@ -1,8 +1,8 @@
-title: Blenderで日本地図（四色問題）
+title: Blender 4.2で日本地図（四色問題）
 tags: Python 3DCG Blender 地図 四色問題
 url: https://qiita.com/SaitoTsutomu/items/2425a51139b79c6d87fa
 created_at: 2022-03-20 19:16:48+09:00
-updated_at: 2023-12-29 21:25:03+09:00
+updated_at: 2024-10-06 13:07:38+09:00
 body:
 
 ## これなに
@@ -25,6 +25,7 @@ Blenderで日本地図の県ごとにオブジェクトを作り、4色に塗っ
 
 ```py
 from mip import Model
+
 from japanmap import adjacent, get_data
 
 qpqo = get_data()
@@ -37,6 +38,7 @@ for ipr in range(47):
             m += v[ipr] + v[ad - 1] <= 1
 m.optimize()
 assign = (v.astype(float) * range(4)).sum(axis=1).astype(int).tolist()
+print(assign)
 ```
 
 数理最適化は、[Python-MIP](https://www.python-mip.com/)ライブラリーを用いています。
@@ -56,10 +58,11 @@ japanmapについては、「[県別データの可視化](https://qiita.com/Sai
 Blender上で下記を実行すると、日本地図ができます。
 
 ```py
-import numpy as np
 import bpy
+import numpy as np
 from mathutils import Vector
-from japanmap import get_data, pref_points, pref_names
+
+from japanmap import get_data, pref_names, pref_points
 
 colors = [
     (1, 0.1, 0.1, 1),
@@ -70,7 +73,7 @@ colors = [
 center = np.array([139.75, 35.68])
 assign = [
     0, 2, 0, 2, 1, 0, 3, 0, 2, 1, 3, 2, 0, 2, 2, 1, 0, 3, 1, 0, 2, 3, 1, 0,
-    1, 2, 0, 1, 3, 2, 0, 1, 2, 3, 0, 1, 0, 3, 0, 0, 2, 1, 1, 3, 2, 0, 3
+    1, 2, 0, 1, 3, 2, 0, 1, 2, 3, 0, 1, 0, 3, 0, 0, 2, 1, 1, 3, 2, 0, 3,
 ]
 
 for i, color in enumerate(colors):
@@ -79,17 +82,17 @@ for i, color in enumerate(colors):
     mat.node_tree.nodes["Principled BSDF"].inputs["Base Color"].default_value = color
 pnts = pref_points(get_data())
 for ipr in range(47):
-    verts = [Vector(pt + [0]) for pt in (pnts[ipr] - center).tolist()]
+    verts = [Vector([*pt, 0]) for pt in (pnts[ipr] - center).tolist()]
     mesh = bpy.data.meshes.new(name=pref_names[ipr + 1])
     mesh.from_pydata(verts, [], np.arange(len(verts))[None, :])
     obj = bpy.data.objects.new(mesh.name, mesh)
     obj.active_material = bpy.data.materials.get(f"M{assign[ipr]}")
     bpy.context.scene.collection.objects.link(obj)
     bpy.context.view_layer.objects.active = obj
-    bpy.ops.object.mode_set(mode='EDIT')
-    bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value":(0, 0, 0.2)})
+    bpy.ops.object.mode_set(mode="EDIT")
+    bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value": (0, 0, 0.2)})
     bpy.ops.transform.resize(value=(0.96, 0.96, 0.96))
-    bpy.ops.object.mode_set(mode='OBJECT')
+    bpy.ops.object.mode_set(mode="OBJECT")
 ```
 
 参考：[BlenderでPythonを実行する方法](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377)

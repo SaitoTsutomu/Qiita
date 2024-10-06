@@ -2,7 +2,7 @@ title: FastAPIのシンプルなサンプルコードの紹介
 tags: Python SQLite3 sqlalchemy REST-API FastAPI
 url: https://qiita.com/SaitoTsutomu/items/6fd5cd835a4b904a5a3e
 created_at: 2023-11-05 22:27:14+09:00
-updated_at: 2024-09-07 14:51:57+09:00
+updated_at: 2024-09-27 23:28:46+09:00
 body:
 
 ## 概要
@@ -65,8 +65,10 @@ uv venv
 以下のようにしてFastAPIを起動します。
 
 ```shell
-uv run uvicorn fastapi_book_sample.main:app --host 0.0.0.0 --reload
+uv run fastapi dev src/fastapi_book_sample/main.py
 ```
+
+※ 本番環境では、`dev`を`run`にします。
 
 著者が空の時にダミーの著者と書籍を追加しています。
 
@@ -140,9 +142,6 @@ async def get_author(db: AsyncSession, *, author_id: int) -> Author | None:
 `schemas.py`は、パスオペレーション関数で扱う、pydanticのクラスを定義しています。
 
 ```python:src/schemas.py
-class BaseModel(BaseModel_):
-    model_config = ConfigDict(from_attributes=True)
-
 class AuthorBase(BaseModel):
     name: str
 
@@ -174,31 +173,14 @@ class Author(AuthorBase):
 `routers.py`では、パスオペレーション関数を定義しています。`Depends(get_db)`とすることで、`get_db`を差し替えられるようにしています。
 
 ```python:src/routers.py
-@router.get("/authors/{author_id}", response_model=AuthorGet, tags=["/authors"])
-async def get_author(author_id: int, db: AsyncSession = Depends(get_db)):
-    author = await functions.get_author(db, author_id=author_id)
-    ...
-    return author
-```
-
-戻り値の型は、`response_model`で指定します。`AuthorGet`を指定することで、`database.Author`型の`author`が、`AuthorGet.model_validate()`で変換されて検証されます。
-
-下記の`model_config = ConfigDict(from_attributes=True)`を書くことで、この変換ができるようになります。
-
-```python:src/schemas.py
-class BaseModel(BaseModel_):
-    model_config = ConfigDict(from_attributes=True)
-```
-
-次のように書いても同じく変換されますが、mypyで型違いと判定されます。
-
-```python:src/routers.py
 @router.get("/authors/{author_id}", tags=["/authors"])
-async def get_author(author_id: int, db: AsyncSession = Depends(get_db)) -> AuthorGet:
+async def get_author(author_id: int, db: Annotated[AsyncSession, Depends(get_db)]) -> AuthorGet:
     author = await functions.get_author(db, author_id=author_id)
     ...
     return author
 ```
+
+戻り値の型に`AuthorGet`を指定することで、`database.Author`型の`author`が、`AuthorGet`に変換されます。
 
 ## pytestの実行
 
@@ -211,9 +193,9 @@ uv run pytest
 テストでは、別の`engine`を使うように、`get_db`を`get_test_db`で差し替えています。
 
 ```python:tests/conftest.py
-@pytest_asyncio.fixture(autouse=True)
-async def override_get_db(db):
-    async def get_test_db():
+@pytest.fixture(autouse=True)
+def override_get_db(db):
+    def get_test_db():
         yield db
 
     app.dependency_overrides[get_db] = get_test_db
@@ -238,7 +220,7 @@ class Book(sqlalchemy.orm.MappedAsDataclass, Base):
 ```python:src/functions.py
 async def book_details(db: AsyncSession, *, book_id: int) -> Book | None:
     return await db.scalar(
-        select(Book).where(Book.id == book_id).options(selectinload(Book.author))
+        select(Book).where(Book.id == book_id).options(selectinload(Book.author)),
     )
 ```
 

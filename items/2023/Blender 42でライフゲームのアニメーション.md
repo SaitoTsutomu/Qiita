@@ -1,8 +1,8 @@
-title: Blenderでライフゲームのアニメーション
+title: Blender 4.2でライフゲームのアニメーション
 tags: Python 3DCG animation Blender lifegame
 url: https://qiita.com/SaitoTsutomu/items/711989ba3e5ebcb78730
 created_at: 2023-01-28 14:37:28+09:00
-updated_at: 2023-02-03 20:50:47+09:00
+updated_at: 2024-10-06 13:48:19+09:00
 body:
 
 ## これなに
@@ -21,9 +21,9 @@ https://ja.wikipedia.org/wiki/%E9%8A%80%E6%B2%B3_(%E3%83%A9%E3%82%A4%E3%83%95%E3
 
 ## 手順
 
-- Blender3.4を起動する。
+- Blenderを起動する
 - Scriptingワークスペースを開く
-- 新規テキストを作成、以下をコピペし実行する。
+- 新規テキストを作成、以下をコピペし実行する
 
 ```python
 # ライフゲームのアニメーションを作成
@@ -48,26 +48,25 @@ def add_geometry(obj: bpy.types.Object) -> None:
     :param obj: 対象オブジェクト
     """
     modifier = obj.modifiers.new("GeometryNodes", "NODES")
-    node_group = bpy.data.node_groups.new("Geometry Nodes", "GeometryNodeTree")
-    modifier.node_group = node_group
-    node_group.inputs.new("NodeSocketGeometry", "Geometry")
-    node_group.outputs.new("NodeSocketGeometry", "Geometry")
-    ndgi = node_group.nodes.new("NodeGroupInput")
-    ndgo = node_group.nodes.new("NodeGroupOutput")
-    ndip = node_group.nodes.new("GeometryNodeInstanceOnPoints")
-    ndpo = node_group.nodes.new("GeometryNodeInputPosition")
-    ndsx = node_group.nodes.new("ShaderNodeSeparateXYZ")
-    ndcm = node_group.nodes.new("FunctionNodeCompare")
-    ndcb = node_group.nodes.new("GeometryNodeMeshCube")
-    node_group.links.new(ndgi.outputs[0], ndip.inputs[0])
-    node_group.links.new(ndip.outputs[0], ndgo.inputs[0])
-    node_group.links.new(ndpo.outputs[0], ndsx.inputs[0])
-    node_group.links.new(ndsx.outputs[2], ndcm.inputs[0])
-    node_group.links.new(ndcm.outputs[0], ndip.inputs[1])
-    node_group.links.new(ndcb.outputs[0], ndip.inputs[2])
-    node_group.links.new(ndip.outputs[0], ndgo.inputs[0])
-    nds = [ndgi, ndgo, ndip, ndpo, ndsx, ndcm, ndcb]
-    poss = [[80, 40], [410, 40], [250, 40], [-240, -99], [-80, -99], [80, -99], [-400, -28]]
+    node_tree = bpy.data.node_groups.new("Geometry Nodes", "GeometryNodeTree")
+    modifier.node_group = node_tree
+    modifier.node_group.is_modifier = True
+    node_tree.interface.new_socket("Instances", in_out="OUTPUT", socket_type="NodeSocketGeometry")
+    node_tree.interface.new_socket("Instance", in_out="INPUT", socket_type="NodeSocketGeometry")
+    ndgi = node_tree.nodes.new("NodeGroupInput")
+    ndgo = node_tree.nodes.new("NodeGroupOutput")
+    ndip = node_tree.nodes.new("GeometryNodeInstanceOnPoints")
+    ndpo = node_tree.nodes.new("GeometryNodeInputPosition")
+    ndsx = node_tree.nodes.new("ShaderNodeSeparateXYZ")
+    ndcb = node_tree.nodes.new("GeometryNodeMeshCube")
+    node_tree.links.new(ndgi.outputs[0], ndip.inputs[0])
+    node_tree.links.new(ndip.outputs[0], ndgo.inputs[0])
+    node_tree.links.new(ndpo.outputs[0], ndsx.inputs[0])
+    node_tree.links.new(ndsx.outputs[2], ndip.inputs[1])
+    node_tree.links.new(ndcb.outputs[0], ndip.inputs[2])
+    node_tree.links.new(ndip.outputs[0], ndgo.inputs[0])
+    nds = [ndgi, ndgo, ndip, ndpo, ndsx, ndcb]
+    poss = [[-80, 40], [250, 40], [90, 40], [-240, -99], [-80, -99], [-400, -28]]
     for nd, pos in zip(nds, poss):
         nd.location = pos
 
@@ -122,10 +121,12 @@ https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377
 
 下記のジオメトリーノードを作成します。
 
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/13955/9d5ba44e-7cbe-b0f1-e637-c4b2f90d0c23.png)
+![](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/13955/dd80a2a2-82e0-b7b9-f136-f58ad12b4932.png)
 
 対象のメッシュは格子（Grid）です。このポイントに立方体を出せばいいので、`Instance on Points`を挟んで、`Cube`を`Instance`に繋ぎます。
-生きているセルだけ表示したいので、`Position`で座標をとり、`Separate XYZ`でZ座標だけにし、`Greater Than`で0以上を選択し、`Selection`につなぎます。
+生きているセルだけ表示したいので、`Position`で座標をとり、`Separate XYZ`でZ座標だけにしぎます。
+
+※ Blenderでは0以上をTrueとみなします。そのためZ座標を`Selection`につなぐと、Z座標が正の頂点が選択されます。
 
 ### main()関数
 
@@ -139,10 +140,10 @@ https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377
         vtx[x, y].co.z = cells[x, y] * 0.5
 ```
 
-- `nx`、`ny`に縦のセル数、横のセル数を入れます。
-- `primitive_grid_add`で格子を作成します。
-- `vtx`に格子上の頂点を2次元配列として作成します。
-- `vtx`の`co.z`に初期配置を設定します。生きていれば0.5に、そうでなければ0になります。
+- `nx`、`ny`に縦のセル数、横のセル数を入れます
+- `primitive_grid_add`で格子を作成します
+- `vtx`に格子上の頂点を2次元配列として作成します
+- `vtx`の`co.z`に初期配置を設定します。生きていれば0.5に、そうでなければ0になります
 
 ```python
     ss = [slice(None, -2), slice(1, -1), slice(2, None)]  # 前中後用のスライス
@@ -150,14 +151,14 @@ https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377
     bpy.context.scene.frame_end = ncycle * unit + 1
 ```
 
-- `ss`、`sc`は、ライフゲームの計算用のスライスです。
-- シーンの`frame_end`に`周期 * フレーム数 + 1`を設定します。
+- `ss`、`sc`は、ライフゲームの計算用のスライスです
+- シーンの`frame_end`に`周期 * フレーム数 + 1`を設定します
 
 ```python
    for tm in range(ncycle + 1):
 ```
 
-- 周期数＋1回ループします。ループの最初と最後が同じ配置なので、アニメーションを繰り返し再生すると繋がります。
+- 周期数＋1回ループします。ループの最初と最後が同じ配置なので、アニメーションを繰り返し再生すると繋がります
 
 ```python
         bpy.context.scene.frame_current = tm * unit + 1
@@ -165,8 +166,8 @@ https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377
             v.keyframe_insert("co")
 ```
 
-- 時刻を進めます。
-- 頂点座標（`co`）にキーフレームを打ちます。
+- 時刻を進めます
+- 頂点座標（`co`）にキーフレームを打ちます
 
 ```python
         new = np.sum([cells[s1, s2] for s1 in ss for s2 in ss if s1 != sc or s2 != sc], 0)
@@ -174,23 +175,23 @@ https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377
         cells[sc, sc] = cells[sc, sc] & n2 | n3
 ```
 
-- 次の配置を計算します。`new`は、隣接8マスの生存数の和です。
-- `n2`と`n3`が、「和が2か」と「和が3か」です。`n2`ならば現在生存⇛生存で、`n3`なら発生です。
+- 次の配置を計算します。`new`は、隣接8マスの生存数の和です
+- `n2`と`n3`が、「和が2か」と「和が3か」です。`n2`ならば現在生存⇛生存で、`n3`なら発生です
 
 ```python
         for x, y in product(range(nx), range(ny)):
             vtx[x, y].co.z = cells[x, y] * 0.5
 ```
 
-- 新しい配置で座標を更新します。
+- 新しい配置で座標を更新します
 
 ```python
     bpy.context.scene.frame_current = 1
     add_geometry(bpy.context.object)
 ```
 
-- 時刻を1に戻します。
-- ジオメトリーノードを作成します。
+- 時刻を1に戻します
+- ジオメトリーノードを作成します
 
 ## 追記
 
@@ -198,18 +199,11 @@ https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377
 
 https://github.com/SaitoTsutomu/LifeGame
 
-- インストールしたら「テスト中で」で有効化できます。有効化するとサイドバーの編集タブにパネルがでます。
-- 銀河を作りたい場合は、「Make Sample」ボタンを押すだけで、メッシュ、キーフレームアニメーション、ジオメトリーノードを自動生成して、アニメーションが始まります。
-- 任意のパターンを作成したい場合は、「Make Grid」で格子を作成したあと、初期配置に置きたいセルの頂点を選択して「Make Anim」を押すとアニメーションが始まります。
+- インストールするとサイドバーの編集タブにパネルがでます
+- 銀河を作りたい場合は、「Make Sample」ボタンを押すだけで、メッシュ、キーフレームアニメーション、ジオメトリーノードを自動生成して、アニメーションが始まります
+- 任意のパターンを作成したい場合は、「Make Grid」で格子を作成したあと、初期配置に置きたいセルの頂点を選択して「Make Anim」を押すとアニメーションが始まります
 
 NX、NYが格子の横と縦の数で、NCycleが周期、Unitが1コマのキーフレーム数です。
-
-## Selectionソケットについて
-
-Z座標が正の頂点を選択するために、Compareノードで「Zが0以上」をSelectionにつないでましたが、Blenderでは0以上をTrueとみなすようです。そのため下記のようにCompareを使うことなく直接ZをSelectionにつなげられます。アドオンでは、そのようにしています。
-
-![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/13955/2504af3b-423d-e291-4513-9edab183037f.png)
-
 
 以上
 

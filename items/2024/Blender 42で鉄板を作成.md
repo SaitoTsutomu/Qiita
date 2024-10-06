@@ -1,13 +1,13 @@
-title: Blenderで鉄板を作成
+title: Blender 4.2で鉄板を作成
 tags: Python 3DCG addon Blender
 url: https://qiita.com/SaitoTsutomu/items/7c96f67cfb88cc39d9f3
 created_at: 2024-01-13 13:32:25+09:00
-updated_at: 2024-07-08 20:54:30+09:00
+updated_at: 2024-10-06 13:10:26+09:00
 body:
 
 ## はじめに
 
-Blender 4.0で、**ジオメトリーノード**を使って**鉄板**（チェッカープレート）を作成してみました。
+Blenderで、**ジオメトリーノード**を使って**鉄板**（チェッカープレート）を作成してみました。
 また、すべての操作をPythonで記述することで、簡単に再現できるようにしています。
 
 作成した鉄板とジオメトリーノードは下記になります。

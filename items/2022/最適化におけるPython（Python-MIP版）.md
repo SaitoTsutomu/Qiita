@@ -2,7 +2,7 @@ title: 最適化におけるPython（Python-MIP版）
 tags: Python 最適化 組合せ最適化 python-mip
 url: https://qiita.com/SaitoTsutomu/items/c7b43c2e02710749d117
 created_at: 2022-06-12 14:30:27+09:00
-updated_at: 2024-01-31 10:08:33+09:00
+updated_at: 2024-09-19 18:15:23+09:00
 body:
 
 # はじめに
@@ -226,12 +226,12 @@ import numpy as np
 import pandas as pd
 from mip import Model, minimize, xsum
 
+rng = np.random.default_rng(0)
 nw = 3  # 倉庫数
 nf = 4  # 工場数
-rnd = np.random.default_rng(0)
-供給 = rnd.integers(30, 50, nw)
-需要 = rnd.integers(20, 40, nf)
-輸送費 = rnd.integers(10, 20, (nw, nf))
+供給 = rng.integers(30, 50, nw)
+需要 = rng.integers(20, 40, nf)
+輸送費 = rng.integers(10, 20, (nw, nf))
 ```
 
 ## pandasを使わない数理モデル
@@ -309,28 +309,29 @@ df[df.Val > 0]
 
 # 参考サイト
 
-- Qiita 記事
+- Qiitaの記事
     - [組合せ最適化を使おう](https://qiita.com/SaitoTsutomu/items/bfbf4c185ed7004b5721)
     - [数理モデルにおける変数の和](https://qiita.com/SaitoTsutomu/items/6701841122acc3130a29)
     - [組合せ最適化ソルバーの威力](https://qiita.com/SaitoTsutomu/items/82831e01adc3f84c36f5)
     - [Python-MIPのLinExprTensor.astype()をDataFrameの列に追加したときの考察](https://qiita.com/SaitoTsutomu/items/4f409507b04ddda4fb7c)
-    - [双対問題を調べる](http://qiita.com/SaitoTsutomu/items/d1812ff9b5ccf0ecc716)
+    - [双対問題を調べる](https://qiita.com/SaitoTsutomu/items/d1812ff9b5ccf0ecc716)
     - [今度こそ？使い物になるフリーの数理最適化（混合整数最適化）ソルバー（付きインターフェース） Python-MIP](https://qiita.com/keisukesato-ac/items/f2fb63140b80226ba687)
-- Qiita 以外の記事
+- Qiita以外の記事
     - [Python-MIPによるモデル作成方法](https://docs.pyq.jp/python/math_opt/python_mip.html)
     - [組合せ最適化(松井先生)](http://tomomi.my.coocan.jp/text/or92b.pdf)(PDF 2ページ)
-    - [⼤規模な組合せ最適化問題に対する発⾒的解法(梅谷先生)](http://coop-math.ism.ac.jp/files/4/umetani.pdf)(PDF 51ページ)
+    - [組合せ最適化による問題解決の実践的なアプローチ(梅谷先生)](https://orsj.org/wp-content/corsj/or66-6/or66_6_362.pdf)(PDF 5ページ)
 - 書籍
+    - [「Pythonで学ぶ数理最適化による問題解決入門」](https://www.shoeisha.co.jp/book/detail/9784798172699)
+    - [「データ分析ライブラリーを用いた最適化モデルの作り方」](https://www.kindaikagaku.co.jp/book_list/detail/9784764905801/)
     - [「今日から使える!組合せ最適化」](https://www.kspub.co.jp/book/detail/1565449.html)
-    - [「Python言語によるビジネスアナリティクス」](http://logopt.com/python_analytics/)
+    - [「Python言語によるビジネスアナリティクス」](https://logopt.com/python_analytics/)
     - [「モデリングの諸相 (シリーズ:最適化モデリング)」](https://www.kindaikagaku.co.jp/book_list/detail/9784764905191/)
-    - [データ分析ライブラリーを用いた最適化モデルの作り方](https://www.kindaikagaku.co.jp/book_list/detail/9784764905801/)
 - ソルバー関連
     - [Python-MIP ドキュメント](https://docs.python-mip.com/en/latest/index.html)
-    - [整数計画法メモ(宮代先生)](http://web.tuat.ac.jp/~miya/ipmemo.html)
-    - [整数計画法による定式化入門](http://web.tuat.ac.jp/~miya/fujie_ORSJ.pdf)
-    - [整数計画ソルバー入門](http://web.tuat.ac.jp/~miya/miyashiro_ORSJ.pdf)
-    - [Gurobi Optimizer](https://www.octobersky.jp/products/gurobi)
+    - [整数計画法メモ(宮代先生)](https://web.tuat.ac.jp/~miya/ipmemo.html)
+    - [整数計画法による定式化入門](https://web.tuat.ac.jp/~miya/fujie_ORSJ.pdf)
+    - [整数計画ソルバー入門](https://web.tuat.ac.jp/~miya/miyashiro_ORSJ.pdf)
+    - [Gurobi Optimizer：ソルバーエンジン](https://www.gurobi.com/jp/products/gurobi/)
 
 ---
 

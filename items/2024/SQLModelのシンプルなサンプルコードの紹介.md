@@ -2,7 +2,7 @@ title: SQLModelのシンプルなサンプルコードの紹介
 tags: Python SQLite3 sqlalchemy FastAPI SQLModel
 url: https://qiita.com/SaitoTsutomu/items/cf11f7b0b8b227d399d1
 created_at: 2024-04-11 21:23:45+09:00
-updated_at: 2024-09-07 14:52:52+09:00
+updated_at: 2024-09-19 07:41:00+09:00
 body:
 
 ## 概要
@@ -71,8 +71,10 @@ uv venv
 以下のようにしてFastAPIを起動します。
 
 ```shell
-uv run uvicorn sqlmodel_book_sample.main:app --host 0.0.0.0 --reload
+uv run fastapi dev src/sqlmodel_book_sample/main.py
 ```
+
+※ 本番環境では、`dev`を`run`にします。
 
 ## 対話的APIドキュメント
 
@@ -93,17 +95,8 @@ APIは`src/sqlmodel_book_sample`ディレクトリにあり、下記の3つの�
 `main.py`では、主にパスオペレーション関数を定義しています。`Depends(get_db)`とすることで、`get_db`を差し替えられるようにしています。
 
 ```python:src/main.py
-@app.get("/authors", response_model=list[AuthorGet], tags=["/authors"])
-async def get_authors(db: AsyncSession = Depends(get_db)):
-    return await db.scalars(select(Author))
-```
-
-戻り値の型は、`response_model`で指定します。`list[AuthorGet]`を指定することで、戻り値の各要素が`AuthorGet.model_validate()`で検証されます。
-次のように書いても同じく検証されますが、mypyで型違いと判定されます。
-
-```python:src/main.py
 @app.get("/authors", tags=["/authors"])
-async def get_authors(db: AsyncSession = Depends(get_db)) -> list[AuthorGet]:
+async def get_authors(db: Annotated[AsyncSession, Depends(get_db)]) -> list[AuthorGet]:
     return await db.scalars(select(Author))
 ```
 
@@ -112,11 +105,9 @@ async def get_authors(db: AsyncSession = Depends(get_db)) -> list[AuthorGet]:
 `models.py`は、SQLModelのクラスを定義しています。
 
 ```python:src/models.py
-class Author(AuthorBase, table=True):
+class Author(AuthorBase, table=True):  # type: ignore[call-arg]
     id: int | None = Field(default=None, primary_key=True)
-    books: list["Book"] = Relationship(
-        back_populates="author", sa_relationship_kwargs={"cascade": "delete"}
-    )
+    books: list["Book"] = Relationship(back_populates="author", sa_relationship_kwargs={"cascade": "delete"})
 ```
 
 FastAPIでは、通常、「検証用のPydanticのクラス」と「ORM用のSQLAlchemyのクラス」が必要でした。しかし、SQLModelのモデルでは検証とORMでクラスを分ける必要がありません。
@@ -150,9 +141,9 @@ uv run pytest
 テストでは、別のDBを使うように、`get_db`を`get_test_db`で差し替えています。
 
 ```python:tests/conftest.py
-@pytest_asyncio.fixture(autouse=True)
-async def override_get_db(db):
-    async def get_test_db():
+@pytest.fixture(autouse=True)
+def override_get_db(db):
+    def get_test_db():
         yield db
 
     app.dependency_overrides[get_db] = get_test_db
@@ -163,7 +154,7 @@ async def override_get_db(db):
 SQLAlchemy ORMの`Book`クラスは、親の`Author`のリレーション（`author`）を持っています。
 
 ```python:src/models.py
-class Book(BookBase, table=True):
+class Book(BookBase, table=True):  # type: ignore[call-arg]
     id: int | None = Field(default=None, primary_key=True)
     author: Author | None = Relationship(back_populates="books")
 ```
@@ -171,10 +162,10 @@ class Book(BookBase, table=True):
 `Book.author`の情報を取得するには、下記のように`options(selectinload(Book.author))`を使います。
 
 ```python:src/main.py
-@app.get("/books/{book_id}/details", response_model=BookGetWithAuthor, tags=["/books"])
-async def book_details(book_id: int, db: AsyncSession = Depends(get_db)):
+@app.get("/books/{book_id}/details", tags=["/books"])
+async def book_details(book_id: int, db: Annotated[AsyncSession, Depends(get_db)]) -> BookGetWithAuthor:
     book = await db.scalar(
-        select(Book).where(Book.id == book_id).options(selectinload(Book.author))
+        select(Book).where(Book.id == book_id).options(selectinload(Book.author)),
     )
     if not book:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Unknown book_id")
