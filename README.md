@@ -5,5 +5,5 @@
 ## 取得方法
 
 ```
-python3 src/downloads_all_items.py
+uv run python src/downloads_all_items.py
 ```

@@ -1,7 +1,20 @@
 Posts on Qiita
 
-created 2024-10-06
+created 2025-01-14
 
+- [NiceGUIでリバーシ（オセロ）](https://qiita.com/SaitoTsutomu/items/6f45110c614730793779)
+- [片側検定](https://qiita.com/SaitoTsutomu/items/8e02029e95ea3331f14f)
+- [Polarsで、バスの時刻から時刻表を作成](https://qiita.com/SaitoTsutomu/items/334dde068364b756c9f0)
+- [Blenderで、AivisSpeechの音声をPythonで作成](https://qiita.com/SaitoTsutomu/items/e70902334e01bd38fc80)
+- [数理最適化で、確率に応じて委員を決めよう](https://qiita.com/SaitoTsutomu/items/f14b2f371ed1c70cf61c)
+- [Polarsのインデックス参照](https://qiita.com/SaitoTsutomu/items/a9bfeaa1951e9a0fc50d)
+- [数理最適化でアドベントカレンダーのお菓子を決めよう](https://qiita.com/SaitoTsutomu/items/6eb7cfd158e7ef938fc8)
+- [Polarsの時間に関連するデータの作成方法](https://qiita.com/SaitoTsutomu/items/ec6dbb5d6f35214dfbee)
+- [NiceGUIで三目並べ](https://qiita.com/SaitoTsutomu/items/8a22b5e892ae1b7b0a09)
+- [Polarsの列削除（drop vs exclude）](https://qiita.com/SaitoTsutomu/items/34daeac5ab2c15e1f44b)
+- [Polarsの速度比較（vstack vs concat）](https://qiita.com/SaitoTsutomu/items/8439cd2e380a72158744)
+- [Polarsの学習教材の紹介](https://qiita.com/SaitoTsutomu/items/debe20277e58f665e658)
+- [pandasとPolarsでよく使う23選](https://qiita.com/SaitoTsutomu/items/6087017c0da36d7b752f)
 - [NiceGUIの紹介](https://qiita.com/SaitoTsutomu/items/73c5f8b26f2d0238c3fb)
 - [Pydanticのfrom_attributesとは？](https://qiita.com/SaitoTsutomu/items/391d6f091204710e3f92)
 - [Polarsを使って、Python-MIPの数理モデルを作ってみよう](https://qiita.com/SaitoTsutomu/items/16f588265a01feacecbe)

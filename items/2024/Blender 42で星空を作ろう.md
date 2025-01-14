@@ -2,7 +2,7 @@ title: Blender 4.2で星空を作ろう
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/19792b3a66a49ab33bbc
 created_at: 2024-07-17 06:20:49+09:00
-updated_at: 2024-07-17 06:20:49+09:00
+updated_at: 2024-10-12 13:33:03+09:00
 body:
 
 Blender 4.2 LTSがリリースされました！
@@ -68,7 +68,17 @@ BlenderのPythonで、pandasっぽいことをしてみたいときに、参考�
 
 ## Blender 4.2対応の記事について
 
-下記の記事でBlender 4.2の動作確認をしました。
+下記の記事は、Blender 4.2で動作確認しています。
+
+https://qiita.com/SaitoTsutomu/items/19792b3a66a49ab33bbc
+
+https://qiita.com/SaitoTsutomu/items/9c7aae103bf13d72dd5c
+
+https://qiita.com/SaitoTsutomu/items/33b376c82a96434672d3
+
+https://qiita.com/SaitoTsutomu/items/711989ba3e5ebcb78730
+
+https://qiita.com/SaitoTsutomu/items/4ff1e6c1bb9a34a8128b
 
 https://qiita.com/SaitoTsutomu/items/ea976764e13e408420e8
 
@@ -78,13 +88,13 @@ https://qiita.com/SaitoTsutomu/items/7c96f67cfb88cc39d9f3
 
 https://qiita.com/SaitoTsutomu/items/72734602fcf3f993f8e3
 
-また、下記の記事をBlender 4.2で動作するように修正しました。
+https://qiita.com/SaitoTsutomu/items/b608c80d70a54718ec78
 
-https://qiita.com/SaitoTsutomu/items/1161fce06ade74be4d5d
+https://qiita.com/SaitoTsutomu/items/2425a51139b79c6d87fa
 
 https://qiita.com/SaitoTsutomu/items/8c39e65fa2fc443d87b7
 
-https://qiita.com/SaitoTsutomu/items/33b376c82a96434672d3
+https://qiita.com/SaitoTsutomu/items/dda5b92ba636728bbb39
 
 以上
 
