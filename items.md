@@ -1,7 +1,9 @@
 Posts on Qiita
 
-created 2025-01-14
+created 2025-03-22
 
+- [NiceGUIのフィクスチャを使ったGUIのテスト方法](https://qiita.com/SaitoTsutomu/items/9800bfe7d2b31b9f2c59)
+- [macのBlenderのPythonにパッケージをインストールする方法](https://qiita.com/SaitoTsutomu/items/c45e3230709319bd9e35)
 - [NiceGUIでリバーシ（オセロ）](https://qiita.com/SaitoTsutomu/items/6f45110c614730793779)
 - [片側検定](https://qiita.com/SaitoTsutomu/items/8e02029e95ea3331f14f)
 - [Polarsで、バスの時刻から時刻表を作成](https://qiita.com/SaitoTsutomu/items/334dde068364b756c9f0)

@@ -2,7 +2,7 @@ title: NiceGUIの紹介
 tags: Python WebAPI Webアプリケーション nicegui
 url: https://qiita.com/SaitoTsutomu/items/73c5f8b26f2d0238c3fb
 created_at: 2024-09-28 21:43:42+09:00
-updated_at: 2024-10-02 21:18:55+09:00
+updated_at: 2025-03-05 05:17:15+09:00
 body:
 
 ## NiceGUIとは
@@ -169,7 +169,10 @@ with ui.card().classes("rounded-2xl bg-black"):
 
 ## pytest
 
-詳しく紹介しませんが、pytestのUI用のフィクスチャが用意されています。そのため、UIのテストを比較的簡単に記述できます。
+pytestのGUI用のフィクスチャが用意されています。そのため、GUIのテストを簡単に記述できます。
+詳しくは、次を参照してください。
+
+https://qiita.com/SaitoTsutomu/items/9800bfe7d2b31b9f2c59
 
 ## さいごに
 

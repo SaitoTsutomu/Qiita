@@ -2,7 +2,7 @@ title: macOSのBlenderでシステムコンソールを出す方法
 tags: Mac tips Blender
 url: https://qiita.com/SaitoTsutomu/items/38ac3077713cf10ce385
 created_at: 2023-08-27 20:10:32+09:00
-updated_at: 2023-08-27 21:43:33+09:00
+updated_at: 2025-02-22 00:20:22+09:00
 body:
 
 ## 背景
@@ -39,7 +39,7 @@ Blender本体がインストールされている状態で、管理者権限の�
 
 ```sh
 mkdir -p /Applications/BlenderConsole.app/Contents/{MacOS,Resources}
-cp /Applications/Blender.app/Contents/Resources/blender\ icon.icns \
+cp /Applications/Blender.app/Contents/Resources/blender_icon.icns \
    /Applications/BlenderConsole.app/Contents/Resources/
 
 cat << EOF >> /Applications/BlenderConsole.app/Contents/Info.plist
@@ -50,7 +50,7 @@ cat << EOF >> /Applications/BlenderConsole.app/Contents/Info.plist
     <key>CFBundleExecutable</key>
     <string>blender.sh</string>
     <key>CFBundleIconFile</key>
-    <string>blender icon</string>
+    <string>blender_icon</string>
 </dict>
 </plist>
 EOF
