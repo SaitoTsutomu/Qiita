@@ -2,7 +2,7 @@ title: Polarsの学習教材の紹介
 tags: Python UV Polars
 url: https://qiita.com/SaitoTsutomu/items/debe20277e58f665e658
 created_at: 2024-11-03 10:31:47+09:00
-updated_at: 2024-12-01 07:03:46+09:00
+updated_at: 2025-08-05 22:37:22+09:00
 body:
 
 ## はじめに
@@ -81,6 +81,12 @@ Polarsは、はじめたばかりで、実務ではまだ使っていません�
 さいごに、本記事で紹介した学習教材一式は、次にあります。
 
 https://github.com/SaitoTsutomu/study-polars
+
+## 2025/08/05 追記
+
+網羅的に機能を扱った100本ノックを別途作成しました。
+
+https://qiita.com/SaitoTsutomu/items/1a19dd484c88b77a4f2a
 
 以上
 

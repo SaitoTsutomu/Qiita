@@ -2,7 +2,7 @@ title: Blenderで星空を作る
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/1161fce06ade74be4d5d
 created_at: 2023-02-11 17:29:42+09:00
-updated_at: 2024-07-08 20:34:41+09:00
+updated_at: 2025-04-27 11:51:44+09:00
 body:
 
 # Blenderで星空を作る
@@ -72,6 +72,7 @@ http://astro.starfree.jp/commons/hip/
 ## 作ってみよう
 
 pandasのインストールが必要です（下記参考）。
+※ 後述の「Blender 4.4用の追記」の方法では、pandasがなくても星空を作成できます。
 
 https://qiita.com/SaitoTsutomu/items/6b70367455f843a979b1
 
@@ -235,9 +236,9 @@ Layoutワークスペースで、３Dビューのシェーディングをレン�
 
 ![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/13955/739349c0-0712-8f1a-6390-9e68b8569995.png)
 
-## Blender 4用の追記
+## Blender 4.0用の追記
 
-Blender 4用のコードです。
+Blender 4.0用のコードです。
 
 ```py
 """
@@ -433,6 +434,17 @@ for area in bpy.data.screens["Layout"].areas:
         area.spaces[0].shading.type = "RENDERED"
         area.spaces[0].shading.use_compositor = "ALWAYS"
 ```
+
+## Blender 4.4用の追記
+
+Blender 4.4では下記の手順で星空を作成できます。このときpandasは不要です。
+
+* [Scriptingワークスペース](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377#scripting%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9)に移動
+* 下記の内容をコピーする
+  * https://github.com/SaitoTsutomu/StarrySky/blob/master/starry_sky.py
+* テキストエディターで「新規」を選び、ペーストする
+* テキストエディターのテキストメニューの「スクリプト実行」を選ぶ
+* Layoutワークスペースに戻る
 
 以上
 

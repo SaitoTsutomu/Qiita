@@ -2,7 +2,7 @@ title: BlenderでPythonを実行する方法
 tags: Python 3DCG 初心者 Blender
 url: https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377
 created_at: 2022-05-06 20:02:46+09:00
-updated_at: 2022-05-06 20:25:46+09:00
+updated_at: 2025-04-27 11:50:49+09:00
 body:
 
 ## 概要
@@ -22,7 +22,9 @@ Pythonコンソールを表示するには、Blenderのエディタータイプ�
 
 ![a1.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/13955/be2bb8cc-fb40-1ef8-c366-7fc9a745752c.png)
 
-なお、Pythonコンソールは、Scriptingワークスペースで予め表示されています。ワークスペースに切り替えはヘッダーで可能です。Scriptingは、ワークスペースの一番右にあります。ワークスペースが切れている場合は、スクロールする必要があります。
+### Scriptingワークスペース
+
+Pythonコンソールは、Scriptingワークスペースで予め表示されています。ワークスペースに切り替えはヘッダーで可能です。Scriptingは、ワークスペースの一番右にあります。ワークスペースが切れている場合は、スクロールする必要があります。
 
 <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/13955/0cffdad9-65d8-db8c-337f-6826ae6f8bdd.png" width="500">
 
