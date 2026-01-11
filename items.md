@@ -1,14 +1,24 @@
 Posts on Qiita
 
-created 2025-09-07
+created 2026-01-11
 
+- [MacのJupyterLab  Python-MIPでHiGHSを使う方法](https://qiita.com/SaitoTsutomu/items/60ddf4a72137d715e775)
+- [joinの書き方クイズ](https://qiita.com/SaitoTsutomu/items/173c490e2311cb816f9f)
+- [Pythonの循環import：なぜこのコードは動作するのか？](https://qiita.com/SaitoTsutomu/items/e0081e8175ba22e863e3)
+- [さくらのAI EngineをLangflowから使ってみた](https://qiita.com/SaitoTsutomu/items/03d245afb0a55ab2906f)
+- [さくらのAI EngineをPythonのAIエージェントから使ってみた](https://qiita.com/SaitoTsutomu/items/5c3b9058b02a6f02dec5)
+- [GeminiはPolars 100ノックに正解するか？（後編）](https://qiita.com/SaitoTsutomu/items/5dad18c83b15a4eb61b9)
+- [GeminiはPolars 100ノックに正解するか？（前編）](https://qiita.com/SaitoTsutomu/items/c509d8391e61048897c7)
+- [just-agentsのMCPサーバー指定方法](https://qiita.com/SaitoTsutomu/items/3f2290ac8ef7fd1a25bc)
+- [FastAPI-MCPサーバーからツール情報を取得する方法](https://qiita.com/SaitoTsutomu/items/abda9fe2c3c8aea9e5d8)
+- [近似値クイズで、AIは「最適解」を見つけられるか？](https://qiita.com/SaitoTsutomu/items/8e8654ceb58a93a9a051)
 - [BlenderのノードをPythonコードに変換！「Node To Python」アドオンの使い方](https://qiita.com/SaitoTsutomu/items/4c95679d416c2dec7214)
 - [FastAPI と Tortoise ORMで作る、シンプルなCRUD APIハンズオン](https://qiita.com/SaitoTsutomu/items/9572da099c632f249d4f)
 - [AWS CDK (Python) と LocalStack で作る！サーバーレスAPIローカル開発環境](https://qiita.com/SaitoTsutomu/items/02f628b7a03f758b4c18)
 - [Macの標準機能Automatorが超便利！Pythonと連携させてXML整形アプリを自作する](https://qiita.com/SaitoTsutomu/items/30cd85cff5b2b56ce5b7)
 - [Polarsのmap系メソッド完全ガイド：4つの関数の違いと使い分け](https://qiita.com/SaitoTsutomu/items/1507f038f17679e86af8)
 - [Blenderでテクスチャの境目を目立たなくする](https://qiita.com/SaitoTsutomu/items/c346baf745a914892500)
-- [Polars100本ノック](https://qiita.com/SaitoTsutomu/items/1a19dd484c88b77a4f2a)
+- [Polars 100ノック](https://qiita.com/SaitoTsutomu/items/1a19dd484c88b77a4f2a)
 - [uvとtaskipyを使った環境変数の管理](https://qiita.com/SaitoTsutomu/items/ff10a21ab9a6bacce5d2)
 - [Polars write_csvとStringIOの罠：マルチバイト文字で発生した過去のバグとその原因](https://qiita.com/SaitoTsutomu/items/271d0e1b6d996d7ba830)
 - [Polarsで1行を2行に複製・変更する方法](https://qiita.com/SaitoTsutomu/items/3802bfc82477d7825dc9)

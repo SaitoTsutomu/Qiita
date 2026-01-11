@@ -2,7 +2,7 @@ title: BlenderのノードをPythonコードに変換！「Node To Python」ア�
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/4c95679d416c2dec7214
 created_at: 2025-09-02 22:41:53+09:00
-updated_at: 2025-09-02 22:41:53+09:00
+updated_at: 2025-09-09 07:28:22+09:00
 body:
 
 ## はじめに
@@ -71,7 +71,7 @@ Blender内で直接インストールできるため、手順はとても簡単�
 
 ## 出力されるコードの例
 
-例えば、シェーダーノードからは、次のようなPythonコードが生成されます。このコードを実行すれば、GUIで作成したものと全く同じノード構成をスクリプトから再現できます。
+例えば、ジオメトリノードからは、次のようなPythonコードが生成されます。このコードを実行すれば、GUIで作成したものと全く同じノード構成をスクリプトから再現できます。
 
 ```python
 import bpy, mathutils

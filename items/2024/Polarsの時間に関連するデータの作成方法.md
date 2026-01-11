@@ -2,14 +2,14 @@ title: Polarsの時間に関連するデータの作成方法
 tags: Python timezone Polars
 url: https://qiita.com/SaitoTsutomu/items/ec6dbb5d6f35214dfbee
 created_at: 2024-11-14 19:50:03+09:00
-updated_at: 2024-12-04 07:04:49+09:00
+updated_at: 2025-11-19 22:50:31+09:00
 body:
 
 ## 時間の型
 
 Polarsで時間の型は、pl.Datetime（日時）, pl.Date（日付）, pl.Time（時刻）, pl.Duration（時間間隔）があります。
 これらは、**`dt`属性**を通して時間関連のメソッドが使えます。
-また、関連するデータとして、pl.Utf8（文字列）、エポック（整数）、総秒数（整数）があります。
+また、関連するデータとして、pl.String（文字列）、エポック（整数）、総秒数（整数）があります。
 エポック（UNIX時間ともいいます）は、1970年1月1日からの形式的な経過時間です。単位は、秒やマイクロ秒などです。
 
 ## 構成要素から作成
@@ -49,8 +49,8 @@ import io
 data = io.StringIO(
     "datetime,date,time\n2024-05-01T02:03:00,2024-04-30,10:20:00"
 )
-schema = {"datetime": pl.Datetime, "date": pl.Date, "time": pl.Time}
-df = pl.read_csv(data, schema=schema)
+schema_overrides = {"datetime": pl.Datetime, "date": pl.Date, "time": pl.Time}
+df = pl.read_csv(data, schema_overrides=schema_overrides)
 print(df)
 ```
 
@@ -85,9 +85,11 @@ shape: (1, 3)
 | `pl.Duration`  | 時間間隔と時間間隔 | 時間間隔 + 時間間隔など                          |
 | `pl.Duration`  | 時刻               | `cast(pl.Duration)`                              |
 | `pl.Duration`  | 総マイクロ秒数     | `cast(pl.Duration)`                              |
-| `pl.Utf8`      | 日時や日付や時刻   | `dt.to_string(書式)`                             |
+| `pl.String`      | 日時や日付や時刻   | `dt.to_string(書式)`                             |
 | `エポック`     | 日時や日付         | `dt.epoch(単位)`<br>単位のデフォルトはマイクロ秒 |
 | `総秒数`       | 時間間隔           | `dt.total_seconds()`                             |
+
+※ `dt.epoch()`の代わりに`dt.timestamp()`も使えます。
 
 ```python
 print(df.select(new_datetime=pl.col("date").dt.combine(pl.col("time"))))
@@ -136,6 +138,8 @@ https://docs.rs/chrono/latest/chrono/format/strftime/index.html
 | 指定した範囲の日付 | `pl.date_range()`     |
 | 指定した範囲の時刻 | `pl.time_range()`     |
 
+※ これらはExprを返しますが、`eager=True`をつけるとSeriesを返します。
+
 ## タイムゾーンに関する変換
 
 基本的なタイムゾーンあり（aware）とタイムゾーンなし（naive）の変換は次のようになります。
@@ -149,16 +153,17 @@ https://docs.rs/chrono/latest/chrono/format/strftime/index.html
 
 | 作成するデータ | 変換元              | 方法                           |
 | :------------- | :------------------ | :----------------------------- |
-| naiveな日時    | awareな日時         | `cast(pl.Datetime)`            |
+| naiveな日時(TZ削除) | awareな日時  | `dt.replace_time_zone(None)`   |
+| naiveな(UTC基準の)日時 | awareな日時 | `cast(pl.Datetime)`   |
 | naiveな日時    | naiveな文字列(同TZ) | `str.to_datetime()`            |
 | awareな日時    | naiveな日時(同TZ)   | `dt.replace_time_zone(対象TZ)` |
 | awareな日時    | naiveな日時(UTC)    | `dt.convert_time_zone(対象TZ)` |
 | awareな日時    | awareな日時(異TZ)   | `dt.convert_time_zone(対象TZ)` |
 | awareな日時    | naiveな文字列(同TZ) | `str.to_datetime(対象TZ)`      |
 | awareな日時    | awareな文字列       | `str.to_datetime(対象TZ)`      |
-| naiveな文字列  | naiveな日時(同TZ)   | `cast(pl.Utf8)`                |
+| naiveな文字列  | naiveな日時(同TZ)   | `cast(pl.String)`                |
 | naiveな文字列  | awareな日時(同TZ)   | naiveな日時を経由              |
-| awareな文字列  | awareな日時(同TZ)   | `cast(pl.Utf8)`                |
+| awareな文字列  | awareな日時(同TZ)   | `cast(pl.String)`                |
 | awareな文字列  | naiveな文字列(同TZ) | `str.to_datetime(対象TZ)`      |
 | fmtあり文字列  | 日時(同TZ)          | `dt.to_string(書式)`           |
 | 日時           | fmtあり文字列(同TZ) | `str.to_datetime(書式)`        |
@@ -181,12 +186,12 @@ shape: (1, 1)
 表の対象TZ（作成するデータのタイムゾーン）は、`"UTC"`や`"Asia/Tokyo"`などが使えます。
 表にないケースは、awareな日時を経由してできないか検討してみてください。
 
-また、`pl.read_csv()`の引数`schema`で`pl.Datatime(time_zone=...)`と指定することで、awareな日時として読み込めます。
+また、`pl.read_csv()`の引数`schema_overrides`で`pl.Datetime(time_zone=...)`と指定することで、awareな日時として読み込めます。
 
 ```python
 data = io.StringIO("datetime\n2024-05-01T02:03:00.000000+0900")
-schema = {"datetime": pl.Datetime(time_zone="Asia/Tokyo")}
-df = pl.read_csv(data, schema=schema)
+schema_overrides = {"datetime": pl.Datetime(time_zone="Asia/Tokyo")}
+df = pl.read_csv(data, schema_overrides=schema_overrides)
 print(df)
 ```
 

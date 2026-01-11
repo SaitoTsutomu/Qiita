@@ -2,7 +2,7 @@ title: Blenderで星空を作る
 tags: Python 3DCG Blender
 url: https://qiita.com/SaitoTsutomu/items/1161fce06ade74be4d5d
 created_at: 2023-02-11 17:29:42+09:00
-updated_at: 2025-04-27 11:51:44+09:00
+updated_at: 2025-12-30 08:36:07+09:00
 body:
 
 # Blenderで星空を作る
@@ -22,9 +22,9 @@ http://astro.starfree.jp/commons/hip/
 
 上記のサイトから下記の3つのファイルを使います（ダウンロードはプログラムから行います）。
 
-- `hip_lite_major.csv`：3215個の星の情報です。この中のHIP番号と赤経と赤緯と視等級（明るさ）を使います。
-- `hip_100.csv`：100個の星の情報です。星は上記のサブセットですが、B-V色指数が増えています。上記の表にマージします。B-V色指数は小さいと青っぽく、大きいと赤っぽく見えるそうなので、この値を使ってカラーランプで適当に色をつけます。
-- `hip_constellation_line.csv`：星座の線の情報です。2点のHIP番号を使います。
+- `hip_lite_major.csv`：3215個の星の情報です。この中のHIP番号と赤経と赤緯と視等級（明るさ）を使います
+- `hip_100.csv`：100個の星の情報です。星は上記のサブセットですが、B-V色指数が増えています。上記の表にマージします。B-V色指数は小さいと青っぽく、大きいと赤っぽく見えるそうなので、この値を使ってカラーランプで適当に色をつけます
+- `hip_constellation_line.csv`：星座の線の情報です。2点のHIP番号を使います
 
 これらのデータから表を2つ（`df`、`dfl`）を作成します。それぞれ**星**と**星座の線**です。
 
@@ -72,7 +72,7 @@ http://astro.starfree.jp/commons/hip/
 ## 作ってみよう
 
 pandasのインストールが必要です（下記参考）。
-※ 後述の「Blender 4.4用の追記」の方法では、pandasがなくても星空を作成できます。
+※ 後述の「Blender 5.0用の追記」の方法では、pandasがなくても星空を作成できます。
 
 https://qiita.com/SaitoTsutomu/items/6b70367455f843a979b1
 
@@ -435,9 +435,9 @@ for area in bpy.data.screens["Layout"].areas:
         area.spaces[0].shading.use_compositor = "ALWAYS"
 ```
 
-## Blender 4.4用の追記
+## Blender 5.0用の追記
 
-Blender 4.4では下記の手順で星空を作成できます。このときpandasは不要です。
+Blender 5.0では下記の手順で星空を作成できます。このとき**pandasは不要**です。
 
 * [Scriptingワークスペース](https://qiita.com/SaitoTsutomu/items/cec67381a8789b40e377#scripting%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9)に移動
 * 下記の内容をコピーする

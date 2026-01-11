@@ -2,10 +2,10 @@ title: itertools、more-itertoolsの紹介
 tags: Python itertools
 url: https://qiita.com/SaitoTsutomu/items/ddb5076ef62745f03b56
 created_at: 2015-12-25 20:34:25+09:00
-updated_at: 2024-08-31 15:22:04+09:00
+updated_at: 2025-10-31 18:07:55+09:00
 body:
 
-# itertools、more-itertools(10.3.0)の紹介 (2024年7月更新)
+# itertools、more-itertools(10.8.0)の紹介 (2025年10月更新)
 
 繰り返し関連の[itertools](https://docs.python.org/ja/3/library/itertools.html)、[more-itertools](https://more-itertools.readthedocs.io/)について紹介します。
 itertoolsは標準ライブラリーなのでそのまま使えます。`more-itertools`は、`pip install more-itertools`とインストールすることで使えます。
@@ -100,11 +100,11 @@ https://blog.pyq.jp/entry/python_kaiketsu_231108
 
 <p>
 
-| 関数            | 引数                                     | 結果                                             |
-| :-------------- | :--------------------------------------- | :----------------------------------------------- |
-| `takewhile()`   | `predicate, iterable`                    | predicateが偽になるまで                          |
+| 関数            | 引数                                     | 結果                                         |
+| :-------------- | :--------------------------------------- | :------------------------------------------- |
+| `takewhile()`   | `predicate, iterable`                    | predicateが偽になるまで                      |
 | `tee()`         | `iterable, n=2`                          | it1, it2 , ... itn 一つの反復子をn個に分ける |
-| `zip_longest()` | `iter1 [,iter2 [...]], [fillvalue=None]` | (p[0], q[0]), (p[1], q[1]), ...                  |
+| `zip_longest()` | `iter1 [,iter2 [...]], [fillvalue=None]` | (p[0], q[0]), (p[1], q[1]), ...              |
 
 | サンプルコード                                   | 実行結果                         |
 | :----------------------------------------------- | :------------------------------- |
@@ -168,12 +168,12 @@ https://blog.pyq.jp/entry/python_kaiketsu_231108
 
 <p>
 
-| 関数                    | 引数                                                            | 結果                                          |
-| :---------------------- | :-------------------------------------------------------------- | :-------------------------------------------- |
-| `sliced()`              | seq, n, strict=False                                            | sequenceで使えるchunked                       |
-| `constrained_batches()` | iterable, max_size, max_count=None,<br>get_len=len, strict=True | 累積長さを上限以下にまとめる                  |
+| 関数                    | 引数                                                            | 結果                                      |
+| :---------------------- | :-------------------------------------------------------------- | :---------------------------------------- |
+| `sliced()`              | seq, n, strict=False                                            | sequenceで使えるchunked                   |
+| `constrained_batches()` | iterable, max_size, max_count=None,<br>get_len=len, strict=True | 累積長さを上限以下にまとめる              |
 | `distribute()`          | n, iterable                                                     | 各反復子の順にたどって、n個の反復子を返す |
-| `divide()`              | n, iterable                                                     | n個に分割して返す                             |
+| `divide()`              | n, iterable                                                     | n個に分割して返す                         |
 
 | サンプルコード            | 実行結果                                  |
 | :------------------------ | :---------------------------------------- |
@@ -252,7 +252,7 @@ LL(transpose(zip(r1_5, 'ABCDE')))
 | :----------- | :-------------------- | :---------------------------------- |
 | `spy()`      | iterable, n=1         | n個の先頭を見る                     |
 | `peekable()` | iterable              | peek([default])で消費せずに値を見る |
-| `seekable()` | iterable, maxlen=None | seek可能な反復子                |
+| `seekable()` | iterable, maxlen=None | seek可能な反復子                    |
 
 サンプルコードは、[公式ドキュメント](https://more-itertools.readthedocs.io/en/stable/api.html#lookahead-and-lookback)を参照してください。
 
@@ -273,14 +273,14 @@ LL(transpose(zip(r1_5, 'ABCDE')))
 
 <p>
 
-| 関数                  | 引数                                                           | 結果                                  |
-| :-------------------- | :------------------------------------------------------------- | :------------------------------------ |
-| `stagger()`           | iterable, offsets=(-1, 0, 1),<br>longest=False, fillvalue=None | 前後も返す                            |
-| `windowed_complete()` | iterable, n                                                    | 3分割を列挙する。真ん中の要素数はn    |
-| `pairwise()`          | `itertools.pairwise`を参照                                     |                                       |
-| `triplewise()`        | iterable                                                       | 1つスライドしつつ、三つ組みで返す |
-| `sliding_window()`    | iterable, n                                                    | 1つスライドしつつ、n個ずつ返す    |
-| `subslices()`         | iterable                                                       | スライスとしての部分集合              |
+| 関数                  | 引数                                                           | 結果                               |
+| :-------------------- | :------------------------------------------------------------- | :--------------------------------- |
+| `stagger()`           | iterable, offsets=(-1, 0, 1),<br>longest=False, fillvalue=None | 前後も返す                         |
+| `windowed_complete()` | iterable, n                                                    | 3分割を列挙する。真ん中の要素数はn |
+| `pairwise()`          | `itertools.pairwise`を参照                                     |                                    |
+| `triplewise()`        | iterable                                                       | 1つスライドしつつ、三つ組みで返す  |
+| `sliding_window()`    | iterable, n                                                    | 1つスライドしつつ、n個ずつ返す     |
+| `subslices()`         | iterable                                                       | スライスとしての部分集合           |
 
 
 | サンプルコード                  | 実行結果                                               |
@@ -334,21 +334,23 @@ LL(transpose(zip(r1_5, 'ABCDE')))
 
 ### Combining
 
-| 関数                   | 引数                                                 | 結果                                               |
-| :--------------------- | :--------------------------------------------------- | :------------------------------------------------- |
-| `collapse()`           | iterable, base_type=None, levels=None                | 多段可のflatten                                    |
-| `sort_together()`      | iterables, key_list=(0,),<br>key=None, reverse=False | 同じ順番で各要素を並べ替え                         |
-| `interleave()`         | *iterables                                           | いずれかの反復子がなくなるまで各反復子から順に出力 |
-| `interleave_longest()` | *iterables                                           | 各反復子から順に出力                               |
-| `interleave_evenly()`  | *iterables, lengths=None                             | 各反復子から均等になるように出力                   |
+| 関数                    | 引数                                                 | 結果                                               |
+| :---------------------- | :--------------------------------------------------- | :------------------------------------------------- |
+| `collapse()`            | iterable, base_type=None, levels=None                | 多段可のflatten                                    |
+| `sort_together()`       | iterables, key_list=(0,),<br>key=None, reverse=False | 同じ順番で各要素を並べ替え                         |
+| `interleave()`          | *iterables                                           | いずれかの反復子がなくなるまで各反復子から順に出力 |
+| `interleave_longest()`  | *iterables                                           | 各反復子から順に出力                               |
+| `interleave_evenly()`   | *iterables, lengths=None                             | 各反復子から均等になるように出力                   |
+| `interleave_randomly()` | *iterables                                           | 各反復子からランダムにその先頭から出力             |
 
-| サンプルコード                             | 実行結果                         |
-| :----------------------------------------- | :------------------------------- |
-| `L(collapse([[1], 2, [[3], [[4, 5]]]]))`   | `[1, 2, 3, 4, 5]`                |
-| `sort_together(["BAC", r3])`               | `[('A', 'B', 'C'), (1, 0, 2)]`   |
-| `L(interleave('ABC', 'D', 'EF'))`          | `['A', 'D', 'E']`                |
-| `L(interleave_longest('ABC', 'D', 'EF'))`  | `['A', 'D', 'E', 'B', 'F', 'C']` |
-| `L(interleave_evenly(['123', 'A', 'xy']))` | `['1', 'x', '2', 'A', '3', 'y']` |
+| サンプルコード                             | 実行結果                             |
+| :----------------------------------------- | :----------------------------------- |
+| `L(collapse([[1], 2, [[3], [[4, 5]]]]))`   | `[1, 2, 3, 4, 5]`                    |
+| `sort_together(["BAC", r3])`               | `[('A', 'B', 'C'), (1, 0, 2)]`       |
+| `L(interleave('ABC', 'D', 'EF'))`          | `['A', 'D', 'E']`                    |
+| `L(interleave_longest('ABC', 'D', 'EF'))`  | `['A', 'D', 'E', 'B', 'F', 'C']`     |
+| `L(interleave_evenly(['123', 'A', 'xy']))` | `['1', 'x', '2', 'A', '3', 'y']`     |
+| `L(interleave_randomly('123', 'A', 'xy'))` | 例：`['x', '1', 'y', 'A', '2', '3']` |
 
 ※ `sort_together(["BAC", r3])`と`L(zip(*sorted(zip("BAC", r3))))`は同じ結果になります。
 
@@ -360,13 +362,13 @@ LL(transpose(zip(r1_5, 'ABCDE')))
 | `zip_equal()`     | *iterables                                            | 長さが一致していないとUnequalIterablesError |
 | `zip_broadcast()` | *iterables                                            | スカラーも使えるzip                         |
 
+※ `zip_equal()`はDeprecatedです。
 
 | サンプルコード                            | 実行結果                               |
 | :---------------------------------------- | :------------------------------------- |
 | `L(zip_offset(r3, 'xy', offsets=[1, 0]))` | `[(1, 'x'), (2, 'y')]`                 |
 | `L(zip_broadcast(-1, r3, 9))`             | `[(-1, 0, 9), (-1, 1, 9), (-1, 2, 9)]` |
 
-※ `zip_equal()` のサンプルコードは省略します。
 
 <p>
 
@@ -447,19 +449,23 @@ join_mappings(point=person_points, name=person_names)
 
 <p>
 
-| 関数           | 引数                                                      | 結果                 |
-| :------------- | :-------------------------------------------------------- | :------------------- |
-| `all_equal()`  | iterable                                                  | 全要素が同じか       |
-| `all_unique()` | iterable, key=None                                        | すべて異なるかどうか |
+| 関数           | 引数                                                        | 結果                 |
+| :------------- | :---------------------------------------------------------- | :------------------- |
+| `all_equal()`  | iterable                                                    | 全要素が同じか       |
+| `all_unique()` | iterable, key=None                                          | すべて異なるかどうか |
+| `argmin()`     | iterable, *, key=None                                       | 最小値の位置         |
+| `argmax()`     | iterable, *, key=None                                       | 最大値の位置         |
 | `minmax()`     | iterable_or_value, *others,<br>key=None, default=＜marker＞ | 最小値と最大値       |
-| `first_true()` | iterable, default=None, pred=None                         | 最初に真になる値     |
-| `quantify()`   | iterable, pred=bool                                       | Trueの数を返す       |
-| `iequals()`    | *iterables                                                | すべて同順で同値か   |
+| `first_true()` | iterable, default=None, pred=None                           | 最初に真になる値     |
+| `quantify()`   | iterable, pred=bool                                         | Trueの数を返す       |
+| `iequals()`    | *iterables                                                  | すべて同順で同値か   |
 
 | サンプルコード                           | 実行結果 |
 | :--------------------------------------- | :------- |
 | `all_equal('AAA')`                       | `True`   |
 | `all_unique('ABA')`                      | `False`  |
+| `argmin('CBA')`                          | `2`      |
+| `argmax('ABA')`                          | `1`      |
 | `minmax(r1_5)`                           | `(1, 5)` |
 | `first_true(r1_5, pred=lambda x: x > 2)` | `3`      |
 | `quantify([True, False, True])`          | `2`      |
@@ -511,6 +517,7 @@ join_mappings(point=person_points, name=person_names)
 | 関数                 | 引数                      | 結果                                                                  |
 | :------------------- | :------------------------ | :-------------------------------------------------------------------- |
 | `nth_or_last()`      | iterable, n[, default]    | nthか最後の要素、なければデフォルト値、<br>デフォルトなしはValueError |
+| `extract()`          | iterable, indices         | indicesの位置の要素を返す                                             |
 | `unique_in_window()` | iterable, n, key=None     | n個以内でユニーク値なら返す                                           |
 | `before_and_after()` | predicate, it             | predicateがFalseになる前と以降で分ける                                |
 | `nth()`              | iterable, n, default=None | n番目の値を取得                                                       |
@@ -520,6 +527,7 @@ join_mappings(point=person_points, name=person_names)
 | サンプルコード                              | 実行結果          |
 | :------------------------------------------ | :---------------- |
 | `nth_or_last(r1_5, 2)`                      | `3`               |
+| `L(extract('ABC', [2, 1]))`                 | `['C', 'B']`      |
 | `L(unique_in_window('ABAC', 3))`            | `['A', 'B', 'C']` |
 | `LJ(before_and_after(str.islower, "abCd"))` | `['ab', 'Cd']`    |
 | `nth(r1_5, 5)`                              | `None`            |
@@ -570,59 +578,88 @@ L(classify_unique("abaa"))
 
 ### Math
 
-| 関数           | 引数           | 結果                     |
-| :------------- | :------------- | :----------------------- |
-| `dft()`        | xarr           | 離散フーリエ変換         |
-| `idft()`       | Xarr           | 逆離散フーリエ変換       |
-| `convolve()`   | signal, kernel | 畳み込み                 |
-| `dotproduct()` | vec1, vec2     | 内積を返す               |
-| `factor()`     | n              | 素因数分解して素数を返す |
-| `matmul()`     | m1, m2         | 行列の積                 |
+| 関数           | 引数           | 結果               |
+| :------------- | :------------- | :----------------- |
+| `dft()`        | xarr           | 離散フーリエ変換   |
+| `idft()`       | Xarr           | 逆離散フーリエ変換 |
+| `convolve()`   | signal, kernel | 畳み込み           |
+| `dotproduct()` | vec1, vec2     | 内積を返す         |
+| `matmul()`     | m1, m2         | 行列の積           |
 
-| サンプルコード                                  | 実行結果             |
-| :---------------------------------------------- | :------------------- |
-| `dotproduct([2, 2], [3, 3])`                    | `12`                 |
-| `L(factor(360))`                                | `[2, 2, 2, 3, 3, 5]` |
-| `L(matmul([(1, 2), (3, 1)], [(1, 2), (3, 1)]))` | `[(7, 4), (6, 7)]`   |
+| サンプルコード                                  | 実行結果           |
+| :---------------------------------------------- | :----------------- |
+| `dotproduct([2, 2], [3, 3])`                    | `12`               |
+| `L(matmul([(1, 2), (3, 1)], [(1, 2), (3, 1)]))` | `[(7, 4), (6, 7)]` |
 
 ※ `dft()`、`idft()`、`convolve()`のサンプルコードは省略します。
 
 <p>
 
-| 関数                      | 引数            | 結果                                             |
-| :------------------------ | :-------------- | :----------------------------------------------- |
-| `polynomial_from_roots()` | roots           | 多項式の係数                                     |
-| `polynomial_derivative()` | coefficients    | 多項式の一次導関数                               |
-| `polynomial_eval()`       | coefficients, x | 特定の値で多項式の評価                           |
-| `sieve()`                 | n               | n未満の素数を返す                                |
-| `sum_of_squares()`        | it              | 自乗和                                           |
-| `totient()`               | n               | n以下の自然数で、nと<br>互いに素となる個数を返す |
+| 関数                      | 引数                     | 結果                   |
+| :------------------------ | :----------------------- | :--------------------- |
+| `polynomial_from_roots()` | roots                    | 多項式の係数           |
+| `polynomial_derivative()` | coefficients             | 多項式の一次導関数     |
+| `polynomial_eval()`       | coefficients, x          | 特定の値で多項式の評価 |
+| `sum_of_squares()`        | it                       | 自乗和                 |
+| `running_median()`        | iterable, *, maxlen=None | 累積中央値             |
 
 
-| サンプルコード                  | 実行結果                       |
-| :------------------------------ | :----------------------------- |
-| `polynomial_eval([1, 6, 9], 2)` | `25`                           |
-| `L(sieve(20))`                  | `[2, 3, 5, 7, 11, 13, 17, 19]` |
-| `sum_of_squares(range(4))`      | `14`                           |
-| `totient(6)`                    | `2`                            |
+| サンプルコード                  | 実行結果 |
+| :------------------------------ | :------- |
+| `polynomial_eval([1, 6, 9], 2)` | `25`     |
+| `sum_of_squares(range(4))`      | `14`     |
 
-※ `polynomial_from_roots()`、`polynomial_derivative()`のサンプルコードは省略します。
+※ `polynomial_from_roots()`、`polynomial_derivative()`、`running_median()`のサンプルコードは省略します。
+
+### Integer math
+
+| 関数            | 引数                    | 結果                                             |
+| :-------------- | :---------------------- | :----------------------------------------------- |
+| `factor()`      | n                       | 素因数分解して素数を返す                         |
+| `is_prime()`    | n                       | nが素数かどうかを返す                            |
+| `multinomial()` | *counts                 | `distinct_permutations()`の個数を返す            |
+| `nth_prime()`   | n, *, approximate=False | n番目の素数を返す                                |
+| `sieve()`       | n                       | n未満の素数を返す                                |
+| `totient()`     | n                       | n以下の自然数で、nと<br>互いに素となる個数を返す |
+
+| サンプルコード      | 実行結果                       |
+| :------------------ | :----------------------------- |
+| `L(factor(360))`    | `[2, 2, 2, 3, 3, 5]`           |
+| `is_prime(47)`      | `True`                         |
+| `multinomial(2, 2)` | `6`                            |
+| `nth_prime(0)`      | `2`                            |
+| `L(sieve(20))`      | `[2, 3, 5, 7, 11, 13, 17, 19]` |
+| `totient(6)`        | `2`                            |
 
 ### Combinatorics
 
-| 関数                      | 引数             | 結果                                             |
-| :------------------------ | :--------------- | :----------------------------------------------- |
-| `distinct_permutations()` | iterable, r=None | ユニークなpermutation                            |
-| `distinct_combinations()` | iterable, r      | 重複を除く組み合わせ                             |
-| `circular_shifts()`       | iterable         | shiftしたものを繰り返す                          |
-| `partitions()`            | iterable         | 順序を保った分割の仕方を繰り返す                 |
-| `set_partitions()`        | iterable, k=None | 順序を保たない分割の仕方を繰り返す。分割数指定可 |
+| 関数                | 引数                             | 結果                                    |
+| :------------------ | :------------------------------- | :-------------------------------------- |
+| `circular_shifts()` | iterable                         | shiftしたものを繰り返す                 |
+| `derangements()`    | iterable, r=None                 | どの要素も元の位置に現れない順列を返す  |
+| `gray_product()`    | *iterables                       | （要素が1つだけ変化する順の）デカルト積 |
+| `outer_product()`   | func, xs, ys,<br>*args, **kwargs | 一般化されたデカルト積を返す            |
 
-| サンプルコード                           | 実行結果                            |
-| :--------------------------------------- | :---------------------------------- |
-| `L(distinct_permutations([1, 0, 1]))`    | `[(0, 1, 1), (1, 0, 1), (1, 1, 0)]` |
-| `L(distinct_combinations([0, 0, 1], 2))` | `[(0, 0), (0, 1)]`                  |
-| `circular_shifts(r3)`                    | `[(0, 1, 2), (1, 2, 0), (2, 0, 1)]` |
+
+| サンプルコード                 | 実行結果                            |
+| :----------------------------- | :---------------------------------- |
+| `L(circular_shifts(r3))`       | `[(0, 1, 2), (1, 2, 0), (2, 0, 1)]` |
+| `L(derangements(r3))`          | `[(1, 2, 0), (2, 0, 1)]`            |
+| `LJ(gray_product("AB", "CD"))` | `['AC', 'BC', 'BD', 'AD']`          |
+
+※ `outer_product()`のサンプルコードは省略します。
+
+| 関数                 | 引数             | 結果                                             |
+| :------------------- | :--------------- | :----------------------------------------------- |
+| `partitions()`       | iterable         | 順序を保った分割の仕方を繰り返す                 |
+| `set_partitions()`   | iterable, k=None | 順序を保たない分割の仕方を繰り返す。分割数指定可 |
+| `powerset()`         | iterable         | 各要素の全部分集合を返す                         |
+| `powerset_of_sets()` | iterable         | 各要素の全部分集合を返す                         |
+
+| サンプルコード                  | 実行結果                    |
+| :------------------------------ | :-------------------------- |
+| `L(powerset(range(2)))`         | `[(), (0,), (1,), (0, 1)]`  |
+| `L(powerset_of_sets(range(2)))` | `[set(), {0}, {1}, {0, 1}]` |
 
 #### `partitions()`と`set_partitions()`のサンプルコード
 
@@ -640,72 +677,65 @@ L(set_partitions(r3))
 
 <p>
 
+| 関数                      | 引数             | 結果                  |
+| :------------------------ | :--------------- | :-------------------- |
+| `distinct_combinations()` | iterable, r      | 重複を除く組み合わせ  |
+| `distinct_permutations()` | iterable, r=None | ユニークなpermutation |
+
+| サンプルコード                           | 実行結果                            |
+| :--------------------------------------- | :---------------------------------- |
+| `L(distinct_combinations([0, 0, 1], 2))` | `[(0, 0), (0, 1)]`                  |
+| `L(distinct_permutations([1, 0, 1]))`    | `[(0, 1, 1), (1, 0, 1), (1, 1, 0)]` |
+
+<p>
+
 | 関数                                   | 引数              | 結果                                     |
 | :------------------------------------- | :---------------- | :--------------------------------------- |
-| `product_index()`                      | element, *args    | デカルト積（product）のインデックス      |
 | `combination_index()`                  | element, iterable | 組み合わせ（combinations）のインデックス |
-| `permutation_index()`                  | element, iterable | 順列（permutations）のインデックス       |
 | `combination_with_replacement_index()` | element, iterable | 重複あり組み合わせのインデックス         |
+| `permutation_index()`                  | element, iterable | 順列（permutations）のインデックス       |
+| `product_index()`                      | element, *args    | デカルト積（product）のインデックス      |
 
 | サンプルコード                                          | 実行結果 |
 | :------------------------------------------------------ | :------- |
-| `product_index(("2", "B"), "12", "ABC")`                | `4`      |
 | `combination_index(('B', 'C'), "ABC")`                  | `2`      |
-| `permutation_index(('B', 'C'), "ABC")`                  | `3`      |
 | `combination_with_replacement_index(('B', 'C'), "ABC")` | `4`      |
-
-<p>
-
-| 関数                 | 引数                             | 結果                                    |
-| :------------------- | :------------------------------- | :-------------------------------------- |
-| `gray_product()`     | *iterables                       | （要素が1つだけ変化する順の）デカルト積 |
-| `outer_product()`    | func, xs, ys,<br>*args, **kwargs | 一般化されたデカルト積を返す            |
-| `powerset()`         | iterable                         | 各要素の全部分集合を返す                |
-| `powerset_of_sets()` | iterable                         | 各要素の全部分集合を返す                |
-
-
-| サンプルコード                  | 実行結果                    |
-| :------------------------------ | :-------------------------- |
-| `LJ(gray_product("AB", "CD"))`  | `['AC', 'BC', 'BD', 'AD']`  |
-| `L(powerset(range(2)))`         | `[(), (0,), (1,), (0, 1)]`  |
-| `L(powerset_of_sets(range(2)))` | `[set(), {0}, {1}, {0, 1}]` |
-
-※ `outer_product()`のサンプルコードは省略します。
-
-<p>
-
-| 関数                                    | 引数             | 結果                            |
-| :-------------------------------------- | :--------------- | :------------------------------ |
-| `random_product()`                      | *args, repeat=1  | 各反復子ごとにランダムに返す    |
-| `random_permutation()`                  | iterable, r=None | r個分ランダムに繰り返さずに返す |
-| `random_combination()`                  | iterable, r      | ランダムにr個選ぶ               |
-| `random_combination_with_replacement()` | iterable, r      | 重複を許してランダムにr個選ぶ   |
-
-
-| サンプルコード                               | 実行結果          |
-| :------------------------------------------- | :---------------- |
-| `random_product(r1_5, 'ABC')`                | `(4, 'A')`        |
-| `random_permutation(r1_5)`                   | `(4, 2, 5, 3, 1)` |
-| `random_combination(r1_5, 3)`                | `(1, 2, 4)`       |
-| `random_combination_with_replacement(r3, 5)` | `(0, 0, 1, 2, 2)` |
-
-※ 実行ごとに結果は変わります。
+| `permutation_index(('B', 'C'), "ABC")`                  | `3`      |
+| `product_index(("2", "B"), "12", "ABC")`                | `4`      |
 
 <p>
 
 | 関数                                 | 引数               | 結果                                   |
 | :----------------------------------- | :----------------- | :------------------------------------- |
-| `nth_product()`                      | index, *args       | list(product(*args))[index]            |
-| `nth_permutation()`                  | iterable, r, index | list(permutations(iterable, r))[index] |
 | `nth_combination()`                  | iterable, r, index | list(combinations(iterable, r))[index] |
 | `nth_combination_with_replacement()` | iterable, r, index | list(combinations(iterable, r))[index] |
+| `nth_permutation()`                  | iterable, r, index | list(permutations(iterable, r))[index] |
+| `nth_product()`                      | index, *args       | list(product(*args))[index]            |
 
 | サンプルコード                               | 実行結果 |
 | :------------------------------------------- | :------- |
-| `nth_product(5, r3, r3)`                     | `(1, 2)` |
-| `nth_permutation(r3, 2, 3)`                  | `(1, 2)` |
 | `nth_combination(r3, 2, 2)`                  | `(1, 2)` |
 | `nth_combination_with_replacement(r3, 2, 4)` | `(1, 2)` |
+| `nth_permutation(r3, 2, 3)`                  | `(1, 2)` |
+| `nth_product(5, r3, r3)`                     | `(1, 2)` |
+
+<p>
+
+| 関数                                    | 引数             | 結果                            |
+| :-------------------------------------- | :--------------- | :------------------------------ |
+| `random_combination()`                  | iterable, r      | ランダムにr個選ぶ               |
+| `random_combination_with_replacement()` | iterable, r      | 重複を許してランダムにr個選ぶ   |
+| `random_permutation()`                  | iterable, r=None | r個分ランダムに繰り返さずに返す |
+| `random_product()`                      | *args, repeat=1  | 各反復子ごとにランダムに返す    |
+
+| サンプルコード                               | 実行結果          |
+| :------------------------------------------- | :---------------- |
+| `random_combination(r1_5, 3)`                | `(1, 2, 4)`       |
+| `random_combination_with_replacement(r3, 5)` | `(0, 0, 1, 2, 2)` |
+| `random_permutation(r1_5)`                   | `(4, 2, 5, 3, 1)` |
+| `random_product(r1_5, 'ABC')`                | `(4, 'A')`        |
+
+※ 実行ごとに結果は変わります。
 
 ### Wrapping
 
@@ -766,6 +796,7 @@ except StopIteration:
 | `numeric_range()`  | *args                                                       | 数値的なものを許すrange                    |
 | `side_effect()`    | func, iterable, chunk_size=None,<br>before=None, after=None | 副作用を起こしてそのものを返す             |
 | `iterate()`        | func, start                                                 | start, func(start), func(func(start)), ... |
+| `loops()`          | n                                                           | n回繰り返す                                |
 | `difference()`     | iterable, func=sub, *, initial=None                         | 差分を返す。accumulateの逆                 |
 | `make_decorator()` | wrapping_func, result_index=0                               | デコレーターを作る                         |
 
@@ -776,16 +807,17 @@ except StopIteration:
 | `L(difference([1, 3, 6, 10]))`         | `[1, 2, 3, 4]`         |
 
 ※ `side_effect()`、`make_decorator()`のサンプルコードは省略します。
+※ 単にn回繰り返したいときに`for _ in range(n)`と書きますが、`for _ in loops(n)`の方がムダな整数を生成しないので望ましいです。
 
 <p>
 
-| 関数             | 引数                                                   | 結果                                                 |
-| :--------------- | :----------------------------------------------------- | :--------------------------------------------------- |
-| `SequenceView`   | target                                                 | read-only viewを作成する                             |
-| `time_limited()` | limit_seconds, iterable                                | 実行時間制限のある反復子                             |
+| 関数             | 引数                                                     | 結果                                                 |
+| :--------------- | :------------------------------------------------------- | :--------------------------------------------------- |
+| `SequenceView`   | target                                                   | read-only viewを作成する                             |
+| `time_limited()` | limit_seconds, iterable                                  | 実行時間制限のある反復子                             |
 | `map_if()`       | iterable, pred, func,<br>func_else=＜identity function＞ | predの評価でfunc<br>またはfunc_elseを実行            |
-| `iter_index()`   | iterable, value,<br>start=0, stop=None                 | 値と等しいインデックス                               |
-| `consume()`      | iterator, n=None                                       | 反復子をn進める。<br>nが未指定の場合、最後まで進める |
+| `iter_index()`   | iterable, value,<br>start=0, stop=None                   | 値と等しいインデックス                               |
+| `consume()`      | iterator, n=None                                         | 反復子をn進める。<br>nが未指定の場合、最後まで進める |
 
 | サンプルコード               | 実行結果    |
 | :--------------------------- | :---------- |
