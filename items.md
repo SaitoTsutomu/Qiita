@@ -1,7 +1,18 @@
 Posts on Qiita
 
-created 2026-01-11
+created 2026-11-14
 
+- [CP-SAT（Google OR-Tools）入門](https://qiita.com/SaitoTsutomu/items/20f3c52337d773382381)
+- [Polars 200で追加されたMap型](https://qiita.com/SaitoTsutomu/items/f86c8f4eb613f3e016d8)
+- [PolarsのMap型で一次式を計算する](https://qiita.com/SaitoTsutomu/items/6a0780155ea1134c1824)
+- [Blender MCPとCodexの接続手順(macOS版)](https://qiita.com/SaitoTsutomu/items/a9371791ffd36e741a49)
+- [Django ORMの__記法まとめ](https://qiita.com/SaitoTsutomu/items/49e620b0b1126dc27cf6)
+- [Django-Ninja x MCP：1つのDjangoサーバーでWeb・REST API・MCPサービスを一括ホストする（独自実装版）](https://qiita.com/SaitoTsutomu/items/5510f8905e2019bd67a1)
+- [Django-Ninja x MCP：1つのDjangoサーバーでWeb・REST API・MCPサービスを一括ホストする（django-ninja-mcp版）](https://qiita.com/SaitoTsutomu/items/3f49d96e63b91bf89ed6)
+- [正規表現で住所を分解](https://qiita.com/SaitoTsutomu/items/095495584fe570404fcd)
+- [Timefold Solver入門 Pythonで制約充足問題を解く](https://qiita.com/SaitoTsutomu/items/089904bf274f96ea901e)
+- [Polars group_by()agg(filter()) vs filter()group_by()agg()](https://qiita.com/SaitoTsutomu/items/1aaf2307bce70924f514)
+- [MonsterUI×FastHTML Pythonだけで作るリバーシWebアプリ](https://qiita.com/SaitoTsutomu/items/fe60960c27bf31e8f970)
 - [MacのJupyterLab  Python-MIPでHiGHSを使う方法](https://qiita.com/SaitoTsutomu/items/60ddf4a72137d715e775)
 - [joinの書き方クイズ](https://qiita.com/SaitoTsutomu/items/173c490e2311cb816f9f)
 - [Pythonの循環import：なぜこのコードは動作するのか？](https://qiita.com/SaitoTsutomu/items/e0081e8175ba22e863e3)
@@ -18,7 +29,7 @@ created 2026-01-11
 - [Macの標準機能Automatorが超便利！Pythonと連携させてXML整形アプリを自作する](https://qiita.com/SaitoTsutomu/items/30cd85cff5b2b56ce5b7)
 - [Polarsのmap系メソッド完全ガイド：4つの関数の違いと使い分け](https://qiita.com/SaitoTsutomu/items/1507f038f17679e86af8)
 - [Blenderでテクスチャの境目を目立たなくする](https://qiita.com/SaitoTsutomu/items/c346baf745a914892500)
-- [Polars 100ノック](https://qiita.com/SaitoTsutomu/items/1a19dd484c88b77a4f2a)
+- [Polars 100ノック（Polars 200対応）](https://qiita.com/SaitoTsutomu/items/1a19dd484c88b77a4f2a)
 - [uvとtaskipyを使った環境変数の管理](https://qiita.com/SaitoTsutomu/items/ff10a21ab9a6bacce5d2)
 - [Polars write_csvとStringIOの罠：マルチバイト文字で発生した過去のバグとその原因](https://qiita.com/SaitoTsutomu/items/271d0e1b6d996d7ba830)
 - [Polarsで1行を2行に複製・変更する方法](https://qiita.com/SaitoTsutomu/items/3802bfc82477d7825dc9)

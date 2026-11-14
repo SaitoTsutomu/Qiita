@@ -35,7 +35,7 @@ def downloads_all_items():
                 fpt.write(f"- [{title}]({item['url']})\n")
                 drc = f"items/{item['created_at'][:4]}"
                 os.makedirs(drc, exist_ok=True)
-                with open(f"{drc}/{title}.md", "w") as fp:
+                with open(f"{drc}/{item['id']}.md", "w") as fp:
                     write_item(fp, item)
             page += 1
             if page > ceil(int(res.headers["Total-Count"]) / 100):
